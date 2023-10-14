@@ -9,7 +9,8 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<link rel="stylesheet" href="{{ '../css/app.css' }}">
+
+    <link rel="stylesheet" href="./Css/style.css">
     <title> Bravo Tickets</title>
 </head>
 
@@ -92,11 +93,31 @@
                 <p>Exposições</p>
             </div>
         </div>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
 
+
+    <div class=" container container__card ">
+        @foreach ($produtos as $produto)
+            <div class="row card-info">
+                <div class="col">
+                    <div class="card h-100 " style="width: 13rem;">
+                        <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" class="card-img-top img-card"
+                            alt="{{ $produto->PRODUTO_NOME }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $produto->PRODUTO_NOME }}</h5>
+                            <a href="#" class="btn btn-primary">Ingressos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 
 </body>
 

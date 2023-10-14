@@ -1,0 +1,22 @@
+.container__card{
+    display: flex;
+    flex-wrap: wrap;
+    place-content: space-evenly;
+    padding: 8px;
+}
+
+
+
+.img-card{
+
+    width: 200px;
+    height: 300px;
+
+}
+.card-info{
+
+
+    display: flex;
+    flex-direction: column;
+  }
+
