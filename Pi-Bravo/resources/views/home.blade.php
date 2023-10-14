@@ -15,7 +15,7 @@
 </head>
 
 <body>
-
+    <div class="container">
     <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="{{ asset('imagens/Logotipo_bravo.png') }}"
@@ -55,6 +55,8 @@
             </button>
         </div>
     </nav>
+    </div>
+
     <!---->
     <div class="container  card__circle">
         <h3>Divirta-se, encontre algo para fazer</h3>
@@ -103,7 +105,7 @@
                 <div class="col">
                     <div class="card h-100 " style="width: 13rem;">
                         <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" class="card-img-top img-card"
-                            alt="{{ $produto->PRODUTO_NOME }}">
+                            alt="">
                         <div class="card-body">
                             <h5 class="card-title">{{ $produto->PRODUTO_NOME }}</h5>
                             <a href="#" class="btn btn-primary">Ingressos</a>
