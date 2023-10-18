@@ -9,14 +9,25 @@
 
 .img-card{
 
-    width: 200px;
+    width: auto;
     height: 300px;
 
 }
 .card-info{
 
-
     display: flex;
     flex-direction: column;
+
   }
+  .botao-card{
+    display: flex;
+    align-items: center;
+  }
+.container-categoria{
+
+    display: flex;
+    flex-wrap: wrap;
+    place-content: space-evenly;
+ }
+
 

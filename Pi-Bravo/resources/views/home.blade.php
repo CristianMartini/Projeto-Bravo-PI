@@ -15,99 +15,83 @@
 </head>
 
 <body>
+    <div class="container container-fluid">
+        <nav class="navbar navbar-expand-sm navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img src="{{ asset('imagens/Logotipo_bravo.png') }}"
+                        alt="bravo tickets logo"width="100">
+                </a>
 
-    <nav class="navbar navbar-expand-sm navbar-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="{{ asset('imagens/Logotipo_bravo.png') }}"
-                    alt="bravo tickets logo"width="100">
-            </a>
-
-            <!--Aqui abre um modal-->
-
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-                    height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-                    <path
-                        d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
-                    <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                </svg>
-                De qualquer lugar
-            </a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <form class="container-fluid">
-                    <div class="input-group">
-                        <input type="text" class="form-control"
-                            placeholder="Pesquisar eventos, shows, teatros, cinemas...">
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-outline-primary me-2">
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">Conecte-se</font>
-                </font>
-            </button>
-            <button type="button" class="btn btn-primary">
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">Inscrever-se</font>
-                </font>
-            </button>
-        </div>
-    </nav>
-    <!---->
-    <div class="container  card__circle">
-        <h3>Divirta-se, encontre algo para fazer</h3>
-        <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
-            <div class="col">
-                <div class="p-3 border bg-light">
-                    <img src="" alt="" srcset="">
+                <!--Aqui abre um modal-->
+                <div class="dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                            <path
+                                d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                        </svg>
+                        De qualquer lugar
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        @foreach ($categorias as $categoria)
+                            <li>
+                                <a class="dropdown-item" href="#">{{ $categoria->CATEGORIA_NOME }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
-                <p>Festa e Shows</p>
-            </div>
-            <div class="col">
-                <div class="p-3 border bg-light">
-                    <img src="" alt="" srcset="">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <form class="container-fluid">
+                        <div class="input-group">
+                            <input type="text" class="form-control"
+                                placeholder="Pesquisar eventos, shows, teatros, cinemas...">
+                        </div>
+                    </form>
                 </div>
-                <p>Palestras</p>
             </div>
-            <div class="col">
-                <div class="p-3 border bg-light">
-                    <img src="" alt="" srcset="">
-                </div>
-                <p>Teatros</p>
+            <div class="col-md-3 text-end">
+                <button type="button" class="btn btn-outline-primary me-2">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Conecte-se</font>
+                    </font>
+                </button>
+                <button type="button" class="btn btn-primary">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Inscrever-se</font>
+                    </font>
+                </button>
             </div>
-            <div class="col">
-                <div class="p-3 border bg-light"> <img src="" alt="" srcset="">
-                </div>
-                <p>Cinemas</p>
-            </div>
-            <div class="col">
-                <div class="p-3 border bg-light"> <img src="" alt="" srcset="">
-                </div>
-                <p>Espetaculos</p>
-            </div>
-            <div class="col">
-                <div class="p-3 border bg-light"> <img src="" alt="" srcset="">
-                </div>
-                <p>Exposições</p>
-            </div>
-        </div>
+        </nav>
     </div>
 
+    <!--
+    <div class="container">
+        <h3>Divirta-se, encontre algo para fazer</h3>
+    </div>
+    <div class="container container-categoria">
+        @foreach ($categorias as $categoria)
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <img src=""class="card-img-top" alt="...">
+                    <h5 class="card-title">{{ $categoria->CATEGORIA_NOME }}</h5>
+                </div>
+            </div>
+        @endforeach
+    </div>
+-->
 
-
-    <div class=" container container__card ">
+    <div class=" container container__card container-fluid">
         @foreach ($produtos as $produto)
             <div class="row card-info">
                 <div class="col">
                     <div class="card h-100 " style="width: 13rem;">
-                        <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" class="card-img-top img-card"
-                            alt="{{ $produto->PRODUTO_NOME }}">
+                        <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" class="card-img-top img-card img-fluid"
+                            alt="">
                         <div class="card-body">
                             <h5 class="card-title">{{ $produto->PRODUTO_NOME }}</h5>
-                            <a href="#" class="btn btn-primary">Ingressos</a>
-                        </div>
+                        </div class="botao-card">
+                        <div> <a href="#" class="btn btn-primary">Ingressos</a></div>
                     </div>
                 </div>
             </div>
