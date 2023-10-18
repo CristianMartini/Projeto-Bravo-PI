@@ -10,8 +10,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="./Css/style.css">
-    <title> Bravo Tickets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;800&display=swap"
+        rel="stylesheet">
+
+<body>
+
+</body>
+
+</html>
+
+<link rel="stylesheet" href="./Css/style.css">
+<title> Bravo Tickets</title>
 </head>
 
 <body>
@@ -71,13 +82,13 @@
     </div>
     <div class="container container-categoria">
         @foreach ($categorias as $categoria)
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-md-3 g-4">
                 <div class="col">
                     <img src=""class="card-img-top" alt="...">
                     <h5 class="card-title">{{ $categoria->CATEGORIA_NOME }}</h5>
                 </div>
             </div>
-        @endforeach
+@endforeach
     </div>
 -->
 
@@ -97,8 +108,65 @@
             </div>
         @endforeach
     </div>
+ <!--Footer-->
+    <div class="footer-container">
+        <footer class="footer ">
+            <div class="start-learning">
+                <div class="footer-start">
+                    <div class="texts">
+                        <h2 class="section-title">Venha se divertir conosco !</h2>
 
+                    </div>
+                    <a href="#" class="button">
+                        <span class="label">Ingressos</span>
+                    </a>
 
+                </div>
+            </div>
+
+            <div class="inner">
+                <div class="column is-logo">
+                    <a href="#" class="main-logo">
+                        <div class="logo">
+                            <img src="{{ asset('imagens/Logotipo_bravo.png') }}" alt="bravo.logo">
+                        </div>
+                        <div class="logo-info">
+                            <div class="text">Bravo Tickets</div>
+                            <span class="copyright">© 2023. All rights reserved.</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="column is-nav">
+                    <div class="column-title">Navegação</div>
+                    <ul class="column-ul">
+                        <li class="column-li"><a class="column-a" href="#">Home</a></li>
+                        <li class="column-li"><a class="column-a" href="#">Login</a></li>
+                        <li class="column-li"><a class="column-a" href="#">Cadastre-se</a></li>
+                        <li class="column-li"><a class="column-a" href="#">Ingressos</a></li>
+                    </ul>
+                </div>
+
+                <div class="column is-nav">
+                    <div class="column-title">Contatos </div>
+                    <ul class="column-ul">
+                        <li class="column-li"><a href="#"><i class="fa fa-envelope-open"></i>
+                            bravo@Bravotickets.com</a></li>
+                        <li class="column-li"><a href="#"><i class="fa fa-twitter"></i>@BravoTickets</a></li>
+                        <li class="column-li"><a href="#"><i class="fa fa-linkedin"></i> Linkedin</a></li>
+                    </ul>
+                </div>
+             <!--
+       <div class="column is-nav">
+                    <div class="column-title">Blog</div>
+                    <ul class="column-ul"l>
+                        <li class="column-li"><a href="#">What is jQuery</a></li>
+                        <li class="column-li"><a href="#">What is JavaScript</a></li>
+                        <li class="column-li"><a href="#">How to make money with a blog</a></li>
+                    </ul>
+                </div>
+            </div>-->
+        </footer>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
