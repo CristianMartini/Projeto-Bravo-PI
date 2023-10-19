@@ -17,4 +17,4 @@ use App\Http\Controllers\CategoriaController;
 Route::get('/', [ProdutoController::class,'index']);
 
 Route::get('/produto/{produto}', [ProdutoController::class,'show']);
-Route::get('/categorias', 'CategoriaController@index');
+Route::get('/categorias', [CategoriaController::class, 'index']);
