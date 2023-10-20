@@ -1,3 +1,5 @@
+
+
 .container__card{
     display: flex;
     flex-wrap: wrap;
@@ -23,8 +25,15 @@
   .botao-card{
     display: flex;
     align-items: center;
+
+
   }
-.container-categoria{
+
+
+
+
+
+#categoria .marketing{
 
     display: flex;
     flex-wrap: wrap;

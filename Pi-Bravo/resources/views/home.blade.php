@@ -7,13 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;800&display=swap"
-        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 
 <body>
 
@@ -53,9 +49,9 @@
                     </ul>
                 </div>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <form class="container-fluid">
+                    <form action="" class="container-fluid">
                         <div class="input-group">
-                            <input type="text" class="form-control"
+                            <input type="text" class="form-control"name="search" id="search"
                                 placeholder="Pesquisar eventos, shows, teatros, cinemas...">
                         </div>
                     </form>
@@ -75,30 +71,71 @@
             </div>
         </nav>
     </div>
-
-    <!--
+<!--
     <div class="container">
         <h3>Divirta-se, encontre algo para fazer</h3>
     </div>
-    <div class="container container-categoria">
+    <div class="container marketing" id="categoria">
         @foreach ($categorias as $categoria)
-<div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                    <img src=""class="card-img-top" alt="...">
-                    <h5 class="card-title">{{ $categoria->CATEGORIA_NOME }}</h5>
-                </div>
-            </div>
-@endforeach
-    </div>
--->
 
+            <div class="row">
+                <div class="col-lg-4">
+                    <img src="{{ asset('imagens/Logotipo_bravo.png') }}" alt="" srcset="" width="120px"
+                        height="120px">
+
+                    <p>{{ $categoria->CATEGORIA_NOME }}</p>
+
+                </div>
+        @endforeach
+    </div>
+  -->
+  <div class="container carousel">
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="container py-4">
+            <header class="pb-3 mb-4 border-bottom">
+
+              </a>
+            </header>
+
+            <div class="p-5 mb-4 bg-body-tertiary rounded-5">
+              <div class="container-fluid py-5">
+
+                <button class="btn btn-primary btn-lg" type="button">Example button</button>
+              </div>
+            </div>
+
+
+      </div>
+
+
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">asdasd</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">التالي</span>
+    </button>
+  </div>
+
+
+  <!--card -->
     <div class=" container container__card container-fluid">
         @foreach ($produtos as $produto)
             <div class="row card-info">
-                <div class="col">
+                <div class="col ">
                     <div class="card h-100 " style="width: 13rem;">
                         <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" class="card-img-top img-card img-fluid"
-                            alt="">
+                            alt="{{ $produto->PRODUTO_NOME }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $produto->PRODUTO_NOME }}</h5>
                         </div class="botao-card">
@@ -108,7 +145,7 @@
             </div>
         @endforeach
     </div>
- <!--Footer-->
+    <!--Footer-->
     <div class="footer-container">
         <footer class="footer ">
             <div class="start-learning">
@@ -150,12 +187,12 @@
                     <div class="column-title">Contatos </div>
                     <ul class="column-ul">
                         <li class="column-li"><a href="#"><i class="fa fa-envelope-open"></i>
-                            bravo@Bravotickets.com</a></li>
+                                bravo@Bravotickets.com</a></li>
                         <li class="column-li"><a href="#"><i class="fa fa-twitter"></i>@BravoTickets</a></li>
                         <li class="column-li"><a href="#"><i class="fa fa-linkedin"></i> Linkedin</a></li>
                     </ul>
                 </div>
-             <!--
+                <!--
        <div class="column is-nav">
                     <div class="column-title">Blog</div>
                     <ul class="column-ul"l>
@@ -167,9 +204,7 @@
             </div>-->
         </footer>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 </body>
 
