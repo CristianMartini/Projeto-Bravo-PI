@@ -11,7 +11,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 
+<body>
 
+</body>
+
+</html>
 
 <link rel="stylesheet" href="./Css/style.css">
 <title> Bravo Tickets</title>
@@ -131,7 +135,7 @@
                 <div class="col ">
                     <div class="card h-100 " style="width: 13rem;">
                         <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" class="card-img-top img-card img-fluid"
-                            alt="{{ $produto->PRODUTO_NOME }}">
+                            alt="">
                         <div class="card-body">
                             <h5 class="card-title">{{ $produto->PRODUTO_NOME }}</h5>
                         </div class="botao-card">
