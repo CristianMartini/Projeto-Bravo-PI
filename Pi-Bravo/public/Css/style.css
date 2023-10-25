@@ -22,8 +22,9 @@
     flex-direction: column;
 
   }
-  .botao-card{
-    display: flex;
+  .container__card a {
+   margin: 1px;
+    display: block;
     align-items: center;
 
 
