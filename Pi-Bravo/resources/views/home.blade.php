@@ -99,9 +99,66 @@
     </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+   <!--Footer-->
+   <div class="footer-container">
+    <footer class="footer ">
+        <div class="start-learning">
+            <div class="footer-start">
+                <div class="texts">
+                    <h2 class="section-title">Venha se divertir conosco !</h2>
+
+                </div>
+                <a href="#" class="button">
+                    <span class="label">Ingressos</span>
+                </a>
+
+            </div>
+        </div>
+
+        <div class="inner">
+            <div class="column is-logo">
+                <a href="#" class="main-logo">
+                    <div class="logo">
+                        <img src="{{ asset('imagens/Logotipo_bravo.png') }}" alt="bravo.logo">
+                    </div>
+                    <div class="logo-info">
+                        <div class="text">Bravo Tickets</div>
+                        <span class="copyright">© 2023. All rights reserved.</span>
+                    </div>
+                </a>
+            </div>
+            <div class="column is-nav">
+                <div class="column-title">Navegação</div>
+                <ul class="column-ul">
+                    <li class="column-li"><a class="column-a" href="#">Home</a></li>
+                    <li class="column-li"><a class="column-a" href="#">Login</a></li>
+                    <li class="column-li"><a class="column-a" href="#">Cadastre-se</a></li>
+                    <li class="column-li"><a class="column-a" href="#">Ingressos</a></li>
+                </ul>
+            </div>
+
+            <div class="column is-nav">
+                <div class="column-title">Contatos </div>
+                <ul class="column-ul">
+                    <li class="column-li"><a href="#"><i class="fa fa-envelope-open"></i>
+                            bravo@Bravotickets.com</a></li>
+                    <li class="column-li"><a href="#"><i class="fa fa-twitter"></i>@BravoTickets</a></li>
+                    <li class="column-li"><a href="#"><i class="fa fa-linkedin"></i> Linkedin</a></li>
+                </ul>
+            </div>
+            <!--
+   <div class="column is-nav">
+                <div class="column-title">Blog</div>
+                <ul class="column-ul"l>
+                    <li class="column-li"><a href="#">What is jQuery</a></li>
+                    <li class="column-li"><a href="#">What is JavaScript</a></li>
+                    <li class="column-li"><a href="#">How to make money with a blog</a></li>
+                </ul>
+            </div>
+        </div>-->
+    </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 </body>
 
