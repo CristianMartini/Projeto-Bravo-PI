@@ -5,8 +5,6 @@
     padding: 8px;
 }
 
-
-
 .img-card{
 
     width: auto;
@@ -30,4 +28,14 @@
     place-content: space-evenly;
  }
 
+ .logopng {
+    width: 150px;
+    height: 150px;
+    margin-left: 120px;
+ }
 
+.botaoRegistrar {
+    padding: 1rem;
+    margin: 10px;
+
+}

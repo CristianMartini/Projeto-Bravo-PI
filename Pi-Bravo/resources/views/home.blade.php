@@ -51,15 +51,15 @@
                 </div>
             </div>
             <div class="col-md-3 text-end">
-                <button type="button" class="btn btn-outline-primary me-2">
+                <button type="button" class="btn btn-outline-primary me-2"><a href="{{ route('login') }}">
                     <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">Conecte-se</font>
-                    </font>
+                        <font style="vertical-align: inherit;">Login</font>
+                    </font></a>
                 </button>
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-primary"><a href="{{ route('register') }}">
                     <font style="vertical-align: inherit;">
                         <font style="vertical-align: inherit;">Inscrever-se</font>
-                    </font>
+                    </font></a>
                 </button>
             </div>
         </nav>
