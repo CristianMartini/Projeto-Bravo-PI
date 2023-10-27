@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./Css/style.css">
+    <title>Login Bravo</title>
+</head>
+<body>
+
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -7,6 +18,7 @@
 
         <!-- Email Address -->
         <div>
+            <img src = "{{ asset('imagens/Logotipo_bravo.svg') }}" class = "logopng" />
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
@@ -33,15 +45,22 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
+            <x-primary-button class="ml-5" class="botaoRegistrar">
+                <a href="{{ route('register') }}" class="no-underline text-white">Registrar-se
+            </a>
+            </x-primary-button>
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+                <a class="botaoRegistrar underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
 
-            <x-primary-button class="ml-3">
+            <x-primary-button class="ml-5 botaoRegistrar">
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
     </form>
 </x-guest-layout>
+
+</body>
+</html>
