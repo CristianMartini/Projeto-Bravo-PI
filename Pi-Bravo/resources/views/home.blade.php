@@ -56,7 +56,7 @@
                         <font style="vertical-align: inherit;">Login</font>
                     </font></a>
                 </button>
-                <button type="button" class="btn btn-primary"><a href="{{ route('register') }}">
+                <button type="button" class="btn btn-outline-primary me-2"><a href="{{ route('register') }}">
                     <font style="vertical-align: inherit;">
                         <font style="vertical-align: inherit;">Inscrever-se</font>
                     </font></a>
@@ -146,16 +146,7 @@
                     <li class="column-li"><a href="#"><i class="fa fa-linkedin"></i> Linkedin</a></li>
                 </ul>
             </div>
-            <!--
-   <div class="column is-nav">
-                <div class="column-title">Blog</div>
-                <ul class="column-ul"l>
-                    <li class="column-li"><a href="#">What is jQuery</a></li>
-                    <li class="column-li"><a href="#">What is JavaScript</a></li>
-                    <li class="column-li"><a href="#">How to make money with a blog</a></li>
-                </ul>
-            </div>
-        </div>-->
+       
     </footer>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
