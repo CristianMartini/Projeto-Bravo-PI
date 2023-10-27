@@ -56,7 +56,7 @@
                         <font style="vertical-align: inherit;">Login</font>
                     </font></a>
                 </button>
-                <button type="button" class="btn btn-primary"><a href="{{ route('register') }}">
+                <button type="button" class="btn btn-outline-primary me-2"><a href="{{ route('register') }}">
                     <font style="vertical-align: inherit;">
                         <font style="vertical-align: inherit;">Inscrever-se</font>
                     </font></a>
@@ -119,7 +119,7 @@
             <div class="column is-logo">
                 <a href="#" class="main-logo">
                     <div class="logo">
-                        <img src="{{ asset('imagens/Logotipo_bravo.png') }}" alt="bravo.logo">
+                        <img src="{{ asset('imagens/Logotipo_bravo.svg') }}" alt="bravo.logo">
                     </div>
                     <div class="logo-info">
                         <div class="text">Bravo Tickets</div>
@@ -163,3 +163,4 @@
 </body>
 
 </html>
+
