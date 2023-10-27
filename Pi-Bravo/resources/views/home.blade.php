@@ -119,7 +119,7 @@
             <div class="column is-logo">
                 <a href="#" class="main-logo">
                     <div class="logo">
-                        <img src="{{ asset('imagens/Logotipo_bravo.png') }}" alt="bravo.logo">
+                        <img src="{{ asset('imagens/Logotipo_bravo.svg') }}" alt="bravo.logo">
                     </div>
                     <div class="logo-info">
                         <div class="text">Bravo Tickets</div>
@@ -154,3 +154,4 @@
 </body>
 
 </html>
+
