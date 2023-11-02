@@ -1,66 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <link rel="stylesheet" href="./Css/style.css">
-    <title>Login Bravo</title>
+    <title> Bravo Tickets</title>
 </head>
 <body>
 
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
 
-        <!-- Email Address -->
-        <div>
-            <img src = "{{ asset('imagens/Logotipo_bravo.svg') }}" class = "logopng" />
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+    <main class="form-signin">
+        <form>
+          <img class="mb-4" src="{{ asset('imagens/Logotipo_bravo.png') }}" alt="" >
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+          <div class="form-floating">
+            <input type="email" class="form-control" name="USUARIO_EMAIL" placeholder="name@example.com">
+            <label for="floatingInput">Email</label>
+          </div>
+          <div class="form-floating">
+            <input type="password" class="form-control" name="USUARIO_SENHA" placeholder="Digite sua senha">
+            <label for="floatingPassword">Senha</label>
+          </div>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> lembrar
             </label>
-        </div>
+          </div>
+          <button class="w-100 btn btn-lg btn-primary" type="submit">login</button>
 
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button class="ml-5" class="botaoRegistrar">
-                <a href="{{ route('register') }}" class="no-underline text-white">Registrar-se
-            </a>
-            </x-primary-button>
-            @if (Route::has('password.request'))
-                <a class="botaoRegistrar underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ml-5 botaoRegistrar">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+        </form>
+      </main>
 
 </body>
 </html>

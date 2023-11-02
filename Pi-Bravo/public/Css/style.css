@@ -1,4 +1,4 @@
-.container__card{
+.container__card {
     display: flex;
     flex-wrap: wrap;
     place-content: space-evenly;
@@ -6,47 +6,87 @@
     margin-bottom: 2rem;
 }
 
-.img-card{
+.img-card {
 
     width: auto;
     height: 300px;
 
 }
-.card-info{
+
+.card-info {
 
     display: flex;
     flex-direction: column;
     margin-bottom: 2rem;
     margin-left: 1rem;
 
-  }
+}
 
-  .container__card a{
+.container__card a {
     display: flex;
     align-items: center;
     text-align: center;
 
 
-  }
-.container-categoria{
+}
+
+.container-categoria {
 
     display: flex;
     flex-wrap: wrap;
     place-content: space-evenly;
- }
+}
 
 /*tela de login*/
- .logopng {
+.logopng {
     width: 150px;
     height: 150px;
     margin-left: 120px;
- }
+}
 
 .botaoRegistrar {
     padding: 1rem;
     margin: 10px;
 
 }
+
+/*LOGIN*/
+.form-signin {
+
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+
+}
+
+.form-signin .checkbox {
+    font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.form-signin img {
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+
+}
+
 /*footer*/
 .footer-container {
     padding: 0;
@@ -56,11 +96,25 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.column-ul{ list-style: none; }
- a { text-decoration: none; }
- a:hover { text-decoration: underline; }
- .column-ul> li > a { color:#fff; }
- .column-ul> li { line-height: 1.5em; }
+.column-ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.column-ul>li>a {
+    color: #fff;
+}
+
+.column-ul>li {
+    line-height: 1.5em;
+}
 
 
 .footer {
@@ -72,6 +126,7 @@
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
+
 .footer-start {
     display: flex;
     position: relative;
@@ -80,16 +135,18 @@
     max-width: 1280px;
     width: 90%;
     margin: auto;
-    padding: 80px 100px ;
+    padding: 80px 100px;
     background: #4adedd;
     border-radius: 15px;
 }
+
 .start-learning {
     position: absolute;
     left: 0;
     right: 0;
     top: -150px;
 }
+
 .footer .inner {
     display: flex;
     align-items: self-start;
@@ -100,26 +157,31 @@
     margin: auto;
     text-align: left;
 }
+
 .main-logo {
     position: relative;
     display: flex;
     align-items: center;
 }
+
 .main-logo .logo {
     display: inline-block;
     width: 110px;
     height: 70px;
     margin-right: 10px;
 }
-.main-logo .logo > img {
+
+.main-logo .logo>img {
     display: block;
     width: 100%;
     min-width: 40px;
 }
+
 .logo-info {
     text-align: left;
     line-height: 20px;
 }
+
 .text {
     font-size: 17px;
     line-height: 17px;
@@ -127,30 +189,36 @@
     letter-spacing: .18em;
     font-weight: 600;
 }
+
 .copyright {
     color: #fff;
     font-size: 12px;
     line-height: 12px;
 }
+
 .footer .column {
     width: 100%;
     font-size: 14px;
     text-align: left;
 }
+
 .footer .column .column-title {
     font-weight: 700;
     font-size: 16px;
     margin-bottom: 0.5em;
     color: #fff;
 }
+
 .footer .column .column-title:not(:first-child) {
     margin-top: 1em;
 }
+
 .illustration {
     left: 8%;
     position: absolute;
     top: -28px;
 }
+
 a.button {
     display: inline-flex;
     position: relative;
@@ -168,19 +236,23 @@ a.button {
     text-decoration: unset;
     box-shadow: 0px 24px 74px rgb(60 0 189 / 20%);
 }
+
 .section-title {
     font-size: 44px;
     font-weight: 700;
     color: #fff;
 }
+
 .section-sub-heading {
     font-size: 22px;
     font-weight: 400;
     color: #fff;
 }
+
 .section-sub-heading span {
     opacity: 0.6;
 }
+
 .section-sub-heading strong {
     font-weight: 600;
 }
@@ -196,28 +268,35 @@ a.button {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
+
     .start-learning {
         position: unset;
     }
+
     .footer-start {
         width: 100%;
         display: block;
         padding: 30px 20px;
         margin: 30px 0;
     }
+
     .section-title {
         font-size: 30px;
     }
+
     .section-sub-heading {
         font-size: 18px;
     }
+
     footer.footer {
         padding-top: 0;
     }
+
     a.button {
         height: 50px;
         margin-top: 10px;
     }
+
     .column.is-logo {
         order: 4;
     }
