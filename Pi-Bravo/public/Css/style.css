@@ -21,6 +21,16 @@
 
   }
 
+  .card-title{
+    font-size: medium;
+  }
+
+  .card{
+
+    height: 400px;
+
+     }
+
   .container__card a{
     display: flex;
     align-items: center;
