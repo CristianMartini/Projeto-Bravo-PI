@@ -1,3 +1,9 @@
+.img-card {
+    width: 100%; /* Defina a largura para 100% para manter o tamanho da imagem */
+    height: 275px;
+    object-fit: cover; /* Isso irá manter a proporção da imagem e cobrir o contêiner */
+}
+
 .container__card {
     display: flex;
     flex-wrap: wrap;
@@ -5,50 +11,83 @@
     padding: 8px;
     margin-bottom: 2rem;
 }
-
-.img-card {
-
-    width: auto;
-    height: 300px;
-
+.card {
+    width: 13rem; /* Defina um tamanho fixo para todos os cards */
+    margin-right: 10px;
+    height: 400px; /* Defina uma altura fixa para todos os cards */
 }
 
-.card-info {
+.card-body {
+    max-height: 100px; /* Defina uma altura máxima para o corpo do card */
+    overflow: hidden;
+}
 
+
+.card-info {
     display: flex;
     flex-direction: column;
     margin-bottom: 2rem;
     margin-left: 1rem;
-
 }
 
 .container__card a {
     display: flex;
     align-items: center;
     text-align: center;
-
-
 }
 
-.container-categoria {
+.container-categoria{
 
     display: flex;
     flex-wrap: wrap;
     place-content: space-evenly;
+ }
+
+ /* botoes next e preveiw*/
+ .owl-nav {
+    position: absolute;
+    bottom: 45px; /* Ajuste a distância em relação à borda inferior conforme necessário */
+    right: 45px; /* Ajuste a distância em relação à borda direita conforme necessário */
+    display: flex;
+    align-items: center;
 }
 
+.owl-nav button {
+    background: none; /* Define um fundo transparente para os botões */
+    border: none; /* Remove a borda */
+    padding: 0; /* Remove o preenchimento */
+    margin: 5px;
+    cursor: pointer;
+}
+
+.owl-nav button:focus {
+    outline: none; /* Remove o contorno (borda) quando o botão está em foco */
+}
+
+.owl-nav i {
+    font-size: 28px;
+    color: #249ef0de; /* Cor dos ícones */
+}
+
+.owl-nav i:hover {
+    color: #0056b3; /* Cor dos ícones ao passar o mouse */
+}
+
+
 /*tela de login*/
-.logopng {
+ .logopng {
     width: 150px;
     height: 150px;
     margin-left: 120px;
-}
+ }
 
 .botaoRegistrar {
     padding: 1rem;
     margin: 10px;
 
 }
+
+
 
 /*LOGIN*/
 .form-signin {
