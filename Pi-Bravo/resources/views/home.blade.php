@@ -118,6 +118,10 @@
             </div>
         @endforeach
     </div>
+    <div class="owl-nav">
+        <button class="owl-prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="owl-next"><i class="fas fa-chevron-right"></i></button>
+    </div>
 </div>
 
 <script>
@@ -125,7 +129,7 @@
         $('.owl-carousel').owlCarousel({
             loop: true,
             margin: 10,
-            nav: true,
+            nav: false,
             responsive: {
                 0: {
                     items: 1
@@ -135,6 +139,13 @@
                 }
             }
         });
+    });
+
+    $(".owl-prev").click(function() {
+        $('.owl-carousel').trigger('prev.owl.carousel');
+    });
+    $(".owl-next").click(function() {
+        $('.owl-carousel').trigger('next.owl.carousel');
     });
 </script>
 
