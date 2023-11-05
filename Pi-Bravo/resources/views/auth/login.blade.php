@@ -1,66 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./Css/style.css">
-    <title>Login Bravo</title>
-</head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://kit.fontawesome.com/00256cd3c2.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="./Css/login.css">
+
 <body>
 
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <main class="form-signin w-100 m-auto">
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+            <img class="mb-4 " id="img-logo" src="{{ asset('imagens/Logotipo_bravo.png') }}" alt="" width="150"
+                height="130">
+            <h1 class="h3 mb-5   fw-normal">Por favor, inscreva-se</h1>
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
 
-        <!-- Email Address -->
-        <div>
-            <img src = "{{ asset('imagens/Logotipo_bravo.svg') }}" class = "logopng" />
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" name="USUARIO_EMAIL" placeholder="name@example.com">
+                <label for="floatingInput">Email</label>
+            </div>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" name="USUARIO_SENHA" placeholder="Digite sua senha">
+                <label for="floatingPassword">Senha</label>
+            </div>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+            <div class="form-check text-start my-3">
+                <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                 Lembrar-me
+                </label>
+              </div>
+              <button class="btn btn-primary w-100 py-2" type="submit">Entrar</button>
+              <p class="mt-2 mb-2 text-body-secondary">Nao tem cadastro?<a href="{{ route('register') }}"  rel="">   Cadastre-se  Aqui!</a></p>
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button class="ml-5" class="botaoRegistrar">
-                <a href="{{ route('register') }}" class="no-underline text-white">Registrar-se
-            </a>
-            </x-primary-button>
-            @if (Route::has('password.request'))
-                <a class="botaoRegistrar underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ml-5 botaoRegistrar">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
-
+              <p class="mt-5 mb-3 text-body-secondary">&copy; 2023–2023</p>
+            </form>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
 </body>
+
 </html>

@@ -10,12 +10,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        <script src="https://kit.fontawesome.com/00256cd3c2.js" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="./Css/style.css">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js"></script>
-
     <title> Bravo Tickets</title>
 </head>
 
@@ -57,14 +57,17 @@
             </div>
             <div class="col-md-3 text-end">
                 <button type="button" class="btn btn-outline-primary me-2"><a href="{{ route('login') }}">
-                    <font style="vertical-align: inherit;">
                         <font style="vertical-align: inherit;">Login</font>
                     </font></a>
                 </button>
-                <button type="button" class="btn btn-outline-primary me-2"><a href="{{ route('register') }}">
-                    <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">Inscrever-se</font>
+                <button type="button" class="btn btn-outline-primary me-2"><a href="{{ route('register') }}">@if (Auth::user())
+                    <font style="vertical-align: inherit;">{{ Auth::user()->USUARIO_NOME }}</font>
+                </font></a>
+                @else
+                       <font style="vertical-align: inherit;">Inscrever-se</font>
                     </font></a>
+                @endif
+
                 </button>
             </div>
         </nav>
@@ -85,24 +88,7 @@
         @endforeach
     </div>
 -->
-<!--
-    <div class=" container container__card container-fluid">
-        @foreach ($produtos as $produto)
-            <div class="row card-info">
-                <div class="col">
-                    <div class="card h-100 " style="width: 13rem;">
-                        <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" class="card-img-top img-card img-fluid"
-                            alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $produto->PRODUTO_NOME }}</h5>
-                        </div class="botao-card">
-                        <div> <a href="#" class="btn btn-primary">Ingressos</a></div>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
--->
+
 
 <div class="container container__card container-fluid">
     <div class="owl-carousel">
@@ -119,8 +105,8 @@
         @endforeach
     </div>
     <div class="owl-nav">
-        <button class="owl-prev"><i class="fas fa-chevron-left"></i></button>
-        <button class="owl-next"><i class="fas fa-chevron-right"></i></button>
+        <button class="owl-prev"><i class="fa-solid fa-circle-chevron-left" ></i></button>
+        <button class="owl-next"><i class="fa-solid fa-circle-chevron-right"></i></button>
     </div>
 </div>
 
