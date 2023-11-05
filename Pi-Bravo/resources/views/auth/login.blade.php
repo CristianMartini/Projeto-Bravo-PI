@@ -22,9 +22,9 @@
     <main class="form-signin w-100 m-auto">
         <form method="POST" action="{{ route('login') }}">
             @csrf
-            <img class="mb-4 " id="img-logo" src="{{ asset('imagens/Logotipo_bravo.png') }}" alt="" width="150"
+            <img class="mb-4 text-center" id="img-logo" src="{{ asset('imagens/Logotipo_bravo.png') }}" alt="" width="150"
                 height="130">
-            <h1 class="h3 mb-5   fw-normal">Por favor, inscreva-se</h1>
+            <h1 class="h3 mb-5   fw-normal">Antes de começar, Conecte-se</h1>
 
 
 
@@ -44,7 +44,7 @@
                  Lembrar-me
                 </label>
               </div>
-              <button class="btn btn-primary w-100 py-2" type="submit">Entrar</button>
+              <button class="btn btn-dark w-100 py-2" type="submit">Entrar</button>
               <p class="mt-2 mb-2 text-body-secondary">Nao tem cadastro?<a href="{{ route('register') }}"  rel="">   Cadastre-se  Aqui!</a></p>
 
               <p class="mt-5 mb-3 text-body-secondary">&copy; 2023–2023</p>

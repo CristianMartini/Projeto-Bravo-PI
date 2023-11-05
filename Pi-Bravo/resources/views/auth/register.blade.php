@@ -42,7 +42,7 @@
                 <label for="floatingInput">Cpf</label>
             </div>
 
-              <button class="btn btn-primary w-100 py-2" type="submit">Registrar</button>
+              <button class="btn btn-dark w-100 py-2" type="submit">Registrar</button>
               <p class="mt-1 mb-1 text-body-secondary">Já tem cadastro ?<a href="{{ route('login') }}"  rel="">   Fazer login</a></p>
 
               <p class="mt-2 mb-1 text-body-secondary">&copy; 2023–2023</p>

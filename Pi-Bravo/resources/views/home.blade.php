@@ -56,11 +56,11 @@
                 </div>
             </div>
             <div class="col-md-3 text-end">
-                <button type="button" class="btn btn-outline-primary me-2"><a href="{{ route('login') }}">
+                <button type="button" class="btn btn-outline-dark me-2"><a href="{{ route('login') }}">
                         <font style="vertical-align: inherit;">Login</font>
                     </font></a>
                 </button>
-                <button type="button" class="btn btn-outline-primary me-2"><a href="{{ route('register') }}">@if (Auth::user())
+                <button type="button" class="btn btn-outline-dark me-2"><a href="{{ route('register') }}">@if (Auth::user())
                     <font style="vertical-align: inherit;">{{ Auth::user()->USUARIO_NOME }}</font>
                 </font></a>
                 @else
@@ -93,13 +93,13 @@
 <div class="container container__card container-fluid">
     <div class="owl-carousel">
         @foreach ($produtos as $produto)
-            <div class="card" style="width: 13rem; margin-right: 10px;">
+            <div class="card " style="width: 13rem; margin-right: 10px;">
                 <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" class="card-img-top img-card img-fluid" alt="" style="max-width: 100%; max-height: 100%;">
                 <div class="card-body">
                     <h5 class="card-title">{{ $produto->PRODUTO_NOME }}</h5>
                 </div>
                 <div class="botao-card">
-                    <div><a href="#" class="btn btn-primary">Ingressos</a></div>
+                    <div><a href="{{ route('produto.show',$produto->PRODUTO_ID ) }}" class="btn btn-dark ">Ingressos</a></div>
                 </div>
             </div>
         @endforeach
@@ -137,55 +137,7 @@
 
 
    <!--Footer-->
-   <div class="footer-container">
-    <footer class="footer ">
-        <div class="start-learning">
-            <div class="footer-start">
-                <div class="texts">
-                    <h2 class="section-title">Venha se divertir conosco !</h2>
 
-                </div>
-                <a href="#" class="button">
-                    <span class="label">Ingressos</span>
-                </a>
-
-            </div>
-        </div>
-
-        <div class="inner">
-            <div class="column is-logo">
-                <a href="#" class="main-logo">
-                    <div class="logo">
-                        <img src="{{ asset('imagens/Logotipo_bravo.svg') }}" alt="bravo.logo">
-                    </div>
-                    <div class="logo-info">
-                        <div class="text">Bravo Tickets</div>
-                        <span class="copyright">© 2023. All rights reserved.</span>
-                    </div>
-                </a>
-            </div>
-            <div class="column is-nav">
-                <div class="column-title">Navegação</div>
-                <ul class="column-ul">
-                    <li class="column-li"><a class="column-a" href="#">Home</a></li>
-                    <li class="column-li"><a class="column-a" href="#">Login</a></li>
-                    <li class="column-li"><a class="column-a" href="#">Cadastre-se</a></li>
-                    <li class="column-li"><a class="column-a" href="#">Ingressos</a></li>
-                </ul>
-            </div>
-
-            <div class="column is-nav">
-                <div class="column-title">Contatos </div>
-                <ul class="column-ul">
-                    <li class="column-li"><a href="#"><i class="fa fa-envelope-open"></i>
-                            bravo@Bravotickets.com</a></li>
-                    <li class="column-li"><a href="#"><i class="fa fa-twitter"></i>@BravoTickets</a></li>
-                    <li class="column-li"><a href="#"><i class="fa fa-linkedin"></i> Linkedin</a></li>
-                </ul>
-            </div>
-
-    </footer>
-</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 </body>
