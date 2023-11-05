@@ -57,14 +57,17 @@
             </div>
             <div class="col-md-3 text-end">
                 <button type="button" class="btn btn-outline-primary me-2"><a href="{{ route('login') }}">
-                    <font style="vertical-align: inherit;">
                         <font style="vertical-align: inherit;">Login</font>
                     </font></a>
                 </button>
-                <button type="button" class="btn btn-outline-primary me-2"><a href="{{ route('register') }}">
-                    <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">Inscrever-se</font>
+                <button type="button" class="btn btn-outline-primary me-2"><a href="{{ route('register') }}">@if (Auth::user())
+                    <font style="vertical-align: inherit;">{{ Auth::user()->USUARIO_NOME }}</font>
+                </font></a>
+                @else
+                       <font style="vertical-align: inherit;">Inscrever-se</font>
                     </font></a>
+                @endif
+
                 </button>
             </div>
         </nav>
