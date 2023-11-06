@@ -31,6 +31,10 @@
             <div class="col-md-6 p-4 ps-md-0">
                 <h5 class="mt-0">{{ $produto->PRODUTO_NOME }}</h5>
                 <p>{{ $produto->PRODUTO_DESC }}</p>
+                <p>{{ $produto->PRODUTO_PRECO }}</p>
+                <p>{{ $produto->PRODUTO_DESCONTO }}</p>
+                <p>{{ $produto->PRODUTO_ATIVO }}</p>
+               
                 <a href="#" class="stretched-link">Go somewhere</a>
             </div>
         </div>
