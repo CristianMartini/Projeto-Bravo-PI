@@ -49,23 +49,20 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <form class="container-fluid">
                         <div class="input-group">
-                            <input type="text" class="form-control"
+                            <input type="text" class="form-control" id="pesquisa"
                                 placeholder="Pesquisar eventos, shows, teatros, cinemas...">
+                            <div id="resultados"></div>
                         </div>
                     </form>
                 </div>
             </div>
             <div class="col-md-3 text-end">
-                <button type="button" class="btn btn-outline-dark me-2"><a href="{{ route('login') }}">
-                        <font style="vertical-align: inherit;">Login</font>
-                    </font></a>
+                <button type="button" class="btn btn-dark btn-custom me-2"><a href="{{ route('login') }}">Login</a>
                 </button>
-                <button type="button" class="btn btn-outline-dark me-2"><a href="{{ route('register') }}">@if (Auth::user())
-                    <font style="vertical-align: inherit;">{{ Auth::user()->USUARIO_NOME }}</font>
-                </font></a>
+                <button type="button" class="btn btn-dark btn-custom me-2"><a href="{{ route('register') }}">@if (Auth::user())
+                   {{ Auth::user()->USUARIO_NOME }}</a>
                 @else
-                       <font style="vertical-align: inherit;">Inscrever-se</font>
-                    </font></a>
+                       Inscrever-se</a>
                 @endif
 
                 </button>
@@ -73,21 +70,7 @@
         </nav>
     </div>
 
-    <!--
-    <div class="container">
-        <h3>Divirta-se, encontre algo para fazer</h3>
-    </div>
-    <div class="container container-categoria">
-        @foreach ($categorias as $categoria)
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                    <img src=""class="card-img-top" alt="...">
-                    <h5 class="card-title">{{ $categoria->CATEGORIA_NOME }}</h5>
-                </div>
-            </div>
-        @endforeach
-    </div>
--->
+
 
 
 <div class="container container__card container-fluid">
@@ -133,8 +116,9 @@
     $(".owl-next").click(function() {
         $('.owl-carousel').trigger('next.owl.carousel');
     });
-</script>
 
+
+</script>
 
    <!--Footer-->
 

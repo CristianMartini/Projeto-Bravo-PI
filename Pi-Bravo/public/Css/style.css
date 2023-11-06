@@ -1,9 +1,13 @@
 a{
     text-decoration: none !important;
 }
+.btn-custom a{
+    color: antiquewhite;
+}
+
 .img-card {
     width: 100%; /* Defina a largura para 100% para manter o tamanho da imagem */
-    height: 275px;
+    height: 270px;
     object-fit: cover; /* Isso irá manter a proporção da imagem e cobrir o contêiner */
 }
 
