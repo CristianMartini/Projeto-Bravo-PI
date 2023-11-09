@@ -77,7 +77,11 @@
     <div class="owl-carousel">
         @foreach ($produtos as $produto)
             <div class="card " style="width: 13rem; margin-right: 10px;">
-                <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" class="card-img-top img-card img-fluid" alt="" style="max-width: 100%; max-height: 100%;">
+                @if($produto->ProdutoImagens->count() == 0)
+                    <img src="" class="card-img-top img-card img-fluid" alt="" style="max-width: 100%; max-height: 100%;">
+                @else
+                    <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" class="card-img-top img-card img-fluid" alt="" style="max-width: 100%; max-height: 100%;">
+                @endif
                 <div class="card-body">
                     <h5 class="card-title">{{ $produto->PRODUTO_NOME }}</h5>
                 </div>
