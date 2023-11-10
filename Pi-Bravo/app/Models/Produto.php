@@ -11,11 +11,18 @@ class Produto extends Model
     protected $table = 'PRODUTO';
     protected $primaryKey = 'PRODUTO_ID';
 
-
-    public function ProdutoImagens(){
-        return $this -> hasMany(ProdutoImagem::class,'PRODUTO_ID','PRODUTO_ID');
+    public function produtoImagens()
+    {
+        return $this->hasMany(ProdutoImagem::class, 'PRODUTO_ID', 'PRODUTO_ID');
     }
-    public function Categorias(){
-        return $this -> hasMany(Categoria::class, 'PRODUTO_ID','PRODUTO_ID');
+
+    public function categorias()
+    {
+        return $this->hasMany(Categoria::class, 'PRODUTO_ID', 'PRODUTO_ID');
+    }
+
+    public function carrinhoItens()
+    {
+        return $this->hasMany(CarrinhoItem::class, 'PRODUTO_ID', 'PRODUTO_ID');
     }
 }
