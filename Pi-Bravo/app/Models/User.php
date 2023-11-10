@@ -27,6 +27,20 @@ class User extends Authenticatable
         'USUARIO_CPF'
     ];
 
+	public function carrinhoItem()
+	{
+		return $this->hasOne(CarrinhoItem::class, 'USUARIO_ID');
+	}
+
+	public function enderecos()
+	{
+		return $this->hasMany(Endereco::class, 'USUARIO_ID');
+	}
+
+	public function pedidos()
+	{
+		return $this->hasMany(Pedido::class, 'USUARIO_ID');
+	}
     /**
      * The attributes that should be hidden for serialization.
      *

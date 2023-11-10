@@ -13,5 +13,8 @@ class PedidoItemController extends Controller
         $pedidoItens = PedidoItem::all();
         return view('pedidoItem.index', compact('pedidoItens'));
     }
-
+    public function show(PedidoItem $pedidoItem)
+    {
+        return view('pedido-item.show', ['pedidoItem' => $pedidoItem]);
+    }
 }

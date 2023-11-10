@@ -4,54 +4,56 @@ namespace App\Http\Controllers;
 
 use App\Models\Carrinho;
 use App\Models\CarrinhoItem;
+use App\Models\Categoria;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CarrinhoController extends Controller
 {
+
     public function index()
     {
-        $usuario = Auth::user();
+        // Recupere os itens do carrinho do usuário autenticado
 
-        if ($usuario) {
-            $carrinho = Carrinho::with('carrinhoItens.produto')->where('USUARIO_ID', $usuario->USUARIO_ID)->first();
+        $categorias = Categoria::all();
+        $carrinhoItens = Carrinho::where('USUARIO_ID', auth()->user()->USUARIO_ID)->get();
 
-            return view('carrinho.index', compact('carrinho'));
-        } else {
-            // Lógica para lidar com usuário não autenticado
-            return redirect()->route('login')->with('error', 'Faça login para acessar o carrinho.');
-        }
+        return view('carrinho.index', compact('carrinhoItens'), compact('categorias'));
     }
 
-    public function adicionarAoCarrinho(Request $request, Produto $produto)
+    public function removerDoCarrinho($carrinhoItemId)
     {
-        $usuario = Auth::user();
-
-        if ($usuario) {
-            $carrinho = Carrinho::where('USUARIO_ID', $usuario->USUARIO_ID)->first();
-
-            if ($carrinho) {
-                // Atualize a quantidade do item no carrinho, se ele já existir
-                $carrinho->carrinhoItens()->updateOrCreate(
-                    ['PRODUTO_ID' => $produto->PRODUTO_ID],
-                    ['ITEM_QTD' => $request->input('quantidade')]
-                );
-            } else {
-                // Crie um novo carrinho se não existir
-                $carrinho = Carrinho::create(['USUARIO_ID' => $usuario->USUARIO_ID]);
-
-                // Adicione o item ao carrinho
-                $carrinho->carrinhoItens()->create([
-                    'PRODUTO_ID' => $produto->PRODUTO_ID,
-                    'ITEM_QTD' => $request->input('quantidade'),
-                ]);
-            }
-
-            return redirect()->route('checkout')->with('success', 'Produto adicionado ao carrinho com sucesso');
-        } else {
-            // O usuário não está autenticado, redirecione para a página de login ou exiba uma mensagem de erro
-            return redirect()->route('login')->with('error', 'Faça login para adicionar produtos ao carrinho.');
+        $carrinhoItem = Carrinho::find($carrinhoItemId);
+        if ($carrinhoItem) {
+            $carrinhoItem->delete();
         }
+        return redirect()->route('carrinho.index')->with('success', 'Produto removido do carrinho.');
     }
+
+
+public function adicionarAoCarrinho(Request $request, $produtoId)
+{
+    if (auth()->check()) {
+        $user = auth()->user();
+        $carrinhoItem = Carrinho::where('USUARIO_ID', $user->USUARIO_ID)
+            ->where('PRODUTO_ID', $produtoId)
+            ->first();
+        if ($carrinhoItens) {
+            $carrinhoItens->ITEM_QTD += 1;
+            $carrinhoItens->save();
+        } else {
+            Carrinho::create([
+                'USUARIO_ID' => $user->USUARIO_ID,
+                'PRODUTO_ID' => $produtoId,
+                'ITEM_QTD' => 1
+            ]);
+        }
+        return redirect()->route('carrinho.index')->with('success', 'Produto adicionado ao carrinho.');
+    } else {
+        // Se o usuário não estiver autenticado, redirecione para a página de login
+        return redirect()->route('login')->with('error', 'Você precisa fazer login para adicionar produtos ao carrinho.');
+    }
+}
+
 }

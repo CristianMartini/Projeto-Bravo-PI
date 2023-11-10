@@ -18,17 +18,24 @@ class Pedido extends Model
         'PEDIDO_DATA',
     ];
 
-  
+
 
     public function usuario()
     {
         return $this->belongsTo(User::class, 'USUARIO_ID', 'id');
     }
 
-    public function itensPedido()
+    public function pedidoItens()
     {
-        return $this->hasMany(ItemPedido::class, 'PEDIDO_ID', 'PEDIDO_ID');
+        return $this->hasMany(PedidoItem::class, 'PEDIDO_ID', 'PEDIDO_ID');
     }
-
+    public function pedidoStatus()
+    {
+    return $this->belongsTo(PedidoStatus::class, 'STATUS_ID');
+    }
+    public function endereco()
+	{
+		return $this->belongsTo(Endereco::class, 'ENDERECO_ID');
+	}
     use HasFactory;
 }

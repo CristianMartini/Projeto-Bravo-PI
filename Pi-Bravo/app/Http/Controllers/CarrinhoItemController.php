@@ -14,4 +14,8 @@ class CarrinhoItemController extends Controller
 
         return view('carrinho.index', compact('carrinhoItens'));
     }
+    public function show(CarrinhoItem $carrinhoItem)
+    {
+        return view('carrinho-item.show', ['carrinhoItem' => $carrinhoItem]);
+    }
 }
