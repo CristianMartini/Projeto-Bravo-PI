@@ -126,6 +126,29 @@
 
 }
 
+
+/* Estilos Adicionais */
+.item {
+    text-align: center;
+}
+.categorias a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #007bff;
+}
+.categorias a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .categorias a {
+        display: block; /* Faz com que cada categoria ocupe uma linha inteira em dispositivos móveis */
+        margin-bottom: 10px;
+    }
+}
+
+/* Demais estilos ... */
+
 /*footer*/
 .footer-container {
     padding: 0;
