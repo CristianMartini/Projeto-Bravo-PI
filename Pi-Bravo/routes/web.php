@@ -49,4 +49,8 @@ Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
 Route::post('/pedido/finalizar', [PedidoController::class, 'finalizar'])->name('pedido.finalizar');
 });
 Route::get('/meus-pedidos', [PedidoController::class, 'listarPedidos'])->name('pedidos.listar');
+
+Route::patch('/carrinho/atualizar/{id}', [CartController::class, 'atualizar']);
+Route::delete('/carrinho/remover/{id}', [CartController::class, 'remover']);
+
 require __DIR__.'/auth.php';

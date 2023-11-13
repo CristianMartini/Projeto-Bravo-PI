@@ -46,23 +46,52 @@ class CartController extends Controller
         $itensCarrinho = CartItem::with('product')->where('USUARIO_ID', $usuarioId)->get();
 
         $precoTotal = $itensCarrinho->reduce(function ($carry, $item) {
-            return $carry + ($item->product->PRODUTO_PRECO * $item->ITEM_QTD);
+            return $carry + ($item->product->PRODUTO_PRECO * $item->ITEM_QTD )-($item->product->PRODUTO_DESCONTO * $item->ITEM_QTD );
         }, 0);
 
         return view('carrinho.show', compact('itensCarrinho', 'precoTotal'));
     }
 
 
+ // Método para atualizar a quantidade de um item no carrinho
+ public function atualizar(Request $request, $id)
+ {
+     $usuarioId = Auth::id();
+     $quantidade = $request->input('quantidade');
+
+     // Encontrar o item do carrinho
+     $cartItem = CartItem::where('USUARIO_ID', $usuarioId)
+                         ->where('id', $id)
+                         ->first();
+
+     if ($cartItem) {
+         // Atualizar a quantidade
+         $cartItem->ITEM_QTD = $quantidade;
+         $cartItem->save();
+
+         return response()->json(['success' => true, 'message' => 'Quantidade atualizada.']);
+     }
+
+     return response()->json(['success' => false, 'message' => 'Item não encontrado.']);
+ }
+
+ // Método para remover um item do carrinho
+ public function remover($id)
+ {
+     $usuarioId = Auth::id();
+
+     // Remover o item do carrinho
+     CartItem::where('USUARIO_ID', $usuarioId)
+             ->where('id', $id)
+             ->delete();
+
+     return response()->json(['success' => true, 'message' => 'Item removido.']);
+ }
 
 
-
-
-    public function remover($itemId)
-    {
-        CartItem::where('USUARIO_ID', Auth::id())->where('id', $itemId)->delete();
 
         // Redireciona ou retorna uma resposta
-    }
+
 
     public function checkout()
     {
