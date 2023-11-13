@@ -53,40 +53,35 @@ class CartController extends Controller
     }
 
 
- // Método para atualizar a quantidade de um item no carrinho
- public function atualizar(Request $request, $id)
- {
-     $usuarioId = Auth::id();
-     $quantidade = $request->input('quantidade');
+   // Método para atualizar a quantidade de um item no carrinho
+   public function atualizar(Request $request, $id)
+   {
+       $usuarioId = Auth::id();
+       $quantidade = $request->input('quantidade');
 
-     // Encontrar o item do carrinho
-     $cartItem = CartItem::where('USUARIO_ID', $usuarioId)
-                         ->where('id', $id)
-                         ->first();
+       $cartItem = CartItem::where('USUARIO_ID', $usuarioId)
+                           ->where('id', $id)
+                           ->first();
 
-     if ($cartItem) {
-         // Atualizar a quantidade
-         $cartItem->ITEM_QTD = $quantidade;
-         $cartItem->save();
+       if ($cartItem) {
+           $cartItem->ITEM_QTD = $quantidade;
+           $cartItem->save();
+           return response()->json(['success' => true]);
+       }
 
-         return response()->json(['success' => true, 'message' => 'Quantidade atualizada.']);
-     }
+       return response()->json(['success' => false, 'message' => 'Item não encontrado.']);
+   }
 
-     return response()->json(['success' => false, 'message' => 'Item não encontrado.']);
- }
+   // Método para remover um item do carrinho
+   public function remover($id)
+   {
+       $usuarioId = Auth::id();
+       CartItem::where('USUARIO_ID', $usuarioId)
+               ->where('id', $id)
+               ->delete();
 
- // Método para remover um item do carrinho
- public function remover($id)
- {
-     $usuarioId = Auth::id();
-
-     // Remover o item do carrinho
-     CartItem::where('USUARIO_ID', $usuarioId)
-             ->where('id', $id)
-             ->delete();
-
-     return response()->json(['success' => true, 'message' => 'Item removido.']);
- }
+       return response()->json(['success' => true]);
+   }
 
 
 
