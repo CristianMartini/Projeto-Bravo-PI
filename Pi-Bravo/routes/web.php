@@ -50,7 +50,7 @@ Route::post('/pedido/finalizar', [PedidoController::class, 'finalizar'])->name('
 });
 Route::get('/meus-pedidos', [PedidoController::class, 'listarPedidos'])->name('pedidos.listar');
 
-Route::patch('/carrinho/atualizar/{id}', [CartController::class, 'atualizar']);
-Route::delete('/carrinho/remover/{id}', [CartController::class, 'remover']);
+Route::post('/carrinho/atualizar/{id}', [CartController::class, 'atualizarQuantidade']);
+Route::delete('/carrinho/remover/{id}', [CartController::class, 'removerItem']);
 
 require __DIR__.'/auth.php';

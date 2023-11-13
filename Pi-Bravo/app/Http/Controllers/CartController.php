@@ -53,35 +53,27 @@ class CartController extends Controller
     }
 
 
-   // Método para atualizar a quantidade de um item no carrinho
-   public function atualizar(Request $request, $id)
-   {
-       $usuarioId = Auth::id();
-       $quantidade = $request->input('quantidade');
+  // Em CartController.php
+public function atualizarQuantidade(Request $request, $id)
+{
+    $novaQuantidade = $request->input('quantidade');
+    $cartItem = CartItem::find($id);
 
-       $cartItem = CartItem::where('USUARIO_ID', $usuarioId)
-                           ->where('id', $id)
-                           ->first();
+    if ($cartItem && $novaQuantidade > 0) {
+        $cartItem->update(['ITEM_QTD' => $novaQuantidade]);
+        return response()->json(['success' => true, 'message' => 'Quantidade atualizada.']);
+    }
 
-       if ($cartItem) {
-           $cartItem->ITEM_QTD = $quantidade;
-           $cartItem->save();
-           return response()->json(['success' => true]);
-       }
+    return response()->json(['success' => false, 'message' => 'Erro ao atualizar a quantidade.']);
+}
 
-       return response()->json(['success' => false, 'message' => 'Item não encontrado.']);
-   }
 
    // Método para remover um item do carrinho
-   public function remover($id)
-   {
-       $usuarioId = Auth::id();
-       CartItem::where('USUARIO_ID', $usuarioId)
-               ->where('id', $id)
-               ->delete();
-
-       return response()->json(['success' => true]);
-   }
+   public function removerItem($id)
+{
+    CartItem::destroy($id);
+    return response()->json(['success' => true, 'message' => 'Item removido com sucesso.']);
+}
 
 
 

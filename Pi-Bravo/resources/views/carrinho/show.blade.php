@@ -85,46 +85,39 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('.update-quantity').click(function(e) {
-                e.preventDefault();
+            $('.update-quantity').click(function() {
                 var id = $(this).data('id');
                 var action = $(this).data('action');
                 var quantity = parseInt($('.item-quantity[data-id="' + id + '"]').text());
-                quantity = action === 'increase' ? quantity + 1 : (quantity - 1 > 0 ? quantity - 1 : 1);
+                quantity = action === 'increase' ? quantity + 1 : (quantity > 1 ? quantity - 1 : 1);
 
                 $.ajax({
-                    url: '{{ url("/carrinho/atualizar/") }}/' + id,
-                    type: 'PATCH',
+                    url: '/carrinho/atualizar/' + id,
+                    type: 'POST',
                     data: {
                         quantidade: quantity,
                         _token: '{{ csrf_token() }}'
                     },
                     success: function(response) {
                         $('.item-quantity[data-id="' + id + '"]').text(quantity);
-                    },
-                    error: function(response) {
-                        console.log(response);
                     }
                 });
             });
 
-            $('.remove-item').click(function(e) {
-                e.preventDefault();
+            $('.remove-item').click(function() {
                 var id = $(this).data('id');
 
                 $.ajax({
-                    url: '{{ url("/carrinho/remover/") }}/' + id,
+                    url: '/carrinho/remover/' + id,
                     type: 'DELETE',
                     data: { _token: '{{ csrf_token() }}' },
                     success: function(response) {
                         $('button.remove-item[data-id="' + id + '"]').closest('tr').remove();
-                    },
-                    error: function(response) {
-                        console.log(response);
                     }
                 });
             });
         });
-    </script>
+        </script>
+
 </body>
 </html>
