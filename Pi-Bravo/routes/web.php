@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/produto/{id}', [ProdutoController::class, 'show'])->name('produto.show');
-    Route::get('/categorias', [CategoriaController::class, 'index']);
+
     // Rota da Página Inicial
 
 // Rota para adicionar um item ao carrinho
@@ -40,6 +40,8 @@ Route::delete('/carrinho/remover/{itemId}', [CartController::class, 'remover'])-
 Route::get('/carrinho', [CartController::class, 'mostrarCarrinho'])->name('carrinho.show');
 // Rota para Exibir Produtos por Categoria
 Route::get('/categoria/{id}', [CategoriaController::class, 'show'])->name('categoria');
+
+
 // Rota para mostrar todos os pedidos de um usuário
 Route::get('/pedidos', [PedidoController::class, 'mostrarPedido'])->name('pedidos.mostrar');
 

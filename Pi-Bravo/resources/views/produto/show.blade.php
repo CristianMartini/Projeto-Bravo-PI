@@ -14,8 +14,8 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
         <script src="https://kit.fontawesome.com/00256cd3c2.js" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="./Css/style.css">
+        <link rel="stylesheet" href="{{ asset('Css/detalhes.css') }}">
+    <link rel="stylesheet" href="{{ asset('Css/style.css') }}">
     <title> Bravo Tickets</title>
 </head>
 
@@ -84,29 +84,50 @@
             </div>
         </nav>
     </div>
-    <div class="container mt-4">
-        <h2>{{ $produto->PRODUTO_NOME }}</h2>
-        <div class="produto-detalhes">
-            <!-- Verifica se existem imagens do produto -->
-            @if($produto->ProdutoImagens->count() > 0)
-                <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" alt="{{ $produto->PRODUTO_NOME }}">
-            @else
-                <img src="{{ asset('imagens/semFoto.jpg') }}" alt="Sem Imagem">
-            @endif
-            <p>Descrição: {{ $produto->PRODUTO_DESC }}</p>
-            <p>Preço: R$ {{ $produto->PRODUTO_PRECO }}</p>
+    <main class="container mt-4 product-details">
+        <div class="product-container mx-auto">
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Imagem Principal do Produto -->
+                    <img id="mainImage" src="{{ $produto->ProdutoImagens->sortBy('IMAGEM_ORDEM')->first()->IMAGEM_URL ?? 'url_default.jpg' }}" class="img-fluid" alt="{{ $produto->PRODUTO_NOME }}" />
 
-            <!-- Formulário para adicionar ao pedido -->
-            <form action="{{ route('carrinho.adicionar', $produto->PRODUTO_ID) }}" method="POST">
-                @csrf
-                <input type="number" name="quantidade" value="1" min="1">
-                <button type="submit">Adicionar ao Carrinho</button>
-            </form>
+                    <!-- Miniaturas de Imagens -->
+                    <div class="product-thumbnails">
+                        @foreach ($produto->ProdutoImagens->sortBy('IMAGEM_ORDEM') as $imagem)
+                            <img onclick="changeImage('{{ $imagem->IMAGEM_URL }}')" src="{{ $imagem->IMAGEM_URL }}" class="img-thumbnail" alt="Thumbnail" />
+                        @endforeach
+                    </div>
+                </div>
+                <!-- Detalhes do Produto -->
+                <div class="col-md-6">
+                    <h2>{{ $produto->PRODUTO_NOME }}</h2>
+                    <p class="text-muted price">R$ {{ number_format($produto->PRODUTO_PRECO, 2, ',', '.') }}</p>
+                    <p class="description">{{ $produto->PRODUTO_DESC }}</p>
+                    <form action="{{ route('carrinho.adicionar', $produto->PRODUTO_ID) }}" method="POST">
+                        @csrf
+                        <div class="quantity mb-3">
+                            <label for="quantity" class="form-label">Quantidade:</label>
+                            <input type="number" id="quantity" name="quantidade" min="1" max="100" value="1" class="form-control" />
+                        </div>
+                        <button class="btn btn-primary">Adicionar ao Carrinho</button>
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Footer (idêntico à página inicial) -->
 
+
+    <!-- Scripts do Bootstrap (idênticos à página inicial) -->
+    <!-- Script JavaScript para troca de imagens -->
+    <script>
+        function changeImage(src) {
+            document.getElementById("mainImage").src = src;
+        }
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

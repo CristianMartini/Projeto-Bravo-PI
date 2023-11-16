@@ -84,10 +84,38 @@
             </div>
         </nav>
     </div>
+    <main class="container mt-4">
+        <h1>Bem-vindo à Loja Online</h1>
+      
+    <div id="carrosselDestaques" class="carousel slide mt-4" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://visitesaopaulo.com/wp-content/uploads/2023/03/Ativo.Com-Divulgacao.png" class="d-block w-100" alt="Destaque 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.sympla.com.br/6544fedb924c1-xs.png" class="d-block w-100" alt="Destaque 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F409819719%2F897434501903%2F1%2Foriginal.20221214-013410?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C33%2C1920%2C960&s=90a057ce281f7f7bdea7d46d6a6b4d0d" class="d-block w-100" alt="Destaque 3">
+            </div>
+            <!-- Adicione mais itens de carrossel conforme necessário -->
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carrosselDestaques" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carrosselDestaques" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+        </button>
+    </div>
+
+
 
 
 
 <div class="container container__card container-fluid">
+    <h2 class="produtos">Principais eventos da semana</h2>
     <div class="owl-carousel">
         @foreach ($produtos as $produto)
             <div class="card" style="width: 13rem; margin-right: 10px;">
@@ -110,7 +138,7 @@
         <button class="owl-next"><i class="fa-solid fa-circle-chevron-right"></i></button>
     </div>
 </div>
-
+</main>
 <script>
     $(document).ready(function(){
         $('.owl-carousel').owlCarousel({

@@ -42,7 +42,8 @@
                         <div class="categorias">
                             @foreach ($categorias as $categoria)
                             <ul>
-                                 <li><a href="{{ route('categoria', $categoria->CATEGORIA_ID) }}">{{ $categoria->CATEGORIA_NOME }}</a></li>
+                                 <li><a href="{{ route('categoria', ['id' => $categoria->CATEGORIA_ID]) }}">{{ $categoria->CATEGORIA_NOME }}</a>
+                                 </li>
                             </ul>
 
                             @endforeach
@@ -85,29 +86,61 @@
         </nav>
     </div>
  <!-- Título da Categoria -->
- <h2 class="mt-4">{{ $categoria->CATEGORIA_NOME }}</h2>
+
 
  <!-- Listagem de Produtos da Categoria -->
- <div class="row">
-     @foreach ($categoria->Produtos as $produto)
-         <div class="col-md-4 col-sm-6 col-xs-12 mt-3">
-             <div class="card">
-                 @if($produto->ProdutoImagens->count() > 0)
-                     <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" alt="{{ $produto->PRODUTO_NOME }}" class="card-img-top">
-                 @else
-                     <img src="{{ asset('imagens/semFoto.png') }}" alt="Sem Imagem" class="card-img-top">
-                 @endif
-                 <div class="card-body">
-                     <h5 class="card-title">{{ $produto->PRODUTO_NOME }}</h5>
-                     <p class="card-text">R$ {{ $produto->PRODUTO_PRECO }}</p>
-                     <!-- Outros detalhes do produto -->
-                 </div>
-             </div>
-         </div>
-     @endforeach
+ <div class="container">
+
+        <h2>{{ $categoria->CATEGORIA_NOME }}</h2>
+        <div class="owl-carousel">
+            @foreach ($categoria->Produtos as $produto)
+                <div class="card">
+                    @if($produto->ProdutoImagens->count() > 0)
+                        <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" alt="{{ $produto->PRODUTO_NOME }}" class="card-img-top">
+                    @else
+                        <img src="{{ asset('imagens/semFoto.png') }}" alt="Sem Imagem" class="card-img-top">
+                    @endif
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $produto->PRODUTO_NOME }}</h5>
+
+                        <a href="{{ route('produto.show', $produto->PRODUTO_ID) }}" class="btn btn-primary">Ver Detalhes</a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
  </div>
+    <div class="owl-nav">
+        <button class="owl-prev"><i class="fa-solid fa-circle-chevron-left"></i></button>
+        <button class="owl-next"><i class="fa-solid fa-circle-chevron-right"></i></button>
+    </div>
+</div>
+
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
+ <script>
+    $(document).ready(function(){
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                768: {
+                    items: 5
+                }
+            }
+        });
+    });
+
+    $(".owl-prev").click(function() {
+        $('.owl-carousel').trigger('prev.owl.carousel');
+    });
+    $(".owl-next").click(function() {
+        $('.owl-carousel').trigger('next.owl.carousel');
+    });
+</script>
 
 </body>
 

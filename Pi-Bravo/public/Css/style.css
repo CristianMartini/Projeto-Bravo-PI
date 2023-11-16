@@ -3,7 +3,13 @@
     height: 275px;
     object-fit: cover; /* Isso irá manter a proporção da imagem e cobrir o contêiner */
 }
+.produtos{
+    display: flex;
+    padding-top: 6rem;
+    padding-bottom: 5rem;
+   align-items:flex-start ;
 
+}
 .container__card {
     display: flex;
     flex-wrap: wrap;
@@ -45,9 +51,7 @@
 
  /* botoes next e preveiw*/
  .owl-nav {
-    position: absolute;
-    bottom: 45px; /* Ajuste a distância em relação à borda inferior conforme necessário */
-    right: 45px; /* Ajuste a distância em relação à borda direita conforme necessário */
+   /* Ajuste a distância em relação à borda direita conforme necessário */
     display: flex;
     align-items: center;
 }

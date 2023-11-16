@@ -1,0 +1,99 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9em;
+    margin-top: 15rem;
+
+}
+
+.main {
+    min-height: 80vh;
+    background-color: aqua; /* Ajuste a altura conforme necessÃ¡rio */
+}
+.carousel-item {
+    text-align: center;
+}
+
+.card {
+    display: inline-block;
+    margin: 0 15px;
+    padding-bottom: 8rem;
+}
+
+.carousel .carousel-item > div {
+    display: inline-block;
+    width: 100%; /* Ajuste a largura conforme necessÃ¡rio */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #000; /* Cor de fundo dos Ã­cones do carrossel */
+}
+/* CSS da pÃ¡gina inicial com adiÃ§Ãµes para a tela de detalhes do produto */
+/* CSS da pÃ¡gina inicial com adiÃ§Ãµes para a tela de detalhes do produto */
+
+/* (Estilos existentes) */
+
+.product-container {
+    max-width: 700px;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-details {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.price {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.description {
+    margin-bottom: 20px;
+}
+
+.quantity input {
+    width: auto;
+    display: inline-block;
+}
+
+.product-thumbnails  img {
+    cursor: pointer;
+    margin: 5px;
+    max-width: 10px;
+}
+
+/* Adicione mais estilos conforme necessÃ¡rio */
+.form-control, .form-select {
+    margin-bottom: 10px;
+}
+.perfil-container {
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid #ddd; /* Adicionando borda */
+    padding: 20px;
+    border-radius: 5px; /* Borda arredondada para uma aparÃªncia suave */
+}
+.pedido {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
