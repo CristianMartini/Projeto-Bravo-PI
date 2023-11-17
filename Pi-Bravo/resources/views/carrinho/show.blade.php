@@ -84,25 +84,26 @@
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('.update-quantity').click(function() {
-                var id = $(this).data('id');
-                var action = $(this).data('action');
-                var quantity = parseInt($('.item-quantity[data-id="' + id + '"]').text());
-                quantity = action === 'increase' ? quantity + 1 : (quantity > 1 ? quantity - 1 : 1);
+$(document).ready(function() {
+    $('.update-quantity').click(function() {
+        var id = $(this).data('id');
+        console.log(id); // Adicione isto para depuração
+        var action = $(this).data('action');
+        var quantity = parseInt($('.item-quantity[data-id="' + id + '"]').text());
+        quantity = action === 'increase' ? quantity + 1 : (quantity > 1 ? quantity - 1 : 1);
 
-                $.ajax({
-                    url: '/carrinho/atualizar/' + id,
-                    type: 'POST',
-                    data: {
-                        quantidade: quantity,
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function(response) {
-                        $('.item-quantity[data-id="' + id + '"]').text(quantity);
-                    }
-                });
-            });
+        $.ajax({
+            url: '/carrinho/atualizar/' + id, // Confira se o 'id' está sendo anexado
+            type: 'POST',
+            data: {
+                quantidade: quantity,
+                _token: '{{ csrf_token() }}'
+            },
+            success: function(response) {
+                $('.item-quantity[data-id="' + id + '"]').text(quantity);
+            }
+        });
+    });
 
             $('.remove-item').click(function() {
                 var id = $(this).data('id');

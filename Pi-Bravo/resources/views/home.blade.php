@@ -23,7 +23,7 @@
     <div class="container container-fluid">
         <nav class="navbar navbar-expand-sm navbar-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="{{ asset('imagens/Logotipo_bravo.png') }}"
+                <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('imagens/Logotipo_bravo.png') }}"
                         alt="bravo tickets logo"width="100">
                 </a>
 
@@ -86,7 +86,7 @@
     </div>
     <main class="container mt-4">
         <h1>Bem-vindo à Loja Online</h1>
-      
+
     <div id="carrosselDestaques" class="carousel slide mt-4" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">

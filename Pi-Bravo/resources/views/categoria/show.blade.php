@@ -23,7 +23,7 @@
     <div class="container container-fluid">
         <nav class="navbar navbar-expand-sm navbar-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="{{ asset('imagens/Logotipo_bravo.png') }}"
+                <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('imagens/Logotipo_bravo.png') }}"
                         alt="bravo tickets logo"width="100">
                 </a>
 
