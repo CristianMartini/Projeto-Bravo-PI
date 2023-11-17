@@ -9,15 +9,9 @@ use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
-
-    public function show($id)
-{
-    $categoria = Categoria::with('Produtos')->find($id);
-
-    if (!$categoria) {
-        return redirect()->route('home');
-    }
-
-    return view('categoria.show', compact('categoria'));
+   
+    public function show(Categoria $id)
+{ 
+    return view ('categoria.show', ['categorias' => Categoria::where('CATEGORIA_ID', $id->CATEGORIA_ID),  'produtos' => Produto::where('CATEGORIA_ID')]);
 }
 }
