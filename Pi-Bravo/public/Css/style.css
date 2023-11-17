@@ -1,12 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: #fff;
+
+
+    height: 100vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  }
+.custom-card {
+    width: 13rem; /* ou a largura que você preferir */
+    height: auto; /* Isso fará com que todos os cards tenham a altura baseada no conteúdo */
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3rem;
+    border: none;
+    margin-left: 3px;
+    /* Organiza o conteúdo do card em uma coluna */
+  }
+
+  .custom-card .card-body {
+    flex: 1; /* Isso fará com que o corpo do card preencha todo o espaço vertical disponível */
+  }
+
+.botao-card{
+    padding-top: 1rem;
+}
+  .card-title {
+    min-height: 3rem; /* Ajuste conforme necessário para acomodar títulos maiores */
+    overflow: hidden; /* Isso impedirá que o texto do título derrame para fora do seu contêiner */
+  }
+
 .img-card {
-    width: 100%; /* Defina a largura para 100% para manter o tamanho da imagem */
-    height: 275px;
+   width: 100%;
+    height: 255px;
     object-fit: cover; /* Isso irá manter a proporção da imagem e cobrir o contêiner */
 }
 .produtos{
     display: flex;
     padding-top: 6rem;
-    padding-bottom: 5rem;
+    padding-bottom: 8rem;
    align-items:flex-start ;
 
 }
@@ -16,12 +51,9 @@
     place-content: space-evenly;
     padding: 8px;
     margin-bottom: 2rem;
+    gap: 24px;
 }
-.card {
-    width: 13rem; /* Defina um tamanho fixo para todos os cards */
-    margin-right: 10px;
-    height: 400px; /* Defina uma altura fixa para todos os cards */
-}
+
 
 .card-body {
     max-height: 100px; /* Defina uma altura máxima para o corpo do card */
@@ -54,6 +86,7 @@
    /* Ajuste a distância em relação à borda direita conforme necessário */
     display: flex;
     align-items: center;
+ 
 }
 
 .owl-nav button {
@@ -153,217 +186,69 @@
 
 /* Demais estilos ... */
 
-/*footer*/
-.footer-container {
-    padding: 0;
-    margin: 0;
-    margin-top: 15rem;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
 
-.column-ul {
+
+footer {
+
+    position: fixed; /* Fixa o footer na tela */
+    bottom: 0; /* Alinha o footer na parte inferior da tela */
+    left: 0; /* Alinha o footer à esquerda da tela */
+    width: 100%;
+    background-color: #36303fc9;
+    display: flex;
+    justify-content: center;
+    z-index: 1000; /* Garante que o footer fique acima de outros elementos da página */
+  }
+  footer h2 {
+    color: white;
+  }
+  .row-footer {
+    display: flex;
+    flex: wrap;
+    gap: 10px;
+  }
+  .container-footer {
+
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    cursor: pointer;
+    font-size: 2rem;
+  }
+  .icons-footer i {
+    color: white;
+  }
+  .icons i:hover {
+    color: pink;
+    scale: 1.05;
+    transition: 0.5s all ease-in-out;
+  }
+  footer ul {
+    margin-inline: 30px;
+    color: white;
     list-style: none;
-}
-
-a {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  footer ul li a {
     text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.column-ul>li>a {
-    color: #fff;
-}
-
-.column-ul>li {
-    line-height: 1.5em;
-}
-
-
-.footer {
-    display: block;
-    width: 100%;
-    position: relative;
-    background: #36322a;
-    padding: 100px 25px 50px 25px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-}
-
-.footer-start {
-    display: flex;
-    position: relative;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1280px;
-    width: 90%;
-    margin: auto;
-    padding: 80px 100px;
-    background: #4adedd;
-    border-radius: 15px;
-}
-
-.start-learning {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: -150px;
-}
-
-.footer .inner {
-    display: flex;
-    align-items: self-start;
-    justify-content: space-between;
-    column-gap: 20px;
-    row-gap: 20px;
-    max-width: 1180px;
-    margin: auto;
-    text-align: left;
-}
-
-.main-logo {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.main-logo .logo {
-    display: inline-block;
-    width: 110px;
-    height: 70px;
-    margin-right: 10px;
-}
-
-.main-logo .logo>img {
-    display: block;
-    width: 100%;
-    min-width: 40px;
-}
-
-.logo-info {
-    text-align: left;
-    line-height: 20px;
-}
-
-.text {
-    font-size: 17px;
-    line-height: 17px;
-    color: #fff;
-    letter-spacing: .18em;
-    font-weight: 600;
-}
-
-.copyright {
-    color: #fff;
-    font-size: 12px;
-    line-height: 12px;
-}
-
-.footer .column {
-    width: 100%;
-    font-size: 14px;
-    text-align: left;
-}
-
-.footer .column .column-title {
-    font-weight: 700;
-    font-size: 16px;
-    margin-bottom: 0.5em;
-    color: #fff;
-}
-
-.footer .column .column-title:not(:first-child) {
-    margin-top: 1em;
-}
-
-.illustration {
-    left: 8%;
-    position: absolute;
-    top: -28px;
-}
-
-a.button {
-    display: inline-flex;
-    position: relative;
-    height: 60px;
-    margin-right: 20px;
-    flex-direction: row;
-    align-items: center;
-    overflow: hidden;
-    background: #fff;
-    color: #120052;
-    border-radius: 36px;
-    font-size: 16px;
-    font-weight: 700;
-    padding: 0 30px;
-    text-decoration: unset;
-    box-shadow: 0px 24px 74px rgb(60 0 189 / 20%);
-}
-
-.section-title {
-    font-size: 44px;
-    font-weight: 700;
-    color: #fff;
-}
-
-.section-sub-heading {
-    font-size: 22px;
-    font-weight: 400;
-    color: #fff;
-}
-
-.section-sub-heading span {
-    opacity: 0.6;
-}
-
-.section-sub-heading strong {
-    font-weight: 600;
-}
-
-@media only screen and (max-width: 990px) and (min-width: 200px) {
-    body {
-        height: 200vh;
-        overflow-y: scroll;
-        overflow-x: hidden;
+    color: white;
+  }
+  footer ul li a:hover {
+    color: pink;
+  }
+  @media screen and (max-width: 490px) {
+    .row {
+      flex-direction: column;
     }
-
-    .footer .inner {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-
-    .start-learning {
-        position: unset;
-    }
-
-    .footer-start {
-        width: 100%;
-        display: block;
-        padding: 30px 20px;
-        margin: 30px 0;
-    }
-
-    .section-title {
-        font-size: 30px;
-    }
-
-    .section-sub-heading {
-        font-size: 18px;
-    }
-
-    footer.footer {
-        padding-top: 0;
-    }
-
-    a.button {
-        height: 50px;
-        margin-top: 10px;
-    }
-
-    .column.is-logo {
-        order: 4;
-    }
-}
+    /* Add additional styles for larger screens here */
+  }

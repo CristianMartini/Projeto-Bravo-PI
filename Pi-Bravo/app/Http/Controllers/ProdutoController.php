@@ -52,4 +52,7 @@ class ProdutoController extends Controller
     return view('resultado_pesquisa', compact('produtos'));
 }
 
+
+
+
 }
