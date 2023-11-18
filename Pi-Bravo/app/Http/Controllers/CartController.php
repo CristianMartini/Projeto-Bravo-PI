@@ -85,6 +85,6 @@ public function atualizarQuantidade(Request $request, $id)
         $usuarioId = Auth::id();
         $itensCarrinho = CartItem::with('product')->where('USUARIO_ID', $usuarioId)->get();
 
-        return view('checkout', compact('itensCarrinho'));
+        return view('carrinho.checkout', compact('itensCarrinho'));
     }
 }

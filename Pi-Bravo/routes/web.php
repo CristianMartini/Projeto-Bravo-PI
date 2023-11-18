@@ -48,7 +48,7 @@ Route::get('/pedidos', [PedidoController::class, 'mostrarPedido'])->name('pedido
 
 // Rota para adicionar um item ao pedido
 Route::post('/pedido/{pedidoId}/adicionar/{produtoId}', [PedidoController::class, 'adicionarAoPedido'])->name('pedido.adicionar');
-Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
+Route::get('checkout', 'PedidoController::class')->name('carrinho.checkout');
 Route::post('/pedido/finalizar', [PedidoController::class, 'finalizar'])->name('pedido.finalizar');
 });
 Route::get('/meus-pedidos', [PedidoController::class, 'listarPedidos'])->name('pedidos.listar');
