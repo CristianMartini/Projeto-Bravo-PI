@@ -37,20 +37,23 @@ class ProdutoController extends Controller
 
 
 
-    public function pesquisar(Request $request)
+public function pesquisar(Request $request)
 {
     $query = $request->input('query');
+    $titulo = "Resultados da pesquisa: " . $query; // Título dinâmico
 
     $produtos = Produto::where('PRODUTO_NOME', 'like', '%' . $query . '%')
-                       ->orWhereHas('categoria', function ($q) use ($query) {
+                       ->orWhereHas('categorias', function ($q) use ($query) {
                            $q->where('CATEGORIA_NOME', 'like', '%' . $query . '%');
                        })
                        ->distinct()
-                       ->groupBy('PRODUTO_ID') // Agrupa por PRODUTO_ID
                        ->get();
 
-    return view('resultado_pesquisa', compact('produtos'));
+    return view('pesquisar', compact('produtos','titulo'));
 }
+
+
+
 public function produtosPorCategoria($categoria_id)
 {
     $categoria = Categoria::with('produtos')->find($categoria_id);

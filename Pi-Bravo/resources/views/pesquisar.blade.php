@@ -7,7 +7,7 @@
    <!--cards-->
 
    <div class="container container__card container-fluid">
-    <h2 class="produtos">Principais eventos da semana</h2>
+    <h2 class="produtos">{{ $titulo }}</h2>
     <div class="owl-carousel">
         @foreach ($produtos as $produto)
             <div class="card custom-card" style="width: 13rem; margin-right: 10px;">
