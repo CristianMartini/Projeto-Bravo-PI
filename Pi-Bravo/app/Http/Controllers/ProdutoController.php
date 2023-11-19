@@ -51,6 +51,15 @@ class ProdutoController extends Controller
 
     return view('resultado_pesquisa', compact('produtos'));
 }
+public function produtosPorCategoria($categoria_id)
+{
+    $categoria = Categoria::with('produtos')->find($categoria_id);
+    if (!$categoria) {
+        return redirect()->back()->with('erro', 'Categoria não encontrada.');
+    }
+
+    return view('categoria.produtos', ['categoria' => $categoria]);
+}
 
 
 

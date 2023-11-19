@@ -29,8 +29,9 @@ body{
     padding-top: 1rem;
 }
   .card-title {
-    min-height: 3rem; /* Ajuste conforme necessário para acomodar títulos maiores */
-    overflow: hidden; /* Isso impedirá que o texto do título derrame para fora do seu contêiner */
+    min-height: 1rem; /* Ajuste conforme necessário para acomodar títulos maiores */
+    overflow: hidden;
+   /* Isso impedirá que o texto do título derrame para fora do seu contêiner */
   }
 
 .img-card {
@@ -86,7 +87,7 @@ body{
    /* Ajuste a distância em relação à borda direita conforme necessário */
     display: flex;
     align-items: center;
- 
+
 }
 
 .owl-nav button {

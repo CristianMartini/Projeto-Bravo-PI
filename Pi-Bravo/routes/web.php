@@ -21,6 +21,8 @@ use App\Http\Controllers\PedidoController;
 
 Route::get('/', [ProdutoController::class,'index'])->name('home');
 Route::get('/pesquisar', [ProdutoController::class, 'pesquisar'])->name('pesquisar');
+Route::get('/produtos/categoria/{categoria_id}', [ProdutoController::class, 'produtosPorCategoria'])->name('produtos.categoria');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
