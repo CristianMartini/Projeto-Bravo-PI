@@ -11,7 +11,7 @@
    <div class="container container__card container-fluid">
     <h2 class="produtos">Principais eventos da semana</h2>
     <div class="owl-carousel">
-        @foreach ($categoria->produtos as $produto)
+        @foreach ($categoria->$produtos as $produto)
             <div class="card custom-card" style="width: 13rem; margin-right: 10px;">
                 @if ($produto->ProdutoImagens->count() == 0)
                     <img src="{{ asset('imagens/semFoto.jpg') }}" class="card-img-top img-card img-fluid"
