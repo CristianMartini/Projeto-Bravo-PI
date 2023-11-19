@@ -29,7 +29,7 @@ body{
     padding-top: 1rem;
 }
   .card-title {
-    min-height: 1rem; /* Ajuste conforme necessário para acomodar títulos maiores */
+    min-height: 3rem; /* Ajuste conforme necessário para acomodar títulos maiores */
     overflow: hidden;
    /* Isso impedirá que o texto do título derrame para fora do seu contêiner */
   }
@@ -40,10 +40,10 @@ body{
     object-fit: cover; /* Isso irá manter a proporção da imagem e cobrir o contêiner */
 }
 .produtos{
-    display: flex;
-    padding-top: 6rem;
-    padding-bottom: 8rem;
-   align-items:flex-start ;
+
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+
 
 }
 .container__card {
