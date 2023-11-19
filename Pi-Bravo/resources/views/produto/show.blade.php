@@ -8,14 +8,13 @@
             <div class="row">
                 <div class="col-md-6">
                     <!-- Imagem Principal do Produto -->
-                    <img id="mainImage" src="{{ $produto->ProdutoImagens->sortBy('IMAGEM_ORDEM')->first()->IMAGEM_URL ?? 'url_default.jpg' }}" class="img-fluid" alt="{{ $produto->PRODUTO_NOME }}" />
+                    <img id="mainImage" src="{{ $produto->ProdutoImagens->count() > 0 ? $produto->ProdutoImagens->sortBy('IMAGEM_ORDEM')->first()->IMAGEM_URL : asset('imagens/semFoto.jpg') }}" class="card-img-top img-card img-fluid" alt="{{ $produto->PRODUTO_NOME }}" style="max-width: 100%; max-height: 100%;">
 
                     <!-- Miniaturas de Imagens -->
                     <div class="product-thumbnails">
-                        @foreach ($produto->ProdutoImagens->sortBy('IMAGEM_ORDEM') as $imagem)
-                            <img onclick="changeImage('{{ $imagem->IMAGEM_URL }}')" src="{{ $imagem->IMAGEM_URL }}" class="img-thumbnail" alt="Thumbnail" />
-                        @endforeach
-                    </div>
+                        @for ($i = 0; $i < 4; $i++)
+                            <img onclick="changeImage(this)" src="{{ $produto->ProdutoImagens->sortBy('IMAGEM_ORDEM')->slice($i, 1)->first()->IMAGEM_URL ?? asset('imagens/semFoto.jpg') }}" class="img-thumbnail" alt="Thumbnail {{ $i + 1 }}" />
+                        @endfor
                 </div>
                 <!-- Detalhes do Produto -->
                 <div class="col-md-6">
@@ -35,7 +34,7 @@
         </div>
     </main>
 
-  
+
     <script>
         function changeImage(src) {
             document.getElementById("mainImage").src = src;

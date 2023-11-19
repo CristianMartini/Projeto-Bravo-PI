@@ -231,6 +231,61 @@ footer {
     scale: 1.05;
     transition: 0.5s all ease-in-out;
   }
+
+/*produto detalhe*/
+
+
+
+.product-container {
+    max-width: 700px;
+}
+
+
+
+.product-details {
+
+ padding: 20px;
+  border: none;
+}
+
+.price {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.description {
+    margin-bottom: 20px;
+}
+
+
+
+.product-thumbnails  img {
+    cursor: pointer;
+
+    max-width: 90px;
+}
+
+/* Adicione mais estilos conforme necessÃ¡rio */
+
+.perfil-container {
+    max-width: 800px;
+    margin: 0 auto;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   footer ul {
     margin-inline: 30px;
     color: white;

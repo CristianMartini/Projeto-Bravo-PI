@@ -11,12 +11,22 @@ use Illuminate\Support\Facades\Auth;
 
 class ProdutoController extends Controller
 {
-   public function index(){
+    public function index()
+    {
 
+        // Sua lógica existente...
+        $produtos = Produto::all();
+        $categorias = Categoria::all();
 
-        return view('home', ['produtos' =>Produto::all(), 'categorias' =>Categoria::all()]);
+        // Adicionar a lógica para obter dois produtos aleatórios
+        $doisProdutos = Produto::with('ProdutoImagens')
+            ->inRandomOrder()
+            ->take(2)
+            ->get();
+
+        // Passar todos os produtos e as categorias, além dos dois produtos, para a view
+        return view('home', compact('produtos', 'categorias', 'doisProdutos'));
     }
-
 
     public function show($produtoId)
 {
