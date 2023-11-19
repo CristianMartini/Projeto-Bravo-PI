@@ -52,8 +52,8 @@
                         <div class="categorias">
                             @foreach ($categorias as $categoria)
                                 <ul>
-                                    <li>  <a href="{{ route('produtos.categoria', $categoria->CATEGORIA_ID) }}">
-                                        {{ $categoria->CATEGORIA_NOME }}</a>
+                                    <li><a
+                                            href="{{ route('categoria', $categoria->CATEGORIA_ID) }}">{{ $categoria->CATEGORIA_NOME }}</a>
                                     </li>
                                 </ul>
                             @endforeach
@@ -101,7 +101,7 @@
     </div>
     @yield('content')
 
-
+    
 
 
 </body>
