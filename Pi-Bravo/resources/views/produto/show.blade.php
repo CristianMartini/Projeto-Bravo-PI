@@ -31,7 +31,7 @@
                         @csrf
                         <div class="quantity mb-3">
                             <label for="quantity" class="form-label">Quantidade:</label>
-                            <input type="number" id="quantity" name="quantidade" min="1" max="100" value="1" class="form-control" />
+                            <input type="number" id="quantity" name="quantidade" min="1" max="100" value="{{ $quantidadeAtual }}" class="form-control" />
                         </div>
                         <button class="btn btn-primary">Adicionar ao Carrinho</button>
                     </form>

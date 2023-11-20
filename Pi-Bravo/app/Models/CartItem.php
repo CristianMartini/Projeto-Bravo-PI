@@ -11,19 +11,20 @@ use Illuminate\Database\Eloquent\Model;
     public $timestamps=false;
     protected $table = 'CARRINHO_ITEM';
     public $incrementing = false;
-    protected $primaryKey = ['USUARIO_ID', 'PRODUTO_ID']; // Chave primária composta
+ 
     protected $fillable = ['USUARIO_ID', 'PRODUTO_ID', 'ITEM_QTD'];
 
     // Restante do seu código...
 
-    public function product()
+    public function produto()
     {
         return $this->belongsTo(Produto::class, 'PRODUTO_ID');
     }
 
-    public function user()
+    public function usuario()
     {
         return $this->belongsTo(User::class, 'USUARIO_ID');
     }
+
     use HasFactory;
 }

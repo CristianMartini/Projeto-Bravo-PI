@@ -28,19 +28,14 @@ class ProdutoController extends Controller
         return view('home', compact('produtos', 'categorias', 'doisProdutos'));
     }
 
-    public function show($produtoId)
+    public function show($produtoId, Request $request)
 {
     $produto = Produto::find($produtoId);
-    $usuarioId = Auth::id();
-
-    // Buscar o pedido ativo do usuário
-    $pedidoAtivo = Pedido::where('USUARIO_ID', $usuarioId)
-                         ->where('STATUS_ID', 1) // Supondo que 1 seja um pedido ativo
-                         ->first();
+    $quantidadeAtual = $request->input('quantidade', 1);
 
     return view('produto.show', [
-        'produto' => $produto,
-        'pedidoId' => $pedidoAtivo ? $pedidoAtivo->PEDIDO_ID : null
+        'produto' => $produto,'quantidadeAtual' => $quantidadeAtual
+
     ]);
 }
 
