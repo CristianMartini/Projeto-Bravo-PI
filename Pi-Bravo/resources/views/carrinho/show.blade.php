@@ -108,7 +108,7 @@
         <span>Carrinho de compras de {{ Auth::user()->USUARIO_NOME }}</span>
     </header>
     <main>
-        <div class="page-title">Seu Carrinho</div>
+        <div class="page-title"></div>
         <div class="content">
 
             <section>
@@ -143,7 +143,7 @@
                                     <form action="{{ route('carrinho.atualizar', $item->produto->PRODUTO_ID) }}" method="POST">
                                         @csrf
                                         @method('PATCH')
-                                        <input type="number" name="quantidade" value="{{ $item->ITEM_QTD }}" min="1">
+                                        <input class="adicionar"type="number" name="quantidade" value="{{ $item->ITEM_QTD }}" min="1">
                                         <button type="submit" class="btn btn-info btn-sm">Atualizar</button>
                                     </form>
                                 </td>

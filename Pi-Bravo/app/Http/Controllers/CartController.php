@@ -40,17 +40,21 @@ class CartController extends Controller
 }
 
 
-    public function mostrarCarrinho()
-    {
-        $usuarioId = Auth::id();
-        $itensCarrinho = CartItem::with('produto')->where('USUARIO_ID', $usuarioId)->get();
+public function mostrarCarrinho()
+{
+    $usuarioId = Auth::id();
+    $itensCarrinho = CartItem::with('produto')
+                             ->where('USUARIO_ID', $usuarioId)
+                             ->where('ITEM_QTD', '>', 0) // Adiciona esta condição
+                             ->get();
 
-        $precoTotal = $itensCarrinho->reduce(function ($carry, $item) {
-            return $carry + ($item->produto->PRODUTO_PRECO * $item->ITEM_QTD )-($item->produto->PRODUTO_DESCONTO * $item->ITEM_QTD );
-        }, 0);
+    $precoTotal = $itensCarrinho->reduce(function ($carry, $item) {
+        return $carry + ($item->produto->PRODUTO_PRECO * $item->ITEM_QTD) - ($item->produto->PRODUTO_DESCONTO * $item->ITEM_QTD);
+    }, 0);
 
-        return view('carrinho.show', compact('itensCarrinho', 'precoTotal'));
-    }
+    return view('carrinho.show', compact('itensCarrinho', 'precoTotal'));
+}
+
 
 
     public function atualizarCarrinho(Request $request, $produtoId)
@@ -66,17 +70,18 @@ class CartController extends Controller
     return redirect()->route('carrinho')->with('success', 'Carrinho atualizado!');
 }
 
-    public function removerDoCarrinho($produtoId)
-    {
-        $usuarioId = Auth::id();
+public function removerDoCarrinho($produtoId)
+{
+    $usuarioId = Auth::id();
 
-        DB::table('CARRINHO_ITEM')
-          ->where('USUARIO_ID', $usuarioId)
-          ->where('PRODUTO_ID', $produtoId)
-          ->delete();
+    DB::table('CARRINHO_ITEM')
+      ->where('USUARIO_ID', $usuarioId)
+      ->where('PRODUTO_ID', $produtoId)
+      ->update(['ITEM_QTD' => 0]);
 
-        return redirect()->route('carrinho')->with('success', 'Produto removido do carrinho!');
-    }
+    return redirect()->route('carrinho')->with('success', 'Produto removido do carrinho!');
+}
+
 
     public function checkout()
     {
