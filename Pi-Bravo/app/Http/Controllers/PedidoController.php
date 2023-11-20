@@ -37,47 +37,52 @@ class PedidoController extends Controller
     }
 
     public function finalizar(Request $request)
-    {
-        $usuarioId = Auth::id();
+{
+    $usuarioId = Auth::id();
 
-        // Criar ou atualizar o endereço
-        $endereco = Endereco::updateOrCreate(
-            ['USUARIO_ID' => $usuarioId],
-            [
-                'ENDERECO_NOME' => $request->input('endereco_nome'),
-                'ENDERECO_LOGRADOURO' => $request->input('endereco_logradouro'),
-                'ENDERECO_NUMERO' => $request->input('endereco_numero'),
-                'ENDERECO_COMPLEMENTO' => $request->input('endereco_complemento'),
-                'ENDERECO_CEP' => $request->input('endereco_cep'),
-                'ENDERECO_CIDADE' => $request->input('endereco_cidade'),
-                'ENDERECO_ESTADO' => $request->input('endereco_estado')
-            ]
-        );
+    // Criar ou atualizar o endereço
+    $endereco = Endereco::updateOrCreate(
+        ['USUARIO_ID' => $usuarioId],
+        [
+            'ENDERECO_NOME' => $request->input('ENDERECO_NOME'),
+            'ENDERECO_LOGRADOURO' => $request->input('ENDERECO_LOGRADOURO'),
+            'ENDERECO_NUMERO' => $request->input('ENDERECO_NUMERO'),
+            'ENDERECO_COMPLEMENTO' => $request->input('ENDERECO_COMPLEMENTO'),
+            'ENDERECO_CEP' => $request->input('ENDERECO_CEP'),
+            'ENDERECO_CIDADE' => $request->input('ENDERECO_CIDADE'),
+            'ENDERECO_ESTADO' => $request->input('ENDERECO_ESTADO')
+        ]
+    );
 
-        // Criar um novo pedido
-        $pedido = Pedido::create([
-            'USUARIO_ID' => $usuarioId,
-            'ENDERECO_ID' => $endereco->id,
-            'STATUS_ID' => 1,
-            'PEDIDO_DATA' => now() // Assumindo '1' como status inicial
+    // Criar um novo pedido
+    $pedido = Pedido::create([
+        'USUARIO_ID' => $usuarioId,
+        'ENDERECO_ID' => $endereco->ENDERECO_ID,
+        'STATUS_ID' => 1,
+        'PEDIDO_DATA' => now()
+    ]);
+
+    if (!$pedido->id) {
+        // Tratar o caso de falha na criação do pedido
+        return back()->withErrors('Falha ao criar o pedido.');
+    }
+
+    // Mover itens do carrinho para o pedido
+    $itensCarrinho = CartItem::where('USUARIO_ID', $usuarioId)->get();
+    foreach ($itensCarrinho as $item) {
+        PedidoItem::create([
+            'PEDIDO_ID' => $pedido->id, // Certifique-se de que isto não é null
+            'PRODUTO_ID' => $item->PRODUTO_ID,
+            'ITEM_QTD' => $item->ITEM_QTD
         ]);
 
-        // Mover itens do carrinho para o pedido
-        $itensCarrinho = CartItem::where('USUARIO_ID', $usuarioId)->get();
-        foreach ($itensCarrinho as $item) {
-            PedidoItem::create([
-                'PEDIDO_ID' => $pedido->id,
-                'PRODUTO_ID' => $item->PRODUTO_ID,
-                'ITEM_QTD' => $item->ITEM_QTD
-                // Adicione outros campos necessários
-            ]);
-
-            // Opcional: remover o item do carrinho após adicioná-lo ao pedido
-            // $item->delete();
-        }
-
-        return redirect()->route('pedidos.listar')->with('success', 'Pedido finalizado com sucesso!');
+        // Opcional: remover o item do carrinho após adicioná-lo ao pedido
+        // $item->delete();
     }
+
+    return redirect()->route('pedidos.listar')->with('success', 'Pedido finalizado com sucesso!');
+}
+
 
     public function listarPedidos()
     {

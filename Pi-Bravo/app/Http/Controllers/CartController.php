@@ -78,17 +78,10 @@ class CartController extends Controller
         return redirect()->route('carrinho')->with('success', 'Produto removido do carrinho!');
     }
 
-
-
-
-
-
-
     public function checkout()
     {
         $usuarioId = Auth::id();
         $itensCarrinho = CartItem::with('produto')->where('USUARIO_ID', $usuarioId)->get();
-dd( $itensCarrinho);
-        return view('checkout', compact('itensCarrinho'));
+        return view('carrinho.checkout', compact('itensCarrinho'));
     }
 }
