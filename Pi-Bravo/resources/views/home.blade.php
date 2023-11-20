@@ -100,6 +100,26 @@
                 </div>
             @endforeach
         </section>
+        <div class="container-about">
+            <div class="header-about">
+                <h1>Bem-vindo à Tickets Bravo!</h1>
+            </div>
+            <p>Fundada em [Ano de Fundação], a Tickets Bravo rapidamente se estabeleceu como uma líder no setor de eventos do país. Com uma equipe apaixonada e dedicada, nós nos esforçamos para trazer a você os eventos mais espetaculares e memoráveis. Seja música, teatro, esporte ou conferências, a Tickets Bravo é sua porta de entrada para experiências inesquecíveis.</p>
+            <h2>Nossa Missão</h2>
+            <p>A Tickets Bravo tem como missão enriquecer vidas através de experiências únicas. Acreditamos que cada evento é uma oportunidade para criar momentos mágicos e duradouros. Para isso, trabalhamos incansavelmente para selecionar e oferecer eventos que não apenas entretenham, mas também inspirem e conectem as pessoas.</p>
+            <h2>Nossa Visão</h2>
+            <p>Ser reconhecida como a principal plataforma de eventos do país, inovando continuamente e estabelecendo padrões de excelência no setor. Estamos comprometidos em expandir nossos horizontes, trazendo eventos internacionais e apoiando talentos locais.</p>
+            <h2>Nossos Valores</h2>
+            <p>Paixão, inovação, excelência, confiança e comunidade são os pilares que sustentam cada decisão e ação da Tickets Bravo. Acreditamos no poder dos eventos para unir as pessoas e criar comunidades fortes e vibrantes.</p>
+            <h2>O que Oferecemos</h2>
+            <ul>
+                <li>Variedade: Uma vasta seleção de eventos para todos os gostos e idades.</li>
+                <li>Qualidade: Parcerias com os melhores organizadores de eventos e locais.</li>
+                <li>Acessibilidade: Uma plataforma fácil de usar para compra e gerenciamento de ingressos.</li>
+                <li>Atendimento ao Cliente: Uma equipe dedicada a garantir a melhor experiência antes, durante e após o evento.</li>
+            </ul>
+        </div>
+
 
         <script>
             function changeImage(element) {
