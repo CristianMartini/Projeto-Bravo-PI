@@ -1,0 +1,107 @@
+/* Estilos Gerais do Container */
+.container {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1, h2 {
+    color: #2c3e50;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Estilos para o Formulário */
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #34495e;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 18px;
+    border-radius: 6px;
+    border: 1px solid #bdc3c7;
+    background-color: #ecf0f1;
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    background-color: #ffffff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+}
+
+/* Estilos para os Botões */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    margin: 25px 0 15px;
+    border-radius: 6px;
+    border: none;
+    color: #fff;
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    background: linear-gradient(45deg, #2980b9, #3498db);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-dark {
+    background: linear-gradient(45deg, #2c3e50, #34495e);
+}
+
+.btn-dark:hover {
+    background: linear-gradient(45deg, #34495e, #2c3e50);
+}
+
+/* Estilos para Mensagens de Alerta */
+.alert-danger {
+    color: #e74c3c;
+    background-color: #fdedec;
+    border-color: #fcc9c8;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.invalid-feedback {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Melhoria no Espaçamento e Layout */
+.mb-3 {
+    margin-bottom: 16px;
+}
+
+/* Ajuste no Layout dos Botões */
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.btn-container button {
+    flex-grow: 1;
+}

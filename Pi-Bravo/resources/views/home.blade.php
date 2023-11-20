@@ -1,194 +1,167 @@
-<!doctype html>
-<html lang="en">
+@extends('layouts.main')
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@section('title', 'Bravo Tickets')
+@section('content')
+    <main class="container mt-4">
+        <h1>Bem-vindo à Tickets Bravo</h1>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-        <script src="https://kit.fontawesome.com/00256cd3c2.js" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="./Css/style.css">
-    <title> Bravo Tickets</title>
-</head>
-
-<body>
-    <div class="container container-fluid">
-        <nav class="navbar navbar-expand-sm navbar-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="{{ asset('imagens/Logotipo_bravo.png') }}"
-                        alt="bravo tickets logo"width="100">
-                </a>
-
-                <!--Aqui abre um modal-->
-                <div class="dropdown ">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg"
-                            width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-                            <path
-                                d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
-                            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                        </svg>
-                        De qualquer lugar
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        @foreach ($categorias as $categoria)
-                            <li>
-                                <a class="dropdown-item" href="#">{{ $categoria->CATEGORIA_NOME }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
+        <!--carousel-->
+        <div id="carrosselDestaques" class="carousel slide mt-4" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://visitesaopaulo.com/wp-content/uploads/2023/03/Ativo.Com-Divulgacao.png"
+                        class="d-block w-100" alt="Destaque 1">
                 </div>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <form class="container-fluid">
-                        <div class="input-group">
-                            <input type="text" class="form-control"
-                                placeholder="Pesquisar eventos, shows, teatros, cinemas...">
+                <div class="carousel-item">
+                    <img src="https://images.sympla.com.br/6544fedb924c1-xs.png" class="d-block w-100" alt="Destaque 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F409819719%2F897434501903%2F1%2Foriginal.20221214-013410?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C33%2C1920%2C960&s=90a057ce281f7f7bdea7d46d6a6b4d0d"
+                        class="d-block w-100" alt="Destaque 3">
+                </div>
+                <!-- Adicione mais itens de carrossel conforme necessário -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carrosselDestaques" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carrosselDestaques" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Próximo</span>
+            </button>
+        </div>
+
+
+
+        <!--cards-->
+  <h2 class="produtos">Principais eventos da semana</h2>
+        <div class="container container__card container-fluid">
+
+            <div class="owl-carousel">
+                @foreach ($produtos as $produto)
+                    <div class="card custom-card" style="width: 13rem; margin-right: 10px;">
+                        @if ($produto->ProdutoImagens->count() == 0)
+                            <img src="{{ asset('imagens/semFoto.jpg') }}" class="card-img-top img-card img-fluid"
+                                alt="" style="max-width: 100%; max-height: 100%;">
+                        @else
+                            <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" class="card-img-top img-card img-fluid"
+                                alt="" style="max-width: 100%; max-height: 100%;">
+                        @endif
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $produto->PRODUTO_NOME }}</h5>
                         </div>
-                    </form>
-                </div>
+                        <div class="botao-card">
+                            <a href="{{ route('produto.show', $produto->PRODUTO_ID) }}" class="btn btn-primary">Ver
+                                Detalhes</a>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-            <div class="col-md-3 text-end">
-                <button type="button" class="btn btn-outline-primary me-2"><a href="{{ route('login') }}">
-                        <font style="vertical-align: inherit;">Login</font>
-                    </font></a>
-                </button>
-                <button type="button" class="btn btn-outline-primary me-2"><a href="{{ route('register') }}">@if (Auth::user())
-                    <font style="vertical-align: inherit;">{{ Auth::user()->USUARIO_NOME }}</font>
-                </font></a>
-                @else
-                       <font style="vertical-align: inherit;">Inscrever-se</font>
-                    </font></a>
-                @endif
-
-                </button>
-            </div>
-        </nav>
-    </div>
-
-    <!--
-    <div class="container">
-        <h3>Divirta-se, encontre algo para fazer</h3>
-    </div>
-    <div class="container container-categoria">
-        @foreach ($categorias as $categoria)
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                    <img src=""class="card-img-top" alt="...">
-                    <h5 class="card-title">{{ $categoria->CATEGORIA_NOME }}</h5>
-                </div>
-            </div>
-        @endforeach
-    </div>
--->
-
-
-<div class="container container__card container-fluid">
-    <div class="owl-carousel">
-        @foreach ($produtos as $produto)
-            <div class="card" style="width: 13rem; margin-right: 10px;">
-                <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" class="card-img-top img-card img-fluid" alt="" style="max-width: 100%; max-height: 100%;">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $produto->PRODUTO_NOME }}</h5>
-                </div>
-                <div class="botao-card">
-                    <div><a href="#" class="btn btn-primary">Ingressos</a></div>
-                </div>
-            </div>
-        @endforeach
-    </div>
-    <div class="owl-nav">
-        <button class="owl-prev"><i class="fa-solid fa-circle-chevron-left" ></i></button>
-        <button class="owl-next"><i class="fa-solid fa-circle-chevron-right"></i></button>
-    </div>
-</div>
-
-<script>
-    $(document).ready(function(){
-        $('.owl-carousel').owlCarousel({
-            loop: true,
-            margin: 10,
-            nav: false,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                768: {
-                    items: 5
-                }
-            }
-        });
-    });
-
-    $(".owl-prev").click(function() {
-        $('.owl-carousel').trigger('prev.owl.carousel');
-    });
-    $(".owl-next").click(function() {
-        $('.owl-carousel').trigger('next.owl.carousel');
-    });
-</script>
-
-
-   <!--Footer-->
-   <div class="footer-container">
-    <footer class="footer ">
-        <div class="start-learning">
-            <div class="footer-start">
-                <div class="texts">
-                    <h2 class="section-title">Venha se divertir conosco !</h2>
-
-                </div>
-                <a href="#" class="button">
-                    <span class="label">Ingressos</span>
-                </a>
-
+            <div class="owl-nav">
+                <button class="owl-prev"><i class="fa-solid fa-circle-chevron-left"></i></button>
+                <button class="owl-next"><i class="fa-solid fa-circle-chevron-right"></i></button>
             </div>
         </div>
 
-        <div class="inner">
-            <div class="column is-logo">
-                <a href="#" class="main-logo">
-                    <div class="logo">
-                        <img src="{{ asset('imagens/Logotipo_bravo.svg') }}" alt="bravo.logo">
+
+        <!--Produto detalhes-->
+         <h2 class="produtos">Produtos em destaque</h2>
+        <section class="container mt-4 product-details">
+
+            @foreach ($doisProdutos as $produto)
+                <div class="product-container mx-auto">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- Imagem Principal do Produto -->
+                            <img id="mainImage"
+                                src="{{ $produto->ProdutoImagens->count() > 0 ? $produto->ProdutoImagens->sortBy('IMAGEM_ORDEM')->first()->IMAGEM_URL : asset('imagens/semFoto.jpg') }}"
+                                class="  img-fluid" alt="{{ $produto->PRODUTO_NOME }}"
+                                style="max-width: 100%; max-height: 100%;">
+
+                            <!-- Miniaturas de Imagens -->
+                            <div class="product-thumbnails">
+                                @for ($i = 0; $i < 3; $i++)
+                                    <img onclick="changeImage(this)"
+                                        src="{{ $produto->ProdutoImagens->sortBy('IMAGEM_ORDEM')->slice($i, 1)->first()->IMAGEM_URL ?? asset('imagens/semFoto.jpg') }}"
+                                        class="img-thumbnail" alt="Thumbnail {{ $i + 1 }}" />
+                                @endfor
+                            </div>
+                        </div>
+                        <!-- Detalhes do Produto -->
+                        <div class="col-md-6">
+                            <h2>{{ $produto->PRODUTO_NOME }}</h2>
+                            <p class="text-muted price">R$ {{ number_format($produto->PRODUTO_PRECO, 2, ',', '.') }}</p>
+                            <p class="description">{{ $produto->PRODUTO_DESC }}</p>
+                            <a href="{{ route('produto.show', $produto->PRODUTO_ID) }}" class="btn btn-primary">Ver
+                                Detalhes</a>
+                        </div>
                     </div>
-                    <div class="logo-info">
-                        <div class="text">Bravo Tickets</div>
-                        <span class="copyright">© 2023. All rights reserved.</span>
-                    </div>
-                </a>
+                </div>
+            @endforeach
+        </section>
+        <div class="container-about">
+            <div class="header-about">
+                <h1>Bem-vindo à Tickets Bravo!</h1>
             </div>
-            <div class="column is-nav">
-                <div class="column-title">Navegação</div>
-                <ul class="column-ul">
-                    <li class="column-li"><a class="column-a" href="#">Home</a></li>
-                    <li class="column-li"><a class="column-a" href="#">Login</a></li>
-                    <li class="column-li"><a class="column-a" href="#">Cadastre-se</a></li>
-                    <li class="column-li"><a class="column-a" href="#">Ingressos</a></li>
-                </ul>
-            </div>
+            <p>Fundada em [Ano de Fundação], a Tickets Bravo rapidamente se estabeleceu como uma líder no setor de eventos do país. Com uma equipe apaixonada e dedicada, nós nos esforçamos para trazer a você os eventos mais espetaculares e memoráveis. Seja música, teatro, esporte ou conferências, a Tickets Bravo é sua porta de entrada para experiências inesquecíveis.</p>
+            <h2>Nossa Missão</h2>
+            <p>A Tickets Bravo tem como missão enriquecer vidas através de experiências únicas. Acreditamos que cada evento é uma oportunidade para criar momentos mágicos e duradouros. Para isso, trabalhamos incansavelmente para selecionar e oferecer eventos que não apenas entretenham, mas também inspirem e conectem as pessoas.</p>
+            <h2>Nossa Visão</h2>
+            <p>Ser reconhecida como a principal plataforma de eventos do país, inovando continuamente e estabelecendo padrões de excelência no setor. Estamos comprometidos em expandir nossos horizontes, trazendo eventos internacionais e apoiando talentos locais.</p>
+            <h2>Nossos Valores</h2>
+            <p>Paixão, inovação, excelência, confiança e comunidade são os pilares que sustentam cada decisão e ação da Tickets Bravo. Acreditamos no poder dos eventos para unir as pessoas e criar comunidades fortes e vibrantes.</p>
+            <h2>O que Oferecemos</h2>
+            <ul>
+                <li>Variedade: Uma vasta seleção de eventos para todos os gostos e idades.</li>
+                <li>Qualidade: Parcerias com os melhores organizadores de eventos e locais.</li>
+                <li>Acessibilidade: Uma plataforma fácil de usar para compra e gerenciamento de ingressos.</li>
+                <li>Atendimento ao Cliente: Uma equipe dedicada a garantir a melhor experiência antes, durante e após o evento.</li>
+            </ul>
+        </div>
 
-            <div class="column is-nav">
-                <div class="column-title">Contatos </div>
-                <ul class="column-ul">
-                    <li class="column-li"><a href="#"><i class="fa fa-envelope-open"></i>
-                            bravo@Bravotickets.com</a></li>
-                    <li class="column-li"><a href="#"><i class="fa fa-twitter"></i>@BravoTickets</a></li>
-                    <li class="column-li"><a href="#"><i class="fa fa-linkedin"></i> Linkedin</a></li>
-                </ul>
-            </div>
 
-    </footer>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script>
+            function changeImage(element) {
+                var mainImage = document.getElementById('mainImage');
+                mainImage.src = element.src;
+            }
+        </script>
 
-</body>
 
-</html>
 
+    </main>
+
+
+
+    <script>
+        $(document).ready(function() {
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 5
+                    }
+                }
+            });
+        });
+
+        $(".owl-prev").click(function() {
+            $('.owl-carousel').trigger('prev.owl.carousel');
+        });
+        $(".owl-next").click(function() {
+            $('.owl-carousel').trigger('next.owl.carousel');
+        });
+    </script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+@endsection
