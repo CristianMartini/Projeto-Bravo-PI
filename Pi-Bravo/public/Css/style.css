@@ -30,7 +30,8 @@ body{
 }
   .card-title {
     min-height: 3rem; /* Ajuste conforme necessário para acomodar títulos maiores */
-    overflow: hidden; /* Isso impedirá que o texto do título derrame para fora do seu contêiner */
+    overflow: hidden;
+   /* Isso impedirá que o texto do título derrame para fora do seu contêiner */
   }
 
 .img-card {
@@ -39,10 +40,10 @@ body{
     object-fit: cover; /* Isso irá manter a proporção da imagem e cobrir o contêiner */
 }
 .produtos{
-    display: flex;
-    padding-top: 6rem;
-    padding-bottom: 8rem;
-   align-items:flex-start ;
+
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+
 
 }
 .container__card {
@@ -86,7 +87,7 @@ body{
    /* Ajuste a distância em relação à borda direita conforme necessário */
     display: flex;
     align-items: center;
- 
+
 }
 
 .owl-nav button {
@@ -188,64 +189,80 @@ body{
 
 
 
-footer {
+talhe*/
 
-    position: fixed; /* Fixa o footer na tela */
-    bottom: 0; /* Alinha o footer na parte inferior da tela */
-    left: 0; /* Alinha o footer à esquerda da tela */
-    width: 100%;
-    background-color: #36303fc9;
-    display: flex;
-    justify-content: center;
-    z-index: 1000; /* Garante que o footer fique acima de outros elementos da página */
-  }
-  footer h2 {
-    color: white;
-  }
-  .row-footer {
-    display: flex;
-    flex: wrap;
-    gap: 10px;
-  }
-  .container-footer {
 
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-  .icons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px;
+
+.product-container {
+    max-width: 900px;
+
+}
+
+.img-fluid{
+    border-radius: 5%;
+}
+
+.product-details {
+display: flex;
+justify-content: center;
+ padding: 20px;
+  border: none;
+}
+
+.price {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.description {
+    margin-bottom: 20px;
+}
+
+
+
+.product-thumbnails  img {
     cursor: pointer;
-    font-size: 2rem;
-  }
-  .icons-footer i {
+display: inline;
+    max-width: 90px;
+}
+
+
+
+.container-about{
+    width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+.header-about{
+    text-align: center;
+    padding: 10px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+
+
+
+
+
+
+
+
+.container-footer  {
+
+background-color: #333;
     color: white;
+text-align: center;
   }
-  .icons i:hover {
-    color: pink;
-    scale: 1.05;
-    transition: 0.5s all ease-in-out;
-  }
-  footer ul {
-    margin-inline: 30px;
+.container-footer .nav .nav-item .nav-link{
     color: white;
-    list-style: none;
-    display: block;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-  footer ul li a {
     text-decoration: none;
-    color: white;
+}
+ .container-footer .nav .nav-item .nav-link:hover {
+    color: rgb(82, 70, 72);
   }
-  footer ul li a:hover {
-    color: pink;
-  }
+
+
   @media screen and (max-width: 490px) {
     .row {
       flex-direction: column;

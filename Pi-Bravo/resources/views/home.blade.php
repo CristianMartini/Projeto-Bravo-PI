@@ -1,13 +1,12 @@
+@extends('layouts.main')
 
-   @extends('layouts.main')
-
-   @section('title', 'Bravo Tickets')
-   @section('content')
+@section('title', 'Bravo Tickets')
+@section('content')
     <main class="container mt-4">
-        <h1>Bem-vindo à Loja Online</h1>
+        <h1>Bem-vindo à Tickets Bravo</h1>
 
 
-<!--carousel-->
+        <!--carousel-->
         <div id="carrosselDestaques" class="carousel slide mt-4" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -23,13 +22,11 @@
                 </div>
                 <!-- Adicione mais itens de carrossel conforme necessário -->
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carrosselDestaques"
-                data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carrosselDestaques" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Anterior</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carrosselDestaques"
-                data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carrosselDestaques" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Próximo</span>
             </button>
@@ -37,10 +34,10 @@
 
 
 
-<!--cards-->
-
+        <!--cards-->
+  <h2 class="produtos">Principais eventos da semana</h2>
         <div class="container container__card container-fluid">
-            <h2 class="produtos">Principais eventos da semana</h2>
+
             <div class="owl-carousel">
                 @foreach ($produtos as $produto)
                     <div class="card custom-card" style="width: 13rem; margin-right: 10px;">
@@ -48,9 +45,8 @@
                             <img src="{{ asset('imagens/semFoto.jpg') }}" class="card-img-top img-card img-fluid"
                                 alt="" style="max-width: 100%; max-height: 100%;">
                         @else
-                            <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}"
-                                class="card-img-top img-card img-fluid" alt=""
-                                style="max-width: 100%; max-height: 100%;">
+                            <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" class="card-img-top img-card img-fluid"
+                                alt="" style="max-width: 100%; max-height: 100%;">
                         @endif
                         <div class="card-body">
                             <h5 class="card-title">{{ $produto->PRODUTO_NOME }}</h5>
@@ -68,48 +64,75 @@
             </div>
         </div>
 
-<!--Produto detalhes-->
-        <section class="container mt-4 product-details">
-            <div class="product-container mx-auto">
-                <div class="row">
-                    <div class="col-md-6">
-       <!-- Imagem Principal do Produto -->
 
-                        @if ($produto->ProdutoImagens->count() == 0)
-                        <img src="{{ asset('imagens/semFoto.jpg') }}" class="card-img-top img-card img-fluid"
-                            alt="" style="max-width: 100%; max-height: 100%;">
-                    @else
-                        <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}"
-                            class="card-img-top img-card img-fluid" alt=""
-                            style="max-width: 100%; max-height: 100%;">
-                    @endif
-                        <!-- Miniaturas de Imagens -->
-                        <div class="product-thumbnails">
-                            @foreach ($produto->ProdutoImagens->sortBy('IMAGEM_ORDEM') as $imagem)
-                                <img onclick="changeImage('{{ $imagem->IMAGEM_URL }}')" src="{{ $imagem->IMAGEM_URL }}" class="img-thumbnail" alt="Thumbnail" />
-                            @endforeach
+        <!--Produto detalhes-->
+         <h2 class="produtos">Produtos em destaque</h2>
+        <section class="container mt-4 product-details">
+
+            @foreach ($doisProdutos as $produto)
+                <div class="product-container mx-auto">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- Imagem Principal do Produto -->
+                            <img id="mainImage"
+                                src="{{ $produto->ProdutoImagens->count() > 0 ? $produto->ProdutoImagens->sortBy('IMAGEM_ORDEM')->first()->IMAGEM_URL : asset('imagens/semFoto.jpg') }}"
+                                class="  img-fluid" alt="{{ $produto->PRODUTO_NOME }}"
+                                style="max-width: 100%; max-height: 100%;">
+
+                            <!-- Miniaturas de Imagens -->
+                            <div class="product-thumbnails">
+                                @for ($i = 0; $i < 3; $i++)
+                                    <img onclick="changeImage(this)"
+                                        src="{{ $produto->ProdutoImagens->sortBy('IMAGEM_ORDEM')->slice($i, 1)->first()->IMAGEM_URL ?? asset('imagens/semFoto.jpg') }}"
+                                        class="img-thumbnail" alt="Thumbnail {{ $i + 1 }}" />
+                                @endfor
+                            </div>
+                        </div>
+                        <!-- Detalhes do Produto -->
+                        <div class="col-md-6">
+                            <h2>{{ $produto->PRODUTO_NOME }}</h2>
+                            <p class="text-muted price">R$ {{ number_format($produto->PRODUTO_PRECO, 2, ',', '.') }}</p>
+                            <p class="description">{{ $produto->PRODUTO_DESC }}</p>
+                            <a href="{{ route('produto.show', $produto->PRODUTO_ID) }}" class="btn btn-primary">Ver
+                                Detalhes</a>
                         </div>
                     </div>
-                    <!-- Detalhes do Produto -->
-                    <div class="col-md-6">
-                        <h2>{{ $produto->PRODUTO_NOME }}</h2>
-                        <p class="text-muted price">R$ {{ number_format($produto->PRODUTO_PRECO, 2, ',', '.') }}</p>
-                        <p class="description">{{ $produto->PRODUTO_DESC }}</p>
-
-                            <button class="btn btn-primary">Adicionar ao Carrinho</button>
-                        </form>
-                    </div>
                 </div>
+            @endforeach
+        </section>
+        <div class="container-about">
+            <div class="header-about">
+                <h1>Bem-vindo à Tickets Bravo!</h1>
             </div>
-      </section>
+            <p>Fundada em [Ano de Fundação], a Tickets Bravo rapidamente se estabeleceu como uma líder no setor de eventos do país. Com uma equipe apaixonada e dedicada, nós nos esforçamos para trazer a você os eventos mais espetaculares e memoráveis. Seja música, teatro, esporte ou conferências, a Tickets Bravo é sua porta de entrada para experiências inesquecíveis.</p>
+            <h2>Nossa Missão</h2>
+            <p>A Tickets Bravo tem como missão enriquecer vidas através de experiências únicas. Acreditamos que cada evento é uma oportunidade para criar momentos mágicos e duradouros. Para isso, trabalhamos incansavelmente para selecionar e oferecer eventos que não apenas entretenham, mas também inspirem e conectem as pessoas.</p>
+            <h2>Nossa Visão</h2>
+            <p>Ser reconhecida como a principal plataforma de eventos do país, inovando continuamente e estabelecendo padrões de excelência no setor. Estamos comprometidos em expandir nossos horizontes, trazendo eventos internacionais e apoiando talentos locais.</p>
+            <h2>Nossos Valores</h2>
+            <p>Paixão, inovação, excelência, confiança e comunidade são os pilares que sustentam cada decisão e ação da Tickets Bravo. Acreditamos no poder dos eventos para unir as pessoas e criar comunidades fortes e vibrantes.</p>
+            <h2>O que Oferecemos</h2>
+            <ul>
+                <li>Variedade: Uma vasta seleção de eventos para todos os gostos e idades.</li>
+                <li>Qualidade: Parcerias com os melhores organizadores de eventos e locais.</li>
+                <li>Acessibilidade: Uma plataforma fácil de usar para compra e gerenciamento de ingressos.</li>
+                <li>Atendimento ao Cliente: Uma equipe dedicada a garantir a melhor experiência antes, durante e após o evento.</li>
+            </ul>
+        </div>
+
+
+        <script>
+            function changeImage(element) {
+                var mainImage = document.getElementById('mainImage');
+                mainImage.src = element.src;
+            }
+        </script>
+
+
 
     </main>
 
-        <script>
-            function changeImage(src) {
-                document.getElementById("mainImage").src = src;
-            }
-        </script>
+
 
     <script>
         $(document).ready(function() {

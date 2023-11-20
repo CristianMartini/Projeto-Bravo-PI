@@ -3,20 +3,25 @@
 @section('title', 'Produtos')
 @section('content')
 
-    <main class="container mt-4 product-details">
-        <div class="product-container mx-auto">
-            <div class="row">
-                <div class="col-md-6">
-                    <!-- Imagem Principal do Produto -->
-                    <img id="mainImage" src="{{ $produto->ProdutoImagens->sortBy('IMAGEM_ORDEM')->first()->IMAGEM_URL ?? 'url_default.jpg' }}" class="img-fluid" alt="{{ $produto->PRODUTO_NOME }}" />
+<main class="container mt-4 product-details">
+    <div class="product-container mx-auto">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Imagem Principal do Produto -->
+                <img id="mainImage"
+                    src="{{ $produto->ProdutoImagens->count() > 0 ? $produto->ProdutoImagens->sortBy('IMAGEM_ORDEM')->first()->IMAGEM_URL : asset('imagens/semFoto.jpg') }}"
+                    class="  img-fluid" alt="{{ $produto->PRODUTO_NOME }}"
+                    style="max-width: 100%; max-height: 100%;">
 
-                    <!-- Miniaturas de Imagens -->
-                    <div class="product-thumbnails">
-                        @foreach ($produto->ProdutoImagens->sortBy('IMAGEM_ORDEM') as $imagem)
-                            <img onclick="changeImage('{{ $imagem->IMAGEM_URL }}')" src="{{ $imagem->IMAGEM_URL }}" class="img-thumbnail" alt="Thumbnail" />
-                        @endforeach
-                    </div>
+                <!-- Miniaturas de Imagens -->
+                <div class="product-thumbnails">
+                    @for ($i = 0; $i < 3; $i++)
+                        <img onclick="changeImage(this)"
+                            src="{{ $produto->ProdutoImagens->sortBy('IMAGEM_ORDEM')->slice($i, 1)->first()->IMAGEM_URL ?? asset('imagens/semFoto.jpg') }}"
+                            class="img-thumbnail" alt="Thumbnail {{ $i + 1 }}" />
+                    @endfor
                 </div>
+            </div>
                 <!-- Detalhes do Produto -->
                 <div class="col-md-6">
                     <h2>{{ $produto->PRODUTO_NOME }}</h2>
@@ -26,7 +31,7 @@
                         @csrf
                         <div class="quantity mb-3">
                             <label for="quantity" class="form-label">Quantidade:</label>
-                            <input type="number" id="quantity" name="quantidade" min="1" max="100" value="1" class="form-control" />
+                            <input type="number" id="quantity" name="quantidade" min="1" max="100" value="{{ $quantidadeAtual }}" class="form-control" />
                         </div>
                         <button class="btn btn-primary">Adicionar ao Carrinho</button>
                     </form>
@@ -35,10 +40,11 @@
         </div>
     </main>
 
-  
+
     <script>
-        function changeImage(src) {
-            document.getElementById("mainImage").src = src;
+        function changeImage(element) {
+            var mainImage = document.getElementById('mainImage');
+            mainImage.src = element.src;
         }
     </script>
 

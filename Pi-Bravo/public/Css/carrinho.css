@@ -5,12 +5,15 @@
 }
 
 body {
-  background: #f6f6f6;
+  background: #fff;
   font-family: 'Lato', sans-serif;
 }
-
+a{
+    text-decoration: none;
+    color: #ccc;
+}
 body > header {
-  background: #111;
+  background: #8f867e;
   color: white;
   font-size: 24px;
   padding: 20px 0;
@@ -221,7 +224,7 @@ aside .box .info button {
   font-size: 16px;
 }
 
-aside .box footer {
+aside .box .footer {
   padding: 15px 20px;
   background: #ddd;
   font-size: 18px;
