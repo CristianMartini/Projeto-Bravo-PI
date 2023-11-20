@@ -43,7 +43,7 @@
 
                 <div class="mb-3">
                     <label for="ENDERECO_NOME" class="form-label">Nome do Endereço</label>
-                    <input type="text" class="form-control" id="ENDERECO_NOME" name="ENDERECO_NOME">
+                    <input type="text" class="form-control" id="ENDERECO_NOME" name="ENDERECO_NOME"placeholder="Ex: Casa, Trabalho...">
                     <div class="invalid-feedback">
                         Por favor, preencha o Nome do Endereço.
                     </div>
@@ -110,7 +110,7 @@
                     let valido = true;
 
                     // Validar campos obrigatórios
-                    const camposObrigatorios = ['ENDERECO_NOME', 'ENDERECO_CEP', 'ENDERECO_CIDADE', 'ENDERECO_ESTADO'];
+                    const camposObrigatorios = [, 'ENDERECO_CEP', 'ENDERECO_CIDADE', 'ENDERECO_ESTADO'];
                     camposObrigatorios.forEach(function(campo) {
                         const valorCampo = $('#' + campo).val();
                         if (valorCampo.trim() === '') {
@@ -125,7 +125,7 @@
                 }
 
                 function preencherCamposEndereco(data) {
-                    $('#ENDERECO_NOME').val(data.logradouro);
+                    $('#ENDERECO_NOME').val('');
                     $('#ENDERECO_LOGRADOURO').val(data.logradouro);
                     $('#ENDERECO_NUMERO').val('');
                     $('#ENDERECO_COMPLEMENTO').val(data.complemento);
