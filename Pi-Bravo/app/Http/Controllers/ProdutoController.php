@@ -21,7 +21,7 @@ class ProdutoController extends Controller
         // Adicionar a lógica para obter dois produtos aleatórios
         $doisProdutos = Produto::with('ProdutoImagens')
             ->inRandomOrder()
-            ->take(2)
+            ->take(1)
             ->get();
 
         // Passar todos os produtos e as categorias, além dos dois produtos, para a view

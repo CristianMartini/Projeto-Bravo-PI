@@ -3,19 +3,25 @@
 @section('title', 'Produtos')
 @section('content')
 
-    <main class="container mt-4 product-details">
-        <div class="product-container mx-auto">
-            <div class="row">
-                <div class="col-md-6">
-                    <!-- Imagem Principal do Produto -->
-                    <img id="mainImage" src="{{ $produto->ProdutoImagens->count() > 0 ? $produto->ProdutoImagens->sortBy('IMAGEM_ORDEM')->first()->IMAGEM_URL : asset('imagens/semFoto.jpg') }}" class="card-img-top img-card img-fluid" alt="{{ $produto->PRODUTO_NOME }}" style="max-width: 100%; max-height: 100%;">
+<main class="container mt-4 product-details">
+    <div class="product-container mx-auto">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Imagem Principal do Produto -->
+                <img id="mainImage"
+                    src="{{ $produto->ProdutoImagens->count() > 0 ? $produto->ProdutoImagens->sortBy('IMAGEM_ORDEM')->first()->IMAGEM_URL : asset('imagens/semFoto.jpg') }}"
+                    class="  img-fluid" alt="{{ $produto->PRODUTO_NOME }}"
+                    style="max-width: 100%; max-height: 100%;">
 
-                    <!-- Miniaturas de Imagens -->
-                    <div class="product-thumbnails">
-                        @for ($i = 0; $i < 4; $i++)
-                            <img onclick="changeImage(this)" src="{{ $produto->ProdutoImagens->sortBy('IMAGEM_ORDEM')->slice($i, 1)->first()->IMAGEM_URL ?? asset('imagens/semFoto.jpg') }}" class="img-thumbnail" alt="Thumbnail {{ $i + 1 }}" />
-                        @endfor
+                <!-- Miniaturas de Imagens -->
+                <div class="product-thumbnails">
+                    @for ($i = 0; $i < 3; $i++)
+                        <img onclick="changeImage(this)"
+                            src="{{ $produto->ProdutoImagens->sortBy('IMAGEM_ORDEM')->slice($i, 1)->first()->IMAGEM_URL ?? asset('imagens/semFoto.jpg') }}"
+                            class="img-thumbnail" alt="Thumbnail {{ $i + 1 }}" />
+                    @endfor
                 </div>
+            </div>
                 <!-- Detalhes do Produto -->
                 <div class="col-md-6">
                     <h2>{{ $produto->PRODUTO_NOME }}</h2>
@@ -36,8 +42,9 @@
 
 
     <script>
-        function changeImage(src) {
-            document.getElementById("mainImage").src = src;
+        function changeImage(element) {
+            var mainImage = document.getElementById('mainImage');
+            mainImage.src = element.src;
         }
     </script>
 

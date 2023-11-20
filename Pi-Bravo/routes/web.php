@@ -40,7 +40,7 @@ Route::post('/carrinho/adicionar/{produtoId}', [CartController::class, 'adiciona
 
 // Rota para remover um item do carrinho
 Route::delete('/carrinho/remover/{itemId}', [CartController::class, 'remover'])->name('carrinho.remover');
-Route::get('/carrinho', [CartController::class, 'mostrarCarrinho'])->name('carrinho.show');
+Route::get('/carrinho', [CartController::class, 'mostrarCarrinho'])->name('carrinho');
 // Rota para Exibir Produtos por Categoria
 Route::get('/categoria/{id}', [CategoriaController::class, 'show'])->name('categoria');
 

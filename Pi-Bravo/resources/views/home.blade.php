@@ -1,13 +1,12 @@
+@extends('layouts.main')
 
-   @extends('layouts.main')
-
-   @section('title', 'Bravo Tickets')
-   @section('content')
+@section('title', 'Bravo Tickets')
+@section('content')
     <main class="container mt-4">
-        <h1>Bem-vindo à Loja Online</h1>
+        <h1>Bem-vindo à Tickets Bravo</h1>
 
 
-<!--carousel-->
+        <!--carousel-->
         <div id="carrosselDestaques" class="carousel slide mt-4" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -23,13 +22,11 @@
                 </div>
                 <!-- Adicione mais itens de carrossel conforme necessário -->
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carrosselDestaques"
-                data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carrosselDestaques" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Anterior</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carrosselDestaques"
-                data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carrosselDestaques" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Próximo</span>
             </button>
@@ -37,10 +34,10 @@
 
 
 
-<!--cards-->
-
+        <!--cards-->
+  <h2 class="produtos">Principais eventos da semana</h2>
         <div class="container container__card container-fluid">
-            <h2 class="produtos">Principais eventos da semana</h2>
+
             <div class="owl-carousel">
                 @foreach ($produtos as $produto)
                     <div class="card custom-card" style="width: 13rem; margin-right: 10px;">
@@ -48,9 +45,8 @@
                             <img src="{{ asset('imagens/semFoto.jpg') }}" class="card-img-top img-card img-fluid"
                                 alt="" style="max-width: 100%; max-height: 100%;">
                         @else
-                            <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}"
-                                class="card-img-top img-card img-fluid" alt=""
-                                style="max-width: 100%; max-height: 100%;">
+                            <img src="{{ $produto->ProdutoImagens[0]->IMAGEM_URL }}" class="card-img-top img-card img-fluid"
+                                alt="" style="max-width: 100%; max-height: 100%;">
                         @endif
                         <div class="card-body">
                             <h5 class="card-title">{{ $produto->PRODUTO_NOME }}</h5>
@@ -68,42 +64,49 @@
             </div>
         </div>
 
-<!--Produto detalhes-->
-<!--Produto detalhes-->
-<section class="container mt-4 product-details">
-    @foreach ($doisProdutos as $produto)
-        <div class="product-container mx-auto">
-            <div class="row">
-                <div class="col-md-6">
-                    <!-- Imagem Principal do Produto -->
-                    <img id="mainImage" src="{{ $produto->ProdutoImagens->count() > 0 ? $produto->ProdutoImagens->sortBy('IMAGEM_ORDEM')->first()->IMAGEM_URL : asset('imagens/semFoto.jpg') }}" class="card-img-top img-card img-fluid" alt="{{ $produto->PRODUTO_NOME }}" style="max-width: 100%; max-height: 100%;">
 
-                    <!-- Miniaturas de Imagens -->
-                    <div class="product-thumbnails">
-                        @for ($i = 0; $i < 4; $i++)
-                            <img onclick="changeImage(this)" src="{{ $produto->ProdutoImagens->sortBy('IMAGEM_ORDEM')->slice($i, 1)->first()->IMAGEM_URL ?? asset('imagens/semFoto.jpg') }}" class="img-thumbnail" alt="Thumbnail {{ $i + 1 }}" />
-                        @endfor
+        <!--Produto detalhes-->
+         <h2 class="produtos">Produtos em destaque</h2>
+        <section class="container mt-4 product-details">
+
+            @foreach ($doisProdutos as $produto)
+                <div class="product-container mx-auto">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- Imagem Principal do Produto -->
+                            <img id="mainImage"
+                                src="{{ $produto->ProdutoImagens->count() > 0 ? $produto->ProdutoImagens->sortBy('IMAGEM_ORDEM')->first()->IMAGEM_URL : asset('imagens/semFoto.jpg') }}"
+                                class="  img-fluid" alt="{{ $produto->PRODUTO_NOME }}"
+                                style="max-width: 100%; max-height: 100%;">
+
+                            <!-- Miniaturas de Imagens -->
+                            <div class="product-thumbnails">
+                                @for ($i = 0; $i < 3; $i++)
+                                    <img onclick="changeImage(this)"
+                                        src="{{ $produto->ProdutoImagens->sortBy('IMAGEM_ORDEM')->slice($i, 1)->first()->IMAGEM_URL ?? asset('imagens/semFoto.jpg') }}"
+                                        class="img-thumbnail" alt="Thumbnail {{ $i + 1 }}" />
+                                @endfor
+                            </div>
+                        </div>
+                        <!-- Detalhes do Produto -->
+                        <div class="col-md-6">
+                            <h2>{{ $produto->PRODUTO_NOME }}</h2>
+                            <p class="text-muted price">R$ {{ number_format($produto->PRODUTO_PRECO, 2, ',', '.') }}</p>
+                            <p class="description">{{ $produto->PRODUTO_DESC }}</p>
+                            <a href="{{ route('produto.show', $produto->PRODUTO_ID) }}" class="btn btn-primary">Ver
+                                Detalhes</a>
+                        </div>
                     </div>
                 </div>
-                <!-- Detalhes do Produto -->
-                <div class="col-md-6">
-                    <h2>{{ $produto->PRODUTO_NOME }}</h2>
-                    <p class="text-muted price">R$ {{ number_format($produto->PRODUTO_PRECO, 2, ',', '.') }}</p>
-                    <p class="description">{{ $produto->PRODUTO_DESC }}</p>
-                    <a href="{{ route('produto.show', $produto->PRODUTO_ID) }}" class="btn btn-primary">Ver
-                        Detalhes</a>
-                </div>
-            </div>
-        </div>
-    @endforeach
-</section>
+            @endforeach
+        </section>
 
-<script>
-function changeImage(element) {
-    var mainImage = document.getElementById('mainImage');
-    mainImage.src = element.src;
-}
-</script>
+        <script>
+            function changeImage(element) {
+                var mainImage = document.getElementById('mainImage');
+                mainImage.src = element.src;
+            }
+        </script>
 
 
 
