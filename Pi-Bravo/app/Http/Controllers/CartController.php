@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Controllers\Controller;
 use App\Models\CartItem;
+use App\Models\Endereco;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -47,12 +48,14 @@ public function mostrarCarrinho()
                              ->where('USUARIO_ID', $usuarioId)
                              ->where('ITEM_QTD', '>', 0) // Adiciona esta condição
                              ->get();
+    $enderecos = Endereco::where('USUARIO_ID', $usuarioId)->get();
+    $temEnderecos = Endereco::where('USUARIO_ID', $usuarioId)->exists();
 
     $precoTotal = $itensCarrinho->reduce(function ($carry, $item) {
         return $carry + ($item->produto->PRODUTO_PRECO * $item->ITEM_QTD) - ($item->produto->PRODUTO_DESCONTO * $item->ITEM_QTD);
     }, 0);
 
-    return view('carrinho.show', compact('itensCarrinho', 'precoTotal'));
+    return view('carrinho.show', compact('itensCarrinho', 'precoTotal','enderecos','temEnderecos'));
 }
 
 
@@ -83,10 +86,22 @@ public function removerDoCarrinho($produtoId)
 }
 
 
-    public function checkout()
-    {
-        $usuarioId = Auth::id();
-        $itensCarrinho = CartItem::with('produto')->where('USUARIO_ID', $usuarioId)->get();
-        return view('carrinho.checkout', compact('itensCarrinho'));
-    }
+public function checkout()
+{
+    $usuarioId = Auth::id();
+    $itensCarrinho = CartItem::with('produto')->where('USUARIO_ID', $usuarioId)->get();
+    $enderecos = Endereco::where('USUARIO_ID', $usuarioId)->get();
+
+    return view('carrinho.checkout', compact('itensCarrinho', 'enderecos'));
+}
+
+public function salvarEscolhaEndereco(Request $request)
+{
+    $enderecoId = $request->input('endereco_id');
+    // Aqui você pode salvar a escolha do endereço na sessão ou no banco de dados
+    session(['enderecoEscolhido' => $enderecoId]);
+
+    return response()->json(['success' => true]);
+}
+
 }

@@ -27,9 +27,9 @@ class Pedido extends Model
         return $this->belongsTo(PedidoStatus::class, 'STATUS_ID');
     }
 
-    public function itens()
+    public function pedidoItens()
     {
-        return $this->hasMany(PedidoItem::class, 'PEDIDO_ID');
+        return $this->hasMany(Pedido::class, 'PEDIDO_ID');
     }
     use HasFactory;
 }

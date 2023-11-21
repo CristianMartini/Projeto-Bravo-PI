@@ -128,28 +128,36 @@
                     <tbody>
                         @foreach ($itensCarrinho as $item)
                             <tr>
-                                <td> <div class="product">
-                                    @if($item->produto->ProdutoImagens->count() == 0)
-                                        <img src="{{ asset('imagens/semFoto.jpg') }}" >
-                                    @else
-                                        <img src="{{ $item->produto->ProdutoImagens[0]->IMAGEM_URL }}"  alt="{{ $item->produto->PRODUTO_NOME }}">
-                                    @endif
-                                    <div class="info">
-                                        <div class="name">{{ $item->produto->PRODUTO_NOME }}</div>
-                                    </div>                            </td>
+                                <td>
+                                    <div class="product">
+                                        @if ($item->produto->ProdutoImagens->count() == 0)
+                                            <img src="{{ asset('imagens/semFoto.jpg') }}">
+                                        @else
+                                            <img src="{{ $item->produto->ProdutoImagens[0]->IMAGEM_URL }}"
+                                                alt="{{ $item->produto->PRODUTO_NOME }}">
+                                        @endif
+                                        <div class="info">
+                                            <div class="name">{{ $item->produto->PRODUTO_NOME }}</div>
+                                        </div>
+                                </td>
 
                                 <td>R$ {{ number_format($item->produto->PRODUTO_PRECO, 2, ',', '.') }}</td>
                                 <td>
-                                    <form action="{{ route('carrinho.atualizar', $item->produto->PRODUTO_ID) }}" method="POST">
+                                    <form action="{{ route('carrinho.atualizar', $item->produto->PRODUTO_ID) }}"
+                                        method="POST">
                                         @csrf
                                         @method('PATCH')
-                                        <input class="adicionar"type="number" name="quantidade" value="{{ $item->ITEM_QTD }}" min="1">
+                                        <input class="adicionar"type="number" name="quantidade"
+                                            value="{{ $item->ITEM_QTD }}" min="1">
                                         <button type="submit" class="btn btn-info btn-sm">Atualizar</button>
                                     </form>
                                 </td>
-                                <td>R$ {{ number_format($item->produto->PRODUTO_PRECO * $item->ITEM_QTD, 2, ',', '.') }}</td>
+                                <td>R$
+                                    {{ number_format($item->produto->PRODUTO_PRECO * $item->ITEM_QTD, 2, ',', '.') }}
+                                </td>
                                 <td>
-                                    <form action="{{ route('carrinho.remover', $item->produto->PRODUTO_ID) }}" method="POST">
+                                    <form action="{{ route('carrinho.remover', $item->produto->PRODUTO_ID) }}"
+                                        method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">Remover</button>
@@ -160,29 +168,80 @@
                     </tbody>
                 </table>
 
-            </div>
+        </div>
 
-            </section>
-            <aside>
-                <div class="box">
-                    <header>Resumo da compra</header>
-                    <div class="info">
-                        <div><span>Sub-total</span><span>R$ {{ number_format($precoTotal, 2, ',', '.') }}</span></div>
-                        <div><span>Frete</span><span>Gratuito</span></div>
-                        <div>
-                            <button>
-                                Adicionar cupom de desconto
-                                <i class="bx bx-right-arrow-alt"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="footer">
-                        <span>Total</span>
+        </section>
+        <aside>
+            <div class="box">
+                <header>Resumo da compra</header>
+                <div class="info">
+                    <div>
+                        <span>Sub-total</span>
                         <span>R$ {{ number_format($precoTotal, 2, ',', '.') }}</span>
                     </div>
+                    <div>
+                        <span>Frete</span>
+                        <span>Gratuito</span>
+                    </div>
+
+                    <div>
+                        @if ($temEnderecos)
+                        <span><!-- Botão para acionar o modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEndereco">
+                                Escolher Endereço de Entrega
+                            </button>
+                            @else
+                            <div class="alert alert-info">
+                                Você ainda não cadastrou nenhum endereço.
+                                <a href="{{ route('endereco.create') }}" class="btn btn-primary">Cadastrar Endereço</a>
+                            </div>
+                        @endif
+                    
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="modalEndereco" tabindex="-1" aria-labelledby="modalEnderecoLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="modalEnderecoLabel">Selecione um Endereço </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="formEndereco">
+                                                <select class="form-select" id="enderecoSelecionado">
+                                                    @foreach ($enderecos as $endereco)
+                                                        <option value="{{ $endereco->ENDERECO_ID }}">
+                                                            {{ $endereco->ENDERECO_NOME }} - {{ $endereco->ENDERECO_LOGRADOURO }}, {{ $endereco->ENDERECO_NUMERO }}
+                                                        </option>
+
+                                                    @endforeach
+
+                                                </select>
+
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                            <button type="button" class="btn btn-primary" id="salvarEndereco">Salvar escolha</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            </span>
+                            <div id="enderecoEscolhido" class="alert alert-info" style="display: none;">
+                                Endereço para entrega: <span id="enderecoTexto"></span>
+                            </div>
+                    </div>
                 </div>
-                <button> <a href="{{ route('checkout') }}">Proceder para o Checkout</a></button>
-            </aside>
+                <div class="footer">
+                    <span>Total</span>
+                    <span>R$ {{ number_format($precoTotal, 2, ',', '.') }}</span>
+                </div>
+            </div>
+            <button id="botaoCheckout"> <a href="{{ route('checkout') }}">Proceder para o Checkout</a></button>
+        </aside>
         </div>
 
 
@@ -209,6 +268,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
+
+
     <script>
         $(document).ready(function() {
             $('.update-quantity').click(function() {
@@ -243,6 +304,21 @@
             });
         });
     </script>
+<script>
+    $(document).ready(function() {
+        $('#salvarEndereco').click(function() {
+            var enderecoId = $('#enderecoSelecionado').val();
+            var enderecoTexto = $("#enderecoSelecionado option:selected").text();
+
+            // Atualiza o campo de endereço selecionado na UI
+            $('#enderecoTexto').text(enderecoTexto);
+            $('#enderecoEscolhido').show(); // Mostra o div com o endereço escolhido
+
+            // Fecha o modal
+            $('#modalEndereco').modal('hide');
+        });
+    });
+</script>
 
 </body>
 

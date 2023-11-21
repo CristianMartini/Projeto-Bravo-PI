@@ -16,6 +16,9 @@ class Endereco extends Model
     {
         return $this->belongsTo(User::class, 'USUARIO_ID');
     }
-
+    public function pedido()
+    {
+        return $this->belongsTo(Pedido::class, 'PEDIDO_ID');
+    }
     use HasFactory;
 }
