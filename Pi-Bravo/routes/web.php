@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProdutoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\PedidoController;
 
 /*
@@ -60,7 +61,8 @@ Route::post('/pedido/finalizar', [PedidoController::class, 'finalizar'])->name('
 });
 Route::get('/meus-pedidos', [PedidoController::class, 'listarPedidos'])->name('pedidos.listar');
 
-
-
+Route::post('/salvar-escolha-endereco', [CartController::class, 'salvarEscolhaEndereco'])->name('salvarEscolhaEndereco');
+Route::post('/endereco/store', [EnderecoController::class, 'store'])->name('endereco.store');
+Route::get('/endereco/create', [EnderecoController::class, 'create'])->name('endereco.create');
 
 require __DIR__.'/auth.php';

@@ -19,4 +19,8 @@ class Produto extends Model
     {
         return $this->belongsTo(Categoria::class, 'CATEGORIA_ID', 'CATEGORIA_ID');
     }
+    public function carrinho_itens()
+    {
+        return $this->belongsTo(CartItem::class, 'USUARIO_ID', 'PRODUTO_ID');
+    }
 }

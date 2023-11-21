@@ -129,7 +129,9 @@ table tbody tr td {
   overflow: hidden;
   height: 30px;
 }
-
+.adicionar {
+    width: 4rem;
+}
 .qty span {
   margin: 0 10px;
 }
