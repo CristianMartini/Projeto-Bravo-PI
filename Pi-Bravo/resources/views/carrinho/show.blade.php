@@ -186,53 +186,64 @@
 
                     <div>
                         @if ($temEnderecos)
-                        <span><!-- Botão para acionar o modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEndereco">
-                                Escolher Endereço de Entrega
-                            </button>
+                            <span><!-- Botão para acionar o modal -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#modalEndereco">
+                                    Escolher Endereço de Entrega
+                                </button>
                             @else
-                            <div class="alert alert-info">
-                                Você ainda não cadastrou nenhum endereço.
-                                <a href="{{ route('endereco.create') }}" class="btn btn-primary">Cadastrar Endereço</a>
-                            </div>
+                                <div class="alert alert-info">
+                                    Você ainda não cadastrou nenhum endereço.
+                                    <a href="{{ route('endereco.create') }}" class="btn btn-primary">Cadastrar
+                                        Endereço</a>
+                                </div>
                         @endif
-                    
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="modalEndereco" tabindex="-1" aria-labelledby="modalEnderecoLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="modalEnderecoLabel">Selecione um Endereço </h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form id="formEndereco">
-                                                <select class="form-select" id="enderecoSelecionado">
-                                                    @foreach ($enderecos as $endereco)
-                                                        <option value="{{ $endereco->ENDERECO_ID }}">
-                                                            {{ $endereco->ENDERECO_NOME }} - {{ $endereco->ENDERECO_LOGRADOURO }}, {{ $endereco->ENDERECO_NUMERO }}
-                                                        </option>
 
-                                                    @endforeach
+                        <!-- Modal -->
+                        <div class="modal fade" id="modalEndereco" tabindex="-1"
+                            aria-labelledby="modalEnderecoLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalEnderecoLabel">Selecione um Endereço </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="formEndereco">
+                                            <select class="form-select" id="enderecoSelecionado">
+                                                @foreach ($enderecos as $endereco)
+                                                    <option value="{{ $endereco->ENDERECO_ID }}"
+                                                        {{ session('enderecoEscolhido') == $endereco->ENDERECO_ID ? 'selected' : '' }}>
+                                                        {{ $endereco->ENDERECO_NOME }} -
+                                                        {{ $endereco->ENDERECO_LOGRADOURO }},
+                                                        {{ $endereco->ENDERECO_NUMERO }}
+                                                    </option>
+                                                @endforeach
 
-                                                </select>
+                                            </select>
 
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                            <button type="button" class="btn btn-primary" id="salvarEndereco">Salvar escolha</button>
-                                        </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal"> <a href="{{ route('endereco.create') }}" class="btn btn-primary">Cadastrar Novo
+                                                Endereço</a></button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Fechar</button>
+                                        <button type="button" class="btn btn-primary" id="salvarEndereco">Salvar
+                                            escolha</button>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
 
-                            </span>
-                            <div id="enderecoEscolhido" class="alert alert-info" style="display: none;">
-                                Endereço para entrega: <span id="enderecoTexto"></span>
-                            </div>
+                        </span>
+                        <div id="enderecoEscolhido" class="alert alert-info" style="display: none;">
+                            Endereço para entrega: <span id="enderecoTexto"></span>
+                        </div>
                     </div>
                 </div>
                 <div class="footer">
@@ -240,7 +251,11 @@
                     <span>R$ {{ number_format($precoTotal, 2, ',', '.') }}</span>
                 </div>
             </div>
-            <button id="botaoCheckout"> <a href="{{ route('checkout') }}">Proceder para o Checkout</a></button>
+
+            <form action="{{ route('pedido.criar') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-primary">Checkout</button>
+            </form>
         </aside>
         </div>
 
@@ -304,21 +319,21 @@
             });
         });
     </script>
-<script>
-    $(document).ready(function() {
-        $('#salvarEndereco').click(function() {
-            var enderecoId = $('#enderecoSelecionado').val();
-            var enderecoTexto = $("#enderecoSelecionado option:selected").text();
+    <script>
+        $(document).ready(function() {
+            $('#salvarEndereco').click(function() {
+                var enderecoId = $('#enderecoSelecionado').val();
+                var enderecoTexto = $("#enderecoSelecionado option:selected").text();
 
-            // Atualiza o campo de endereço selecionado na UI
-            $('#enderecoTexto').text(enderecoTexto);
-            $('#enderecoEscolhido').show(); // Mostra o div com o endereço escolhido
+                // Atualiza o campo de endereço selecionado na UI
+                $('#enderecoTexto').text(enderecoTexto);
+                $('#enderecoEscolhido').show(); // Mostra o div com o endereço escolhido
 
-            // Fecha o modal
-            $('#modalEndereco').modal('hide');
+                // Fecha o modal
+                $('#modalEndereco').modal('hide');
+            });
         });
-    });
-</script>
+    </script>
 
 </body>
 

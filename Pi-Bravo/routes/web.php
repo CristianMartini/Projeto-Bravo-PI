@@ -50,19 +50,18 @@ Route::delete('/carrinho/remover/{produtoId}', [CartController::class, 'removerD
 // Rota para o processo de checkout
 Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
 
+Route::post('/pedido/item/store', [PedidoItemController::class, 'store'])->name('pedido.item.store');
 
-// Rota para mostrar todos os pedidos de um usuário
-Route::get('/pedidos', [PedidoController::class, 'mostrarPedido'])->name('pedidos.mostrar');
+Route::post('/pedido/criar', [PedidoController::class, 'criarPedido'])->name('pedido.criar');
 
-// Rota para adicionar um item ao pedido
-
-
-Route::post('/pedido/finalizar', [PedidoController::class, 'finalizar'])->name('pedido.finalizar');
-});
-Route::get('/meus-pedidos', [PedidoController::class, 'listarPedidos'])->name('pedidos.listar');
+// Rota para exibir um item específico do pedido
+Route::get('/pedido/item/{id}', [PedidoItemController::class, 'show'])->name('pedido.item.show');
 
 Route::post('/salvar-escolha-endereco', [CartController::class, 'salvarEscolhaEndereco'])->name('salvarEscolhaEndereco');
 Route::post('/endereco/store', [EnderecoController::class, 'store'])->name('endereco.store');
 Route::get('/endereco/create', [EnderecoController::class, 'create'])->name('endereco.create');
+
+
+});
 
 require __DIR__.'/auth.php';

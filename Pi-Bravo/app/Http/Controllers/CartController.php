@@ -49,7 +49,7 @@ public function mostrarCarrinho()
                              ->where('ITEM_QTD', '>', 0) // Adiciona esta condição
                              ->get();
     $enderecos = Endereco::where('USUARIO_ID', $usuarioId)->get();
-    $temEnderecos = Endereco::where('USUARIO_ID', $usuarioId)->exists();
+    $temEnderecos = $enderecos->isNotEmpty();
 
     $precoTotal = $itensCarrinho->reduce(function ($carry, $item) {
         return $carry + ($item->produto->PRODUTO_PRECO * $item->ITEM_QTD) - ($item->produto->PRODUTO_DESCONTO * $item->ITEM_QTD);
@@ -92,16 +92,14 @@ public function checkout()
     $itensCarrinho = CartItem::with('produto')->where('USUARIO_ID', $usuarioId)->get();
     $enderecos = Endereco::where('USUARIO_ID', $usuarioId)->get();
 
-    return view('carrinho.checkout', compact('itensCarrinho', 'enderecos'));
+    return view('pedido.criar', compact('itensCarrinho', 'enderecos'));
 }
 
 public function salvarEscolhaEndereco(Request $request)
 {
     $enderecoId = $request->input('endereco_id');
-    // Aqui você pode salvar a escolha do endereço na sessão ou no banco de dados
     session(['enderecoEscolhido' => $enderecoId]);
 
     return response()->json(['success' => true]);
 }
-
 }
