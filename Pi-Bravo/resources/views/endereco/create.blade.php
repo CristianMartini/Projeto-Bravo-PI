@@ -32,9 +32,7 @@
                 <div class="mb-3">
                     <label for="ENDERECO_CEP" class="form-label">CEP</label>
                     <input type="text" class="form-control" id="ENDERECO_CEP" name="ENDERECO_CEP">
-                    <div class="invalid-feedback">
-                        Por favor, preencha o CEP.
-                    </div>
+
                 </div>
 
                 <div class="mb-3">
@@ -44,9 +42,7 @@
                 <div class="mb-3">
                     <label for="ENDERECO_NOME" class="form-label">Nome do Endereço</label>
                     <input type="text" class="form-control" id="ENDERECO_NOME" name="ENDERECO_NOME"placeholder="Ex: Casa, Trabalho...">
-                    <div class="invalid-feedback">
-                        Por favor, preencha o Nome do Endereço.
-                    </div>
+                   
                 </div>
 
                 <div class="mb-3">

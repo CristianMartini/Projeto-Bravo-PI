@@ -46,17 +46,24 @@ public function mostrarCarrinho()
     $usuarioId = Auth::id();
     $itensCarrinho = CartItem::with('produto')
                              ->where('USUARIO_ID', $usuarioId)
-                             ->where('ITEM_QTD', '>', 0) // Adiciona esta condição
+                             ->where('ITEM_QTD', '>', 0)
                              ->get();
     $enderecos = Endereco::where('USUARIO_ID', $usuarioId)->get();
-    $temEnderecos = Endereco::where('USUARIO_ID', $usuarioId)->exists();
+    $temEnderecos = $enderecos->isNotEmpty();
 
-    $precoTotal = $itensCarrinho->reduce(function ($carry, $item) {
-        return $carry + ($item->produto->PRODUTO_PRECO * $item->ITEM_QTD) - ($item->produto->PRODUTO_DESCONTO * $item->ITEM_QTD);
-    }, 0);
+    $precoTotal = 0;
+    $totalDesconto = 0;
+    $precoTotalSemDesconto = 0;
 
-    return view('carrinho.show', compact('itensCarrinho', 'precoTotal','enderecos','temEnderecos'));
+    foreach ($itensCarrinho as $item) {
+        $precoTotal += ($item->produto->PRODUTO_PRECO * $item->ITEM_QTD);
+        $totalDesconto += ($item->produto->PRODUTO_DESCONTO * $item->ITEM_QTD);
+        $precoTotalSemDesconto += (($item->produto->PRODUTO_PRECO + $item->produto->PRODUTO_DESCONTO) * $item->ITEM_QTD);
+    }
+
+    return view('carrinho.show', compact('itensCarrinho', 'precoTotal', 'totalDesconto', 'precoTotalSemDesconto', 'enderecos', 'temEnderecos'));
 }
+
 
 
 
@@ -92,16 +99,14 @@ public function checkout()
     $itensCarrinho = CartItem::with('produto')->where('USUARIO_ID', $usuarioId)->get();
     $enderecos = Endereco::where('USUARIO_ID', $usuarioId)->get();
 
-    return view('carrinho.checkout', compact('itensCarrinho', 'enderecos'));
+    return view('pedido.criar', compact('itensCarrinho', 'enderecos'));
 }
 
 public function salvarEscolhaEndereco(Request $request)
 {
     $enderecoId = $request->input('endereco_id');
-    // Aqui você pode salvar a escolha do endereço na sessão ou no banco de dados
     session(['enderecoEscolhido' => $enderecoId]);
 
     return response()->json(['success' => true]);
 }
-
 }

@@ -27,36 +27,41 @@
 </head>
 
 <body>
-    <div class="container container-fluid">
-        <nav class="navbar navbar-expand-sm navbar-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('imagens/Logotipo_bravo.png') }}"
-                        alt="bravo tickets logo"width="100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <!-- Logo aqui -->
+            <a class="navbar-brand" href="{{ route('home') }}">
+                <!-- Substitua por seu próprio logotipo -->
+                <img src="{{ asset('imagens/Logotipo_bravo.png') }}" alt="bravo tickets logo" width="100">
+            </a>
+            <!-- Botão de menu hambúrguer para telas menores -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Itens da navbar -->
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                        <path
+                            d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    </svg>
+                    Categorias
                 </a>
-
-                <!--Aqui abre um modal-->
-                <div class="dropdown ">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg"
-                            width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-                            <path
-                                d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
-                            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                        </svg>
-                        Categorias
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <div class="categorias">
-                            @foreach ($categorias as $categoria)
-                                <ul>
-                                    <li><a href="{{ route('produtos.categoria', $categoria->CATEGORIA_ID) }}">
-                                            {{ $categoria->CATEGORIA_NOME }}</a>
-                                    </li>
-                                </ul>
-                            @endforeach
-                        </div>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <div class="categorias">
+                        @foreach ($categorias as $categoria)
+                            <ul>
+                                <li><a href="{{ route('produtos.categoria', $categoria->CATEGORIA_ID) }}">
+                                        {{ $categoria->CATEGORIA_NOME }}</a>
+                                </li>
+                            </ul>
+                        @endforeach
                     </div>
                 </div>
+
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <form action="{{ route('pesquisar') }}" method="GET"class="container-fluid">
                         <div class="input-group">
@@ -64,44 +69,45 @@
                             <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar"
                                 aria-label="Search" name="query">
                             <button class="btn btn my-2 my-sm-0" type="submit"><svg xmlns="http://www.w3.org/2000/svg"
-                                    width="16" height="16" fill="currentColor" class="bi bi-search"
+                                    width="16" height="16" fill="#ffffff" class="bi bi-search"
                                     viewBox="0 0 16 16">
                                     <path
-                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                </svg></button>
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                </svg>
+                            </button>
                         </div>
                     </form>
                 </div>
-            </div>
-            <div class="col-md-3 text-end">
-                <!-- Verifica se o usuário está logado -->
-                @auth
-                    <span class="navbar-text me-3">
-                        Olá, {{ Auth::user()->USUARIO_NOME }}
-                    </span>
-                    <a href="{{ route('carrinho') }}"><svg xmlns="http://www.w3.org/2000/svg" width="38" height="25"
-                            fill="black" class="bi bi-cart3" viewBox="0 0 16 16">
-                            <path
-                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                        </svg></a>
-                    <a class="btn btn-outline-primary me-2" href="{{ route('logout') }}"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        Logout
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                @endauth
 
-                <!-- Verifica se o usuário é um visitante -->
-                @guest
-                    <a class="btn btn-outline-primary me-2" href="{{ route('login') }}">Login</a>
-                    <a class="btn btn-outline-primary me-2" href="{{ route('register') }}">Inscrever-se</a>
-                @endguest
-            </div>
-        </nav>
-    </div>
 
+                <div class="col-md-3 text-end">
+                    <!-- Verifica se o usuário está logado -->
+                    @auth
+                        <span class="navbar-text me-3">
+                            Olá, {{ Auth::user()->USUARIO_NOME }}
+                        </span>
+                        <a href="{{ route('carrinho') }}"><svg xmlns="http://www.w3.org/2000/svg" width="38"
+                                height="25" fill="#ffffff" class="bi bi-cart3" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </svg></a>
+                        <a class="btn btn-outline-primary me-2" href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endauth
+
+                    <!-- Verifica se o usuário é um visitante -->
+                    @guest
+                        <a class="btn btn-outline-primary me-2" href="{{ route('login') }}">Login</a>
+                        <a class="btn btn-outline-primary me-2" href="{{ route('register') }}">Inscrever-se</a>
+                    @endguest
+                </div>
+            </div>
+    </nav>
 
 
     <header>
@@ -138,6 +144,7 @@
                                         @endif
                                         <div class="info">
                                             <div class="name">{{ $item->produto->PRODUTO_NOME }}</div>
+
                                         </div>
                                 </td>
 
@@ -149,8 +156,11 @@
                                         @method('PATCH')
                                         <input class="adicionar"type="number" name="quantidade"
                                             value="{{ $item->ITEM_QTD }}" min="1">
-                                        <button type="submit" class="btn btn-info btn-sm">Atualizar</button>
+                                        <button type="submit" class="btn  btn-info btn-sm">Atualizar</button>
                                     </form>
+                                </td>
+                                <td> R$
+                                    {{ number_format($item->produto->PRODUTO_DESCONTO * $item->ITEM_QTD, 2, ',', '.') }}
                                 </td>
                                 <td>R$
                                     {{ number_format($item->produto->PRODUTO_PRECO * $item->ITEM_QTD, 2, ',', '.') }}
@@ -160,7 +170,7 @@
                                         method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Remover</button>
+                                        <button type="submit" class="btn btn-close "></button>
                                     </form>
                                 </td>
                             </tr>
@@ -173,66 +183,86 @@
         </section>
         <aside>
             <div class="box">
-                <header>Resumo da compra</header>
-                <div class="info">
-                    <div>
-                        <span>Sub-total</span>
-                        <span>R$ {{ number_format($precoTotal, 2, ',', '.') }}</span>
-                    </div>
-                    <div>
-                        <span>Frete</span>
-                        <span>Gratuito</span>
-                    </div>
+                <div class="box">
+                    <header>Resumo da compra</header>
+                    <div class="info">
+                        <div>
+                            <span>Total sem desconto</span>
+                            <span>R$ {{ number_format($precoTotalSemDesconto, 2, ',', '.') }}</span>
+                        </div>
+                        <div>
+                            <span>Frete</span>
+                            <span>Gratuito</span>
+                        </div>
+                        <div>
+                            <span>Descontos</span>
+                            <span>R$ {{ number_format($totalDesconto, 2, ',', '.') }}</span>
+                        </div>
 
+                    </div>
                     <div>
                         @if ($temEnderecos)
-                        <span><!-- Botão para acionar o modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEndereco">
-                                Escolher Endereço de Entrega
-                            </button>
+                            <span><!-- Botão para acionar o modal -->
+                                <button type="button" class="btn btn-primary btn-modal" data-bs-toggle="modal"
+                                    data-bs-target="#modalEndereco">
+                                    Escolher Endereço de Entrega
+                                </button>
                             @else
-                            <div class="alert alert-info">
-                                Você ainda não cadastrou nenhum endereço.
-                                <a href="{{ route('endereco.create') }}" class="btn btn-primary">Cadastrar Endereço</a>
-                            </div>
+                                <div class="alert alert-info">
+                                    Você ainda não cadastrou nenhum endereço.
+                                    <a href="{{ route('endereco.create') }}" class="btn btn-primary">Cadastrar
+                                        Endereço</a>
+                                </div>
                         @endif
-                    
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="modalEndereco" tabindex="-1" aria-labelledby="modalEnderecoLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="modalEnderecoLabel">Selecione um Endereço </h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form id="formEndereco">
-                                                <select class="form-select" id="enderecoSelecionado">
-                                                    @foreach ($enderecos as $endereco)
-                                                        <option value="{{ $endereco->ENDERECO_ID }}">
-                                                            {{ $endereco->ENDERECO_NOME }} - {{ $endereco->ENDERECO_LOGRADOURO }}, {{ $endereco->ENDERECO_NUMERO }}
-                                                        </option>
 
-                                                    @endforeach
+                        <!-- Modal -->
+                        <div class="modal fade" id="modalEndereco" tabindex="-1"
+                            aria-labelledby="modalEnderecoLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalEnderecoLabel">Selecione um Endereço </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="formEndereco">
+                                            <select class="form-select" id="enderecoSelecionado">
+                                                @foreach ($enderecos as $endereco)
+                                                    <option value="{{ $endereco->ENDERECO_ID }}"
+                                                        {{ session('enderecoEscolhido') == $endereco->ENDERECO_ID ? 'selected' : '' }}>
+                                                        {{ $endereco->ENDERECO_NOME }} -
+                                                        {{ $endereco->ENDERECO_LOGRADOURO }},
+                                                        {{ $endereco->ENDERECO_NUMERO }}
+                                                    </option>
+                                                @endforeach
 
-                                                </select>
+                                            </select>
 
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                            <button type="button" class="btn btn-primary" id="salvarEndereco">Salvar escolha</button>
-                                        </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"> <a
+                                                href="{{ route('endereco.create') }}">Cadastrar Novo
+                                                Endereço</a></button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Fechar</button>
+                                        <button type="button" class="btn btn-success" id="salvarEndereco">Salvar
+                                            escolha</button>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
 
-                            </span>
-                            <div id="enderecoEscolhido" class="alert alert-info" style="display: none;">
-                                Endereço para entrega: <span id="enderecoTexto"></span>
-                            </div>
+                        </span>
+
+                    </div>
+                    <div id="enderecoEscolhido" class="alert alert-info" style="display: none;">
+                        Endereço para entrega: <span id="enderecoTexto">
+
+                        </span>
                     </div>
                 </div>
                 <div class="footer">
@@ -240,7 +270,11 @@
                     <span>R$ {{ number_format($precoTotal, 2, ',', '.') }}</span>
                 </div>
             </div>
-            <button id="botaoCheckout"> <a href="{{ route('checkout') }}">Proceder para o Checkout</a></button>
+
+            <form action="{{ route('pedido.criar') }}" method="POST">
+                @csrf
+                <button type="submit" class="button-checkout">Checkout</button>
+            </form>
         </aside>
         </div>
 
@@ -304,21 +338,21 @@
             });
         });
     </script>
-<script>
-    $(document).ready(function() {
-        $('#salvarEndereco').click(function() {
-            var enderecoId = $('#enderecoSelecionado').val();
-            var enderecoTexto = $("#enderecoSelecionado option:selected").text();
+    <script>
+        $(document).ready(function() {
+            $('#salvarEndereco').click(function() {
+                var enderecoId = $('#enderecoSelecionado').val();
+                var enderecoTexto = $("#enderecoSelecionado option:selected").text();
 
-            // Atualiza o campo de endereço selecionado na UI
-            $('#enderecoTexto').text(enderecoTexto);
-            $('#enderecoEscolhido').show(); // Mostra o div com o endereço escolhido
+                // Atualiza o campo de endereço selecionado na UI
+                $('#enderecoTexto').text(enderecoTexto);
+                $('#enderecoEscolhido').show(); // Mostra o div com o endereço escolhido
 
-            // Fecha o modal
-            $('#modalEndereco').modal('hide');
+                // Fecha o modal
+                $('#modalEndereco').modal('hide');
+            });
         });
-    });
-</script>
+    </script>
 
 </body>
 

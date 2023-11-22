@@ -52,7 +52,7 @@
                             <h5 class="card-title">{{ $produto->PRODUTO_NOME }}</h5>
                         </div>
                         <div class="botao-card">
-                            <a href="{{ route('produto.show', $produto->PRODUTO_ID) }}" class="btn btn-primary">Ver
+                            <a href="{{ route('produto.show', $produto->PRODUTO_ID) }}" class="btn btn-dark">Ver
                                 Detalhes</a>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                             <h2>{{ $produto->PRODUTO_NOME }}</h2>
                             <p class="text-muted price">R$ {{ number_format($produto->PRODUTO_PRECO, 2, ',', '.') }}</p>
                             <p class="description">{{ $produto->PRODUTO_DESC }}</p>
-                            <a href="{{ route('produto.show', $produto->PRODUTO_ID) }}" class="btn btn-primary">Ver
+                            <a href="{{ route('produto.show', $produto->PRODUTO_ID) }}" class="btn btn-dark">Ver
                                 Detalhes</a>
                         </div>
                     </div>
