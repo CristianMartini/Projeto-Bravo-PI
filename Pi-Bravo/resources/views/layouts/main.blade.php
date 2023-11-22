@@ -110,6 +110,7 @@
                     @endguest
                 </div>
             </div>
+        </div>
     </nav>
 
     @yield('content')
