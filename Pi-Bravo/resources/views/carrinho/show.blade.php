@@ -138,6 +138,7 @@
                                         @endif
                                         <div class="info">
                                             <div class="name">{{ $item->produto->PRODUTO_NOME }}</div>
+
                                         </div>
                                 </td>
 
@@ -149,8 +150,11 @@
                                         @method('PATCH')
                                         <input class="adicionar"type="number" name="quantidade"
                                             value="{{ $item->ITEM_QTD }}" min="1">
-                                        <button type="submit" class="btn btn-info btn-sm">Atualizar</button>
+                                        <button type="submit" class="btn  btn-info btn-sm">Atualizar</button>
                                     </form>
+                                </td>
+                                <td> R$
+                                    {{ number_format($item->produto->PRODUTO_DESCONTO * $item->ITEM_QTD, 2, ',', '.') }}
                                 </td>
                                 <td>R$
                                     {{ number_format($item->produto->PRODUTO_PRECO * $item->ITEM_QTD, 2, ',', '.') }}
@@ -160,7 +164,7 @@
                                         method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Remover</button>
+                                        <button type="submit" class="btn btn-close "></button>
                                     </form>
                                 </td>
                             </tr>
@@ -173,21 +177,27 @@
         </section>
         <aside>
             <div class="box">
-                <header>Resumo da compra</header>
-                <div class="info">
-                    <div>
-                        <span>Sub-total</span>
-                        <span>R$ {{ number_format($precoTotal, 2, ',', '.') }}</span>
-                    </div>
-                    <div>
-                        <span>Frete</span>
-                        <span>Gratuito</span>
-                    </div>
+                <div class="box">
+                    <header>Resumo da compra</header>
+                    <div class="info">
+                        <div>
+                            <span>Total sem desconto</span>
+                            <span>R$ {{ number_format($precoTotalSemDesconto, 2, ',', '.') }}</span>
+                        </div>
+                        <div>
+                            <span>Frete</span>
+                            <span>Gratuito</span>
+                        </div>
+                        <div>
+                            <span>Descontos</span>
+                            <span>R$ {{ number_format($totalDesconto, 2, ',', '.') }}</span>
+                        </div>
 
+                    </div>
                     <div>
                         @if ($temEnderecos)
                             <span><!-- Botão para acionar o modal -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-primary btn-modal" data-bs-toggle="modal"
                                     data-bs-target="#modalEndereco">
                                     Escolher Endereço de Entrega
                                 </button>
@@ -241,9 +251,12 @@
 
 
                         </span>
-                        <div id="enderecoEscolhido" class="alert alert-info" style="display: none;">
-                            Endereço para entrega: <span id="enderecoTexto"></span>
-                        </div>
+
+                    </div>
+                    <div id="enderecoEscolhido" class="alert alert-info" style="display: none;">
+                        Endereço para entrega: <span id="enderecoTexto">
+
+                        </span>
                     </div>
                 </div>
                 <div class="footer">
@@ -254,7 +267,7 @@
 
             <form action="{{ route('pedido.criar') }}" method="POST">
                 @csrf
-                <button type="submit" class="btn btn-primary">Checkout</button>
+                <button type="submit" class="button-checkout">Checkout</button>
             </form>
         </aside>
         </div>
