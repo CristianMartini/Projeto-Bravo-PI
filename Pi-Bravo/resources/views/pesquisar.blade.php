@@ -23,7 +23,7 @@
                     <h5 class="card-title">{{ $produto->PRODUTO_NOME }}</h5>
                 </div>
                 <div class="botao-card">
-                    <a href="{{ route('produto.show', $produto->PRODUTO_ID) }}" class="btn btn-primary">Ver
+                    <a href="{{ route('produto.show', $produto->PRODUTO_ID) }}" class="btn btn-dark">Ver
                         Detalhes</a>
                 </div>
             </div>
