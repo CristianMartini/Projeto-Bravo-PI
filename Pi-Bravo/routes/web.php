@@ -61,6 +61,7 @@ Route::post('/salvar-escolha-endereco', [CartController::class, 'salvarEscolhaEn
 Route::post('/endereco/store', [EnderecoController::class, 'store'])->name('endereco.store');
 Route::get('/endereco/create', [EnderecoController::class, 'create'])->name('endereco.create');
 
+Route::get('/perfil', [ProfileController::class, 'show'])->name('profile.show');
 
 });
 
