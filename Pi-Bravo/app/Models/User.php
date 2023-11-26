@@ -46,4 +46,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'USUARIO_SENHA' => 'hashed',
     ];
+
+    public function pedidos()
+    {
+        return $this->hasMany(Pedido::class, 'USUARIO_ID');
+    }
 }
