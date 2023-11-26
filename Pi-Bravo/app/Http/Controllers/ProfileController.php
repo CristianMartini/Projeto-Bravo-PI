@@ -6,11 +6,20 @@ use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+
+    public function show()
+    {
+        $user = Auth::user();
+        $pedidos = $user->pedidos;
+
+        return view('profile.show', compact('user', 'pedidos'));
+    }
     /**
      * Display the user's profile form.
      */
@@ -57,4 +66,23 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function changePassword(Request $request)
+{
+    $request->validate([
+        'current_password' => ['required', 'string'],
+        'new_password' => ['required', 'string', 'min:8', 'confirmed'],
+    ]);
+
+    $user = Auth::user();
+
+    if (!Hash::check($request->current_password, $user->password)) {
+        return back()->withErrors(['current_password' => 'Senha atual incorreta']);
+    }
+
+    $user->password = Hash::make($request->new_password);
+    $user->save();
+
+    return back()->with('status', 'Senha alterada com sucesso!');
+}
 }

@@ -33,6 +33,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/produto/{id}', [ProdutoController::class, 'show'])->name('produto.show');
+    Route::get('/perfil', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 Route::get('/carrinho', [CartController::class, 'mostrarCarrinho'])->name('carrinho');
 // Rota para Exibir Produtos por Categoria
@@ -61,6 +65,8 @@ Route::post('/salvar-escolha-endereco', [CartController::class, 'salvarEscolhaEn
 Route::post('/endereco/store', [EnderecoController::class, 'store'])->name('endereco.store');
 Route::get('/endereco/create', [EnderecoController::class, 'create'])->name('endereco.create');
 
+Route::get('/perfil', [ProfileController::class, 'show'])->name('profile.show');
+Route::post('/profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.change-password');
 
 });
 

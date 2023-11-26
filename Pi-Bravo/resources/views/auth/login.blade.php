@@ -18,13 +18,15 @@
             <div class="container mt-4 container-form">
                 <h1>Login</h1>
                 <div class="mb-3">
+                    <label for="floatingInput">Email *</label>
                 <input type="email" class="form-control" id="USUARIO_EMAIL"  name="USUARIO_EMAIL" placeholder="name@example.com">
-                <label for="floatingInput">Email</label>
+
             </div>
 
             <div class=" mb-3">
+                 <label for="floatingPassword">Senha *</label>
                 <input type="password" class="form-control" id="USUARIO_SENHA" name="USUARIO_SENHA" placeholder="Digite sua senha">
-                <label for="floatingPassword">Senha</label>
+
             </div>
 
             <div class=" mb-3">

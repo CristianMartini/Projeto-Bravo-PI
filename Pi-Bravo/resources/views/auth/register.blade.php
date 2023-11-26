@@ -20,25 +20,28 @@
             <div class="container mt-4 container-form">
                 <h1>Preencha os campos abaixo<br> para registrar-se.</h1>
                 <div class="mb-3">
-
-                    <input type="text" class="form-control" id="USUARIO_NOME" name="USUARIO_NOME" placeholder="Digite seu nome">
                     <label for="floatingInput">Nome</label>
+                    <input type="text" class="form-control" id="USUARIO_NOME" name="USUARIO_NOME" placeholder="Digite seu nome">
+
 
                 </div>
 
                 <div class="mb-3">
-                    <input type="email" class="form-control" name="USUARIO_EMAIL" id="USUARIO_EMAIL" placeholder="name@example.com">
                     <label for="floatingInput">Email</label>
+                    <input type="email" class="form-control" name="USUARIO_EMAIL" id="USUARIO_EMAIL" placeholder="name@example.com">
+
                 </div>
 
                 <div class=" mb-3">
-                    <input type="password" class="form-control" name="USUARIO_SENHA" id="USUARIO_SENHA" placeholder="Digite sua senha">
                     <label for="floatingPassword">Senha</label>
+                    <input type="password" class="form-control" name="USUARIO_SENHA" id="USUARIO_SENHA" placeholder="Digite sua senha">
+
                 </div>
 
                 <div class=" mb-3">
-                    <input type="text" class="form-control" name="USUARIO_CPF" id ="USUARIO_CPF" placeholder="Digite seu CPF">
                     <label for="floatingInput">Cpf</label>
+                    <input type="text" class="form-control" name="USUARIO_CPF" id ="USUARIO_CPF" placeholder="Digite seu CPF">
+
                 </div>
 
                 <button class="btn btn-dark" type="submit">Registrar</button>
