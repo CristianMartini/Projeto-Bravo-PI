@@ -51,8 +51,7 @@
         @forelse ($pedidos as $pedido)
             <div class="pedido">
                 <p>Pedido ID: {{ $pedido->id }}</p>
-                <p>Data: {{ $pedido->created_at->format('d/m/Y') }}</p>
-                {{-- Outras informações do pedido --}}
+                <p>{{ $user->dataNascimento ? $user->dataNascimento->format('d/m/Y') : 'Data não informada' }}</p>
             </div>
         @empty
             <p>Você não tem pedidos realizados.</p>
