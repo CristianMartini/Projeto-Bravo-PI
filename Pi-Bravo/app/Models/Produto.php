@@ -21,6 +21,10 @@ class Produto extends Model
     }
     public function carrinho_itens()
     {
-        return $this->belongsTo(CartItem::class, 'USUARIO_ID', 'PRODUTO_ID');
+        return $this->hasMany(CartItem::class, 'USUARIO_ID', 'PRODUTO_ID');
+    }
+    public function pedidoItens()
+    {
+        return $this->hasMany(PedidoItem::class, 'PRODUTO_ID', 'PRODUTO_ID');
     }
 }

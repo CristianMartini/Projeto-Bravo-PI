@@ -48,15 +48,9 @@
 
     <div class="pedidos-container">
         <h2>Seus Pedidos</h2>
-        @forelse ($pedidos as $pedido)
-            <div class="pedido">
-                <p>Pedido ID: {{ $pedido->id }}</p>
-                <p>Data: {{ $pedido->created_at->format('d/m/Y') }}</p>
-                {{-- Outras informações do pedido --}}
-            </div>
-        @empty
+
             <p>Você não tem pedidos realizados.</p>
-        @endforelse
+
     </div>
 
 </div>

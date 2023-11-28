@@ -109,7 +109,11 @@
             </div>
     </nav>
 
-
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
     <header>
         <span>Carrinho de compras de {{ Auth::user()->USUARIO_NOME }}</span>
     </header>
@@ -163,7 +167,7 @@
                                     {{ number_format($item->produto->PRODUTO_DESCONTO * $item->ITEM_QTD, 2, ',', '.') }}
                                 </td>
                                 <td>R$
-                                    {{ number_format($item->produto->PRODUTO_PRECO * $item->ITEM_QTD, 2, ',', '.') }}
+                                    {{ number_format($item->produto->PRODUTO_PRECO * $item->ITEM_QTD - $item->produto->PRODUTO_DESCONTO * $item->ITEM_QTD, 2, ',', '.') }}
                                 </td>
                                 <td>
                                     <form action="{{ route('carrinho.remover', $item->produto->PRODUTO_ID) }}"
@@ -273,8 +277,9 @@
 
             <form action="{{ route('pedido.criar') }}" method="POST">
                 @csrf
-                <button type="submit" class="button-checkout">Checkout</button>
+                <button type="submit" class="btn btn-success">Finalizar Pedido</button>
             </form>
+
         </aside>
         </div>
 
@@ -298,61 +303,44 @@
         </footer>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+</script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-    </script>
+<script>
+    $(document).ready(function() {
+        $('#salvarEndereco').click(function() {
+            var enderecoId = $('#enderecoSelecionado').val();
+            var enderecoTexto = $("#enderecoSelecionado option:selected").text();
 
+            // Atualiza o campo de endereço selecionado na interface do usuário
+            $('#enderecoTexto').text(enderecoTexto);
+            $('#enderecoEscolhido').show(); // Mostra o div com o endereço escolhido
 
-    <script>
-        $(document).ready(function() {
-            $('.update-quantity').click(function() {
-                var rowId = $(this).data('id');
-                var action = $(this).data('action');
+            // Fecha o modal de escolha de endereço
+            $('#modalEndereco').modal('hide');
 
-                $.ajax({
-                    url: '/carrinho/atualizar/' + rowId + '/' + action,
-                    type: 'POST',
-                    data: {
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function(response) {
-                        location.reload();
-                    }
-                });
-            });
-
-            $('.remove-item').click(function() {
-                var rowId = $(this).data('id');
-
-                $.ajax({
-                    url: '/carrinho/remover/' + rowId,
-                    type: 'DELETE',
-                    data: {
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function(response) {
-                        location.reload();
-                    }
-                });
+            // Enviar a escolha do endereço para o servidor
+            $.ajax({
+                url: '/carrinho/salvar-escolha-endereco',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    endereco_id: enderecoId
+                },
+                success: function(response) {
+                    // Aqui você pode adicionar código para lidar com a resposta do servidor, se necessário
+                    // Por exemplo, atualizar a página ou redirecionar o usuário
+                },
+                error: function(error) {
+                    // Tratamento de erro
+                    console.error(error);
+                    alert('Ocorreu um erro ao salvar o endereço.');
+                }
             });
         });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('#salvarEndereco').click(function() {
-                var enderecoId = $('#enderecoSelecionado').val();
-                var enderecoTexto = $("#enderecoSelecionado option:selected").text();
-
-                // Atualiza o campo de endereço selecionado na UI
-                $('#enderecoTexto').text(enderecoTexto);
-                $('#enderecoEscolhido').show(); // Mostra o div com o endereço escolhido
-
-                // Fecha o modal
-                $('#modalEndereco').modal('hide');
-            });
-        });
-    </script>
+    });
+</script>
 
 </body>
 
