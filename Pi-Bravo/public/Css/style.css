@@ -361,3 +361,8 @@ text-align: center;
     }
     /* Add additional styles for larger screens here */
   }
+
+  .imagem-perfil {
+    max-width: 40px;  /* ou qualquer outro valor que você preferir */
+    height: auto;      /* isso garante que a altura da imagem se ajuste proporcionalmente */
+}
