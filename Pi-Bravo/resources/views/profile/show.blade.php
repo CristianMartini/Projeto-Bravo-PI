@@ -51,7 +51,7 @@
         @forelse ($pedidos as $pedido)
             <div class="pedido">
                 <p>Pedido ID: {{ $pedido->id }}</p>
-                <p>Data do Pedido: {{ $pedido->created_at ? $pedido->created_at->for<p>Pedido ID: {{ $pedido->id }}</p> mat('d/m/Y') : 'Data não informada' }}</p>
+                <p>Data do Pedido: {{ $pedido->created_at ? $pedido->created_at->format('d/m/Y') : 'Data não informada' }}</p>
                 <p>Status: {{ $pedido->status }}</p>
 
                 <h4>Itens do Pedido:</h4>
