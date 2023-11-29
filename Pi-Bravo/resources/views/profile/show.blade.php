@@ -51,13 +51,24 @@
         @forelse ($pedidos as $pedido)
             <div class="pedido">
                 <p>Pedido ID: {{ $pedido->id }}</p>
-                <p>{{ $user->dataNascimento ? $user->dataNascimento->format('d/m/Y') : 'Data não informada' }}</p>
+                <p>Data do Pedido: {{ $pedido->created_at ? $pedido->created_at->for<p>Pedido ID: {{ $pedido->id }}</p> mat('d/m/Y') : 'Data não informada' }}</p>
+                <p>Status: {{ $pedido->status }}</p>
+
+                <h4>Itens do Pedido:</h4>
+                <ul>
+                    @if ($pedido->itens)
+                    @foreach ($pedido->itens as $item)
+                        <li>{{ $item->produto->PRODUTO_NOME }} - Quantidade: {{ $item->quantidade }}</li>
+                    @endforeach
+                @endif
+                </ul>
+
+                <p>Total do Pedido: R$ {{ number_format($pedido->total, 2, ',', '.') }}</p> {{-- Ajuste o campo 'total' conforme o seu modelo --}}
             </div>
         @empty
             <p>Você não tem pedidos realizados.</p>
         @endforelse
     </div>
-
 </div>
 
 </body>

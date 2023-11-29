@@ -75,4 +75,12 @@ public function criarPedido()
         $pedido->update(['STATUS_ID' => 2]);
         return redirect()->route('pedidos.index');
     }
+
+    public function show()
+{
+    $user = Auth::user();
+    $pedidos = $user->pedidos()->with(['itens.produto', 'status'])->get();
+
+    return view('profile.show', compact('user', 'pedidos'));
+}
 }
