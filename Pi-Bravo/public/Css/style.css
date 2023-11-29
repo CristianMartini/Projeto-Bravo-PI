@@ -16,6 +16,14 @@ body{
 .navbar {
     background-color: #343a40; /* Escuro */
     color: #ffffff;
+    padding: 1rem 0;
+}
+
+
+.navbar-brand img {
+    height: auto;
+    width: auto;
+    max-width: 100px; /* Limita o tamanho do logo */
 }
 
 /* Estiliza o logo para garantir que ele fique centralizado verticalmente */
@@ -27,6 +35,7 @@ body{
 /* Estiliza os links da navbar para melhorar a visibilidade */
 .nav-link, .navbar-text {
     color: #ffffff !important; /* Ajusta a cor do texto */
+    margin: 0 10px;
 }
 
 .nav-link:hover, .navbar-text:hover {
@@ -87,6 +96,14 @@ body{
     border-color: #ffffff;
 }
 
+.btn, .nav-link {
+    transition: color 0.3s, background-color 0.3s; /* Transição suave para hover */
+}
+
+.btn:hover, .nav-link:hover {
+    opacity: 0.8; /* Efeito de opacidade no hover */
+}
+
 /* Media query para ajustar a navbar para telas menores */
 @media (max-width: 991px) {
     .navbar-collapse {
@@ -110,8 +127,15 @@ body{
     padding-bottom: 3rem;
     border: none;
     margin-left: 3px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Sombra para dar profundidade */
+    transition: 0.3s; /* Transição suave para o hover */
+    /* Restante do seu código */
     /* Organiza o conteúdo do card em uma coluna */
   }
+
+  .custom-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); /* Sombra maior no hover */
+}
 
   .custom-card .card-body {
     flex: 1; /* Isso fará com que o corpo do card preencha todo o espaço vertical disponível */
@@ -222,6 +246,9 @@ body{
 /*LOGIN*/
 .form-signin {
 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 20px;
+    border-radius: 5px;
     width: 100%;
     max-width: 330px;
     padding: 15px;
@@ -342,6 +369,7 @@ display: inline;
 
 .container-footer  {
 
+    padding: 1.5rem 0;
 background-color: #333;
     color: white;
 text-align: center;
@@ -361,3 +389,12 @@ text-align: center;
     }
     /* Add additional styles for larger screens here */
   }
+
+  .imagem-perfil {
+    max-width: 40px;  /* ou qualquer outro valor que você preferir */
+    height: auto;      /* isso garante que a altura da imagem se ajuste proporcionalmente */
+}
+
+a:focus, button:focus {
+    outline: 2px solid #0056b3; /* Contorno visível para acessibilidade */
+}
