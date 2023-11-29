@@ -19,7 +19,7 @@ class ProfileController extends Controller
         $pedidos = $user->pedidos;
 
         return view('profile.show', compact('user', 'pedidos'));
-    }
+}
     /**
      * Display the user's profile form.
      */
