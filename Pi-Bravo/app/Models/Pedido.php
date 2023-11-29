@@ -31,7 +31,7 @@ class Pedido extends Model
     {
         return $this->hasMany(Pedido::class, 'PEDIDO_ID');
     }
-    public function enderecos()
+    public function endereco()
     {
         return $this->belongsTo(Endereco::class, 'ENDERECO_ID');
     }
