@@ -8,17 +8,6 @@ use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
- */
-
 Route::get('/', [ProdutoController::class, 'index'])->name('home');
 Route::get('/pesquisar', [ProdutoController::class, 'pesquisar'])->name('pesquisar');
 Route::get('/produtos/categoria/{categoria_id}', [ProdutoController::class, 'produtosPorCategoria'])->name('produtos.categoria');
@@ -47,7 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/carrinho/remover/{produtoId}', [CartController::class, 'removerDoCarrinho'])->name('carrinho.remover');
 
     Route::post('/pedido/criar', [PedidoController::class, 'criarPedido'])->name('pedido.criar');
-
+    Route::get('/pedido/listar', [PedidoController::class, 'listarPedidos'])->name('pedido.listar');
+    Route::post('/pedido/cancelar/{pedidoId}', [PedidoController::class,'cancelarPedido'])->name('pedido.cancelar');
 
 
 
@@ -55,7 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/endereco/store', [EnderecoController::class, 'store'])->name('endereco.store');
     Route::get('/endereco/create', [EnderecoController::class, 'create'])->name('endereco.create');
 
- 
+
     Route::post('/profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.change-password');
 
 });
