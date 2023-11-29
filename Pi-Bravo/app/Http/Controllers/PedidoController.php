@@ -15,10 +15,8 @@ class PedidoController extends Controller
 {
     public function listarPedidos()
     {
-        $usuarioId = Auth::id(); // Obtém o ID do usuário logado
-        $usuario = User::find($usuarioId);
-        $pedidos = DB::table('PEDIDO')
-        ->join('PEDIDO_ITEM', 'PEDIDO.PEDIDO_ID', '=', 'PEDIDO_ITEM.PEDIDO_ID')
+        $usuarioId = Auth::id();
+        $pedidos = Pedido::join('PEDIDO_ITEM', 'PEDIDO.PEDIDO_ID', '=', 'PEDIDO_ITEM.PEDIDO_ID')
         ->join('PRODUTO', 'PEDIDO_ITEM.PRODUTO_ID', '=', 'PRODUTO.PRODUTO_ID')
         ->leftJoin('PRODUTO_IMAGEM', function ($join) {
             $join->on('PRODUTO.PRODUTO_ID', '=', 'PRODUTO_IMAGEM.PRODUTO_ID')
@@ -68,11 +66,11 @@ public function criarPedido()
     }
 
     if ($totalCompra > 999.99) {
-        // Redirecionar de volta com mensagem de erro
+
         return back()->with('error', 'O valor total da compra não pode exceder R$ 999,99.');
     }
     if (is_null($enderecoId)) {
-        // Redirecionar de volta ou exibir uma mensagem de erro se o endereço não for selecionado
+       
         return back()->with('error', 'Por favor, selecione um endereço para entrega.');
     }
     $status = PedidoStatus::where('STATUS_ID', 1)->value('STATUS_ID');
