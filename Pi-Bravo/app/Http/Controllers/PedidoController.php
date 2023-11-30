@@ -77,13 +77,13 @@ public function criarPedido()
     $status = PedidoStatus::where('STATUS_ID', 1)->value('STATUS_ID');
     $data = today()->format('Y-m-d');
 
-    Pedido::create([
+    $pedido = Pedido::create([
         'USUARIO_ID' =>  $usuarioId,
         'ENDERECO_ID' => $enderecoId,
         'STATUS_ID' => $status,
         'PEDIDO_DATA' => $data
     ]);
-    $pedido_id = Pedido::orderBy('PEDIDO_ID', 'desc')->first()->PEDIDO_ID;
+    $pedido_id = $pedido->PEDIDO_ID;
     foreach ($itensCarrinho as $item) {
         $precoTotalItem = ($item->produto->PRODUTO_PRECO - $item->produto->PRODUTO_DESCONTO) * $item->ITEM_QTD;
 
