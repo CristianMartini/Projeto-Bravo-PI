@@ -114,6 +114,8 @@
         </div>
     </nav>
 
+
+
     @yield('content')
 
     <div class="b-example-divider"></div>
