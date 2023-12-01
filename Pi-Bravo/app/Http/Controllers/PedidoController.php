@@ -7,6 +7,7 @@ use App\Models\CartItem;
 use App\Models\PedidoItem;
 use App\Models\PedidoStatus;
 use App\Models\User;
+use App\Models\Endereco;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +18,7 @@ class PedidoController extends Controller
     {
         $usuarioId = Auth::id();
         $usuario = User::find($usuarioId);
+        $enderecos = Endereco::where('USUARIO_ID', $usuarioId)->get();
         $pedidos = Pedido::join('PEDIDO_ITEM', 'PEDIDO.PEDIDO_ID', '=', 'PEDIDO_ITEM.PEDIDO_ID')
         ->join('PRODUTO', 'PEDIDO_ITEM.PRODUTO_ID', '=', 'PRODUTO.PRODUTO_ID')
         ->leftJoin('PRODUTO_IMAGEM', function ($join) {
@@ -48,7 +50,7 @@ class PedidoController extends Controller
             ->orderBy('PEDIDO.PEDIDO_DATA', 'desc')
             ->get();
 
-        return view('pedido.listar', compact('pedidos','usuario'));
+            return view('pedido.listar', compact('pedidos','usuario', 'enderecos'));
     }
 
 
@@ -115,7 +117,7 @@ public function cancelarPedido($pedidoId)
 
     $pedido->update(['STATUS_ID' => 3]);
 
-  
+
     PedidoItem::where('PEDIDO_ID', $pedidoId)->update(['ITEM_QTD' => 0]);
 
     return redirect()->route('pedido.listar')->with('success', 'Pedido cancelado com sucesso.');
