@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ProdutoController::class, 'index'])->name('home');
 Route::get('/pesquisar', [ProdutoController::class, 'pesquisar'])->name('pesquisar');
 Route::get('/produtos/categoria/{categoria_id}', [ProdutoController::class, 'produtosPorCategoria'])->name('produtos.categoria');
-
+ Route::get('/produto/{id}', [ProdutoController::class, 'show'])->name('produto.show');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/perfil', [ProfileController::class, 'show'])->name('profile.show');
 
-    Route::get('/produto/{id}', [ProdutoController::class, 'show'])->name('produto.show');
+
     Route::get('/carrinho', [CartController::class, 'mostrarCarrinho'])->name('carrinho');
 // Rota para Exibir Produtos por Categoria
     Route::get('/categoria/{id}', [CategoriaController::class, 'show'])->name('categoria');
