@@ -26,6 +26,7 @@
 </head>
 
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <!-- Logo aqui -->
@@ -85,6 +86,7 @@
                         <span class="navbar-text me-3">
                             Olá, {{ Auth::user()->USUARIO_NOME }}
                         </span>
+                        <a href="{{ route('pedido.listar') }}"><img src="https://id7.com.br/wp-content/webpc-passthru.php?src=https://id7.com.br/wp-content/uploads/2014/03/icone-05-01.png&nocache=1" alt="Perfil" class="imagem-perfil"></a>
                         <a href="{{ route('carrinho') }}"><svg xmlns="http://www.w3.org/2000/svg" width="38"
                                 height="25" fill="#ffffff" class="bi bi-cart3" viewBox="0 0 16 16">
                                 <path
@@ -106,7 +108,9 @@
                     @endguest
                 </div>
             </div>
+        </div>
     </nav>
+
     @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -281,7 +285,7 @@
 
             <form action="{{ route('pedido.criar') }}" method="POST">
                 @csrf
-                <button type="submit" class="btn btn-success">Finalizar Pedido</button>
+                <button type="submit" class="btn button-checkout">Finalizar Pedido</button>
             </form>
 
         </aside>

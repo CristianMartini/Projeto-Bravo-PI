@@ -26,16 +26,15 @@ class AuthenticatedSessionController extends Controller
      * Handle an incoming authentication request.
      */
     public function store(Request $request): RedirectResponse
-    {
-       $usuario =User::where('USUARIO_EMAIL',$request->USUARIO_EMAIL)->first();
-       if(Hash::check($request->USUARIO_SENHA, $usuario->USUARIO_SENHA)){
-        Auth::login($usuario);
-        return redirect("/");
-       }else{
-        return redirect("/login");
-
-       }
-    }
+{
+   $usuario = User::where('USUARIO_EMAIL', $request->USUARIO_EMAIL)->first();
+   if ($usuario && Hash::check($request->USUARIO_SENHA, $usuario->USUARIO_SENHA)) {
+       Auth::login($usuario);
+       return redirect("/");
+   } else {
+       return redirect("/login")->with('error', 'Email ou senha incorretos.');
+   }
+}
 
     /**
      * Destroy an authenticated session.

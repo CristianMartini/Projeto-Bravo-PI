@@ -11,6 +11,11 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@0.22.0/dist/axios.min.js"></script>
 </head>
 <body>
+    @if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 
     <div class="container">
         <form id="loginForm" method="POST" action="{{ route('login') }}">
@@ -19,15 +24,20 @@
                 <h1>Login</h1>
                 <div class="mb-3">
                     <label for="floatingInput">Email *</label>
-                <input type="email" class="form-control" id="USUARIO_EMAIL"  name="USUARIO_EMAIL" placeholder="name@example.com">
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="USUARIO_EMAIL" name="USUARIO_EMAIL" placeholder="name@example.com" value="{{ old('USUARIO_EMAIL') }}">
+                    @error('email')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
-            </div>
+                <div class=" mb-3">
+                    <label for="floatingPassword">Senha *</label>
+                    <input type="password" class="form-control @error('senha') is-invalid @enderror" id="USUARIO_SENHA" name="USUARIO_SENHA" placeholder="Digite sua senha">
+                    @error('senha')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
-            <div class=" mb-3">
-                 <label for="floatingPassword">Senha *</label>
-                <input type="password" class="form-control" id="USUARIO_SENHA" name="USUARIO_SENHA" placeholder="Digite sua senha">
-
-            </div>
 
             <div class=" mb-3">
                 <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
