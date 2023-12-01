@@ -5,7 +5,17 @@
 @section('content')
 
    <!--cards-->
+   @if (session('success'))
+   <div class="alert alert-success">
+       {{ session('success') }}
+   </div>
+@endif
 
+   @if(session('error'))
+   <div class="alert alert-danger">
+       {{ session('error') }}
+   </div>
+@endif
    <div class="container container__card container-fluid">
     <h2 class="produtos">{{ $titulo }}</h2>
     <div class="owl-carousel">

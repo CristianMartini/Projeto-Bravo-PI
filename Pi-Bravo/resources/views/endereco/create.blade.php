@@ -11,6 +11,17 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@0.22.0/dist/axios.min.js"></script>
 </head>
 <body>
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 <div class="container">
     <form action="{{ route('endereco.store') }}" method="POST">
         @csrf
@@ -42,7 +53,7 @@
                 <div class="mb-3">
                     <label for="ENDERECO_NOME" class="form-label">Nome do Endereço</label>
                     <input type="text" class="form-control" id="ENDERECO_NOME" name="ENDERECO_NOME"placeholder="Ex: Casa, Trabalho...">
-                   
+
                 </div>
 
                 <div class="mb-3">

@@ -5,7 +5,17 @@
 @section('content')
 
 
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
    <!--cards-->
 
    <div class="container container__card container-fluid">
@@ -23,7 +33,7 @@
                 @endif
                 <div class="card-body">
                     <h5 class="card-title">{{ $produto->PRODUTO_NOME }}</h5>
-                  
+
                 </div>
                 <div class="botao-card">
                     <a href="{{ route('produto.show', $produto->PRODUTO_ID) }}" class="btn btn-dark">Ver
