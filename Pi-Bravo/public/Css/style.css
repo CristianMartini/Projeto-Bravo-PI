@@ -398,3 +398,203 @@ text-align: center;
 a:focus, button:focus {
     outline: 2px solid #0056b3; /* Contorno visível para acessibilidade */
 }
+
+.produtores-section {
+    background-color: #ffffff; /* Fundo claro para a seção */
+    padding: 60px 0;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.section-title {
+    font-size: 2.5em;
+    color: #343a40; /* Cor escura para título */
+    margin-bottom: 30px;
+}
+
+.description {
+    font-size: 1.3em;
+    color: #6c757d; /* Cor cinza para a descrição */
+    margin-bottom: 25px;
+}
+
+.join-message {
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.buttons .btn {
+    margin: 10px;
+    padding: 15px 30px;
+    border: none;
+    color: white;
+    border-radius: 25px; /* Botões arredondados */
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Efeito hover */
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62; /* Efeito hover */
+}
+
+.services {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.service {
+    flex-basis: 30%;
+    margin-top: 20px;
+    padding: 30px;
+    background-color: #f8f9fa; /* Fundo cinza claro para serviços */
+    border-radius: 15px; /* Borda arredondada */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Efeito hover com sombra maior */
+}
+
+.service .icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.service h3 {
+    font-size: 1.6em;
+    color: #343a40; /* Cor escura para o título do serviço */
+    margin-bottom: 10px;
+}
+
+.service p {
+    font-size: 1.1em;
+    color: #495057; /* Cor de texto para descrição */
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.link {
+    display: inline-block;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #0056b3; /* Efeito hover no link */
+}
+
+@media (max-width: 768px) {
+    .services {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service {
+        flex-basis: 80%;
+        margin-bottom: 20px;
+    }
+
+    .section-title, .description, .join-message {
+        padding: 0 10px;
+    }
+}
+
+.container-about {
+    background-color: #f8f9fa; /* Fundo cinza claro */
+    padding: 60px;
+    font-family: 'Arial', sans-serif;
+    color: #343a40; /* Cor de texto escura para melhor leitura */
+    line-height: 1.7;
+    max-width: 1000px; /* Largura máxima aumentada */
+    margin: 40px auto; /* Espaçamento superior e inferior */
+    border-radius: 15px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave */
+    transition: box-shadow 0.3s ease;
+}
+
+.container-about:hover {
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15); /* Efeito hover com sombra maior */
+}
+
+.container-about .header-about h1 {
+    font-size: 3em;
+    color: #007bff; /* Cor azul para o título principal */
+    margin-bottom: 40px;
+}
+
+.container-about h2 {
+    font-size: 2em;
+    color: #343a40; /* Cor escura para subtítulos */
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.container-about p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.container-about ul {
+    list-style: none; /* Remove marcadores padrão */
+    padding: 0;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+.container-about ul li {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 30px;
+}
+
+.container-about ul li:before {
+    content: '✔'; /* Caractere de verificação como marcador */
+    color: #007bff; /* Cor azul para marcador */
+    font-size: 1.5em;
+    position: absolute;
+    left: 0;
+    top: -5px;
+}
+
+@media (max-width: 768px) {
+    .container-about {
+        padding: 30px;
+    }
+
+    .container-about .header-about h1 {
+        font-size: 2.5em;
+    }
+
+    .container-about h2 {
+        font-size: 1.7em;
+    }
+
+    .container-about p, .container-about ul li {
+        font-size: 1.1em;
+    }
+}

@@ -100,13 +100,52 @@
                 </div>
             @endforeach
         </section>
+
+        <section id="para-produtores" class="produtores-section">
+            <div class="container">
+                <h2 class="section-title">Bravo Tickets para Produtores</h2>
+                <p class="description">
+                    Crie, publique e venda eventos ou conteúdos digitais. <br>
+                    A maior plataforma do Brasil - e a mais fácil de usar.
+                </p>
+                <p class="join-message">
+                    Junte-se a mais de 300 mil produtores na Bravo Tickets. Crie, publique e venda eventos ou conteúdos digitais.
+                </p>
+                <div class="buttons">
+                    <button class="btn btn-primary">Criar agora</button>
+                    <button class="btn btn-secondary">Fale com um consultor</button>
+                </div>
+                <div class="services">
+                    <div class="service">
+                        <span class="icon">🌐</span>
+                        <h3>Eventos presenciais</h3>
+                        <p>Uma plataforma self-service completa para a venda de ingressos e gestão de eventos. Total autonomia para cadastrar, gerenciar e acompanhar todas as informações de seu evento.</p>
+                        <a href="#" class="link">Conheça o Bravo Tickets</a>
+                    </div>
+                    <div class="service">
+                        <span class="icon">💻</span>
+                        <h3>Eventos online</h3>
+                        <p>Expanda seu negócio e conecte-se com pessoas do mundo todo. Crie, venda e transmita o seu evento online em uma só plataforma!</p>
+                        <a href="#" class="link">Conheça o Bravo Streaming</a>
+                    </div>
+                    <div class="service">
+                        <span class="icon">🎥</span>
+                        <h3>Conteúdos gravados</h3>
+                        <p>Disponibilize e venda seus cursos, workshops e treinamentos gravados para seus clientes assistirem onde estiverem e quando quiserem.</p>
+                        <a href="#" class="link">Conheça o Bravo Play</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
         <div class="container-about">
             <div class="header-about">
-                <h1>Bem-vindo à Tickets Bravo!</h1>
+                <h1>Somos a Bravo Tickets!</h1>
             </div>
-            <p>Fundada em [Ano de Fundação], a Tickets Bravo rapidamente se estabeleceu como uma líder no setor de eventos do país. Com uma equipe apaixonada e dedicada, nós nos esforçamos para trazer a você os eventos mais espetaculares e memoráveis. Seja música, teatro, esporte ou conferências, a Tickets Bravo é sua porta de entrada para experiências inesquecíveis.</p>
+            <p>Fundada em 2023, a Bravo Tickets rapidamente se estabeleceu como uma líder no setor de eventos do país. Com uma equipe apaixonada e dedicada, nós nos esforçamos para trazer a você os eventos mais espetaculares e memoráveis. Seja música, teatro, esporte ou conferências, a Tickets Bravo é sua porta de entrada para experiências inesquecíveis.</p>
             <h2>Nossa Missão</h2>
-            <p>A Tickets Bravo tem como missão enriquecer vidas através de experiências únicas. Acreditamos que cada evento é uma oportunidade para criar momentos mágicos e duradouros. Para isso, trabalhamos incansavelmente para selecionar e oferecer eventos que não apenas entretenham, mas também inspirem e conectem as pessoas.</p>
+            <p>A Bravo Tickets tem como missão enriquecer vidas através de experiências únicas. Acreditamos que cada evento é uma oportunidade para criar momentos mágicos e duradouros. Para isso, trabalhamos incansavelmente para selecionar e oferecer eventos que não apenas entretenham, mas também inspirem e conectem as pessoas.</p>
             <h2>Nossa Visão</h2>
             <p>Ser reconhecida como a principal plataforma de eventos do país, inovando continuamente e estabelecendo padrões de excelência no setor. Estamos comprometidos em expandir nossos horizontes, trazendo eventos internacionais e apoiando talentos locais.</p>
             <h2>Nossos Valores</h2>
