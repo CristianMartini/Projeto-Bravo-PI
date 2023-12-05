@@ -120,18 +120,21 @@ body{
 }
 
 .custom-card {
-    width: 13rem; /* ou a largura que você preferir */
-    height: auto; /* Isso fará com que todos os cards tenham a altura baseada no conteúdo */
     display: flex;
     flex-direction: column;
-    padding-bottom: 3rem;
-    border: none;
-    margin-left: 3px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Sombra para dar profundidade */
-    transition: 0.3s; /* Transição suave para o hover */
-    /* Restante do seu código */
-    /* Organiza o conteúdo do card em uma coluna */
-  }
+    justify-content: space-between;
+    height: auto; /* Altura automática para acomodar conteúdo interno */
+    min-height: 380px; /* Altura mínima para manter os cartões alinhados */
+    margin: 10px;
+    overflow: hidden;
+}
+
+  .card-img-top {
+    max-width: 100%; /* Máxima largura da imagem para preencher o cartão */
+    max-height: 180px; /* Máxima altura da imagem para se manter dentro do cartão */
+    object-fit: scale-down; /* Garante que a imagem seja reduzida para caber no espaço sem distorcer */
+    background-color: #f8f9fa; /* Cor de fundo para as imagens, para cobrir espaço em branco */
+}
 
   .custom-card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); /* Sombra maior no hover */
@@ -142,11 +145,26 @@ body{
   }
 
 .botao-card{
-    padding-top: 1rem;
+    margin-top: auto; /* Garante que o botão fique na parte inferior */
+    text-align: center; /* Centraliza o botão */
+    position: absolute; /* absolutamente posicionado em relação ao seu cartão */
+    bottom: 10px; /* fixado na parte inferior */
+    left: 0;
+    right: 0;
+    text-align: center; /* isso centraliza o botão */
 }
   .card-title {
+    font-size: 1rem;
+    height: 3em;
     min-height: 3rem; /* Ajuste conforme necessário para acomodar títulos maiores */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limita a 2 linhas, por exemplo */
+    -webkit-box-orient: vertical;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0 10px;
+    max-width: 100%;
    /* Isso impedirá que o texto do título derrame para fora do seu contêiner */
   }
 
@@ -159,6 +177,10 @@ body{
 
     padding-top: 2rem;
     padding-bottom: 4rem;
+    text-align: center;
+    font-size: 3em;
+    color: #007bff; /* Cor azul para o título */
+    margin-bottom: 40px;
 
 
 }
@@ -173,8 +195,10 @@ body{
 
 
 .card-body {
-    max-height: 100px; /* Defina uma altura máxima para o corpo do card */
-    overflow: hidden;
+    flex-grow: 1; /* Permite que o corpo do cartão cresça para preencher o espaço disponível */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 
@@ -314,11 +338,15 @@ talhe*/
 
 .product-container {
     max-width: 900px;
+    margin-bottom: 30px;
+    padding: 20px;
 
 }
 
 .img-fluid{
-    border-radius: 5%;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
 }
 
 .product-details {
@@ -326,26 +354,68 @@ display: flex;
 justify-content: center;
  padding: 20px;
   border: none;
+  background-color: #f8f9fa; /* Fundo cinza claro */
+  border-radius: 15px; /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave */
+  transition: box-shadow 0.3s ease;
+  margin: 20px auto;
+  max-width: 1000px; /* Largura máxima */
+}
+
+.product-details:hover {
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15); /* Efeito hover com sombra maior */
 }
 
 .price {
-    font-size: 1.5em;
     color: #333;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.btn-dark {
+    background-color: #343a40;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-dark:hover {
+    background-color: #212529; /* Efeito escurecido no hover */
 }
 
 .description {
-    margin-bottom: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limita a 3 linhas para a descrição */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0 10px;
 }
 
 
 
 .product-thumbnails  img {
     cursor: pointer;
-display: inline;
+    display: flex;
     max-width: 90px;
+    justify-content: center;
+    margin-top: 15px;
 }
 
+.img-thumbnail {
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.2s ease;
+}
 
+.img-thumbnail:hover {
+    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+}
 
 .container-about{
     width: 80%;
@@ -389,6 +459,19 @@ text-align: center;
     }
     /* Add additional styles for larger screens here */
   }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 15px;
+}
+
 
   .imagem-perfil {
     max-width: 40px;  /* ou qualquer outro valor que você preferir */
@@ -553,6 +636,12 @@ a:focus, button:focus {
     margin-bottom: 20px;
 }
 
+h2 {
+    font-size: 2em;
+    color: #343a40; /* Cor escura para o nome do produto */
+    margin-bottom: 15px;
+}
+
 .container-about p {
     font-size: 1.2em;
     margin-bottom: 20px;
@@ -596,5 +685,37 @@ a:focus, button:focus {
 
     .container-about p, .container-about ul li {
         font-size: 1.1em;
+    }
+}
+
+@media (max-width: 768px) {
+    .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .produtos {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 1.7em;
+    }
+
+    .price {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 768px) {
+    .custom-card {
+        width: auto; /* Ajuste a largura conforme necessário para dispositivos móveis */
+        position: relative; /* isso é necessário para a posição absoluta dos botões */
+        min-height: 380px; /* ajuste conforme necessário */
+
+    }
+
+    .card-img-top {
+        max-height: 150px; /* Ajuste a altura da imagem em telas menores, se necessário */
     }
 }
