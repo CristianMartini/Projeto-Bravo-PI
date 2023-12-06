@@ -120,21 +120,34 @@
 
     <div class="b-example-divider"></div>
 
-    <div class=" container-footer ">
-        <footer class="py-1 my-5">
-            <ul class="nav justify-content-center border-bottom ">
-                <li><a class="logo-footer" href="{{ route('home') }}"><img
-                            src="{{ asset('imagens/Logotipo_bravo.png') }}" alt="bravo tickets logo"width="110">
-                    </a>
-                </li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+    <footer class="container-footer">
+        <div class="footer-content">
+            <a class="logo-footer" href="{{ route('home') }}">
+                <img src="{{ asset('imagens/Logotipo_bravo.png') }}" alt="Bravo Tickets Logo" width="110">
+            </a>
 
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+            <ul class="footer-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Carreiras</a></li>
+                <li><a href="#">Termos e Políticas</a></li>
+                <li><a href="#">Ética e Conduta</a></li>
+                <li><a href="#">Política de Direitos Humanos da Prosus</a></li>
             </ul>
-            <p class="text-center text-body-secondary">&copy; 2023 Company, Inc</p>
-        </footer>
-    </div>
+
+            <div class="social-icons">
+                <!-- Substitua # pelos links reais -->
+                <a href="#"><i class="fa fa-facebook-square"></i></a>
+                <a href="#"><i class="fa fa-twitter-square"></i></a>
+                <a href="#"><i class="fa fa-instagram-square"></i></a>
+                <a href="#"><i class="fa fa-linkedin-square"></i></a>
+            </div>
+
+            <p class="footer-copy">&copy; 2023 Bravo Tickets S.A. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
 
 
 </body>
