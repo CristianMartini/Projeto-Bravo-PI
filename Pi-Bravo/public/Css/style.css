@@ -120,22 +120,21 @@ body{
 }
 
 .custom-card {
-    position: relative; /* Para posicionar absolutamente os elementos internos */
-    width: 13rem; /* Largura fixa */
-    min-height: 380px; /* Altura mínima */
+    width: 13rem; /* ou a largura que você preferir */
+    height: auto; /* Isso fará com que todos os cards tenham a altura baseada no conteúdo */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
-    margin-right: 10px;
-    margin-bottom: 10px; /* Para manter consistência entre os cartões */
+    padding-bottom: 3rem;
+    border: none;
+    margin-left: 3px;
+    /* Organiza o conteúdo do card em uma coluna */
 }
 
 .card-img-top {
-    width: 100%; /* Largura completa */
-    height: 180px; /* Altura fixa */
-    object-fit: cover; /* Garante que a imagem cubra toda a área sem ser distorcida */
-    background-color: #f8f9fa; /* Cor de fundo para imagens ausentes */
+    width: 100%; /* Força a imagem a ocupar 100% da largura do cartão */
+    height: 180px; /* Altura fixa para todas as imagens */
+    object-fit: cover; /* Corta a imagem para preencher o espaço, mantendo sua proporção */
+    background-color: #f8f9fa; /* Cor de fundo para as imagens, para cobrir espaço em branco */
 }
 
   .custom-card:hover {
@@ -143,24 +142,21 @@ body{
 }
 
   .custom-card .card-body {
-    flex: 1; /* Isso fará com que o corpo do card preencha todo o espaço vertical disponível */
-  }
-
-  .botao-card {
-    position: absolute; /* Posicionamento absoluto */
-    bottom: 10px; /* Fixado na parte inferior */
-    width: calc(100% - 20px); /* 100% da largura do cartão menos o padding */
-    left: 50%;
-    transform: translateX(-50%); /* Centraliza o botão horizontalmente */
-    padding: 0 10px; /* Padding para não tocar as bordas do cartão */
-}
-
-.card-title {
-    font-size: 1rem; /* Tamanho da fonte */
-    height: 3em; /* Altura fixa para o título para manter a consistência */
+    font-size: 1rem;
+    margin-bottom: 10px; /* Espaço abaixo do título */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .botao-card {
+    padding-top: 1rem;
+}
+
+.card-title {
+    min-height: 3rem; /* Ajuste conforme necessário para acomodar títulos maiores */
+    overflow: hidden;
+   /* Isso impedirá que o texto do título derrame para fora do seu contêiner */
 }
 
 .img-card {
@@ -190,10 +186,8 @@ body{
 
 
 .card-body {
-    flex-grow: 1; /* Permite que o corpo do cartão cresça para preencher o espaço disponível */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    max-height: 100px; /* Defina uma altura máxima para o corpo do card */
+    overflow: hidden;
 }
 
 
@@ -343,8 +337,6 @@ talhe*/
 }
 
 .img-fluid{
-    width: 100%;
-    height: auto;
     border-radius: 5px;
 }
 
@@ -389,7 +381,7 @@ justify-content: center;
     text-decoration: none;
     transition: background-color 0.3s ease;
     display: block; /* Faz o botão ocupar toda a largura do seu contêiner */
-    width: 100%; /* Largura completa */
+    width: calc(100% - 20px);
     text-align: center; /* Texto centralizado */
 }
 
@@ -495,7 +487,7 @@ a:focus, button:focus {
 
 .produtores-section {
     background-color: #ffffff; /* Fundo claro para a seção */
-    padding: 60px 0;
+    padding: 80px 0;
     text-align: center;
     font-family: 'Arial', sans-serif;
 }
@@ -507,9 +499,10 @@ a:focus, button:focus {
 }
 
 .section-title {
-    font-size: 2.5em;
-    color: #343a40; /* Cor escura para título */
-    margin-bottom: 30px;
+    font-size: 3em;
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 40px;
 }
 
 .description {
@@ -524,13 +517,14 @@ a:focus, button:focus {
 }
 
 .buttons .btn {
-    margin: 10px;
-    padding: 15px 30px;
+    margin: 15px;
+    padding: 15px 35px;
     border: none;
     color: white;
-    border-radius: 25px; /* Botões arredondados */
-    font-size: 1em;
-    transition: background-color 0.3s ease;
+    border-radius: 30px;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary {
@@ -538,15 +532,19 @@ a:focus, button:focus {
 }
 
 .btn-primary:hover {
-    background-color: #0056b3; /* Efeito hover */
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .btn-secondary {
-    background-color: #6c757d;
+    background-color: #6c757d; /* Cor secundária */
 }
 
 .btn-secondary:hover {
-    background-color: #545b62; /* Efeito hover */
+    background-color: #545b62;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .services {
@@ -601,6 +599,14 @@ a:focus, button:focus {
     color: #0056b3; /* Efeito hover no link */
 }
 
+
+.description, .join-message {
+    font-size: 1.3em;
+    color: #495057;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
 @media (max-width: 768px) {
     .services {
         flex-direction: column;
@@ -614,6 +620,17 @@ a:focus, button:focus {
 
     .section-title, .description, .join-message {
         padding: 0 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2.5em;
+    }
+
+    .buttons .btn {
+        padding: 10px 25px;
+        font-size: 1em;
     }
 }
 
