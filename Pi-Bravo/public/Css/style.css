@@ -723,7 +723,8 @@ h2 {
     }
 
     .produtos {
-        font-size: 2.5em;
+        padding-top: 2rem;
+        padding-bottom: 4rem;
     }
 
     h2 {
