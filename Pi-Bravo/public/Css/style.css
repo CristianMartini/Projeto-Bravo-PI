@@ -127,6 +127,10 @@ body{
     padding-bottom: 3rem;
     border: none;
     margin-left: 3px;
+    border-radius: 15px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease; /* Transição suave */
+    overflow: hidden; /* Impede que o conteúdo saia do card */
     /* Organiza o conteúdo do card em uma coluna */
 }
 
@@ -135,6 +139,8 @@ body{
     height: 180px; /* Altura fixa para todas as imagens */
     object-fit: cover; /* Corta a imagem para preencher o espaço, mantendo sua proporção */
     background-color: #f8f9fa; /* Cor de fundo para as imagens, para cobrir espaço em branco */
+    border-top-left-radius: 15px; /* Arredonda as bordas superiores */
+    border-top-right-radius: 15px;
 }
 
   .custom-card:hover {
@@ -157,6 +163,12 @@ body{
     min-height: 3rem; /* Ajuste conforme necessário para acomodar títulos maiores */
     overflow: hidden;
    /* Isso impedirá que o texto do título derrame para fora do seu contêiner */
+   font-size: 1.1rem; /* Tamanho maior */
+    font-weight: bold; /* Negrito */
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .img-card {
@@ -376,12 +388,12 @@ justify-content: center;
 .btn-dark {
     background-color: #343a40;
     color: white;
-    padding: 10px 20px;
+    padding: 8px 16px;
     border-radius: 20px;
     text-decoration: none;
     transition: background-color 0.3s ease;
     display: block; /* Faz o botão ocupar toda a largura do seu contêiner */
-    width: calc(100% - 20px);
+    width: 100%; /* Ocupa toda a largura do card */
     text-align: center; /* Texto centralizado */
 }
 
