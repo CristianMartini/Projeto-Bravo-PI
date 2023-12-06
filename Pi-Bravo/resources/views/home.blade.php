@@ -138,6 +138,33 @@
             </div>
         </section>
 
+        <section id="shows-musica-festa" class="shows-musica-festa-section">
+            <div class="container">
+                <h2 class="section-title">Show, música e festa</h2>
+                <p class="description">Venda ingressos para seu show, festa, balada ou festival na maior plataforma de eventos do Brasil.</p>
+                <button class="btn btn-highlight">Crie seu evento gratuitamente</button>
+
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <h3>+1.8 Milhões</h3>
+                        <p>de eventos realizados</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>+312.000</h3>
+                        <p>de produtores cadastrados</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>+3.600</h3>
+                        <p>de cidades atendidas</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>+168 Milhões</h3>
+                        <p>de ingressos vendidos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
         <div class="container-about">
             <div class="header-about">

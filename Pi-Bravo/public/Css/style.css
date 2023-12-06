@@ -603,13 +603,37 @@ a:focus, button:focus {
     font-weight: bold;
     color: #343a40;
     margin-bottom: 40px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .description {
     font-size: 1.3em;
     color: #6c757d; /* Cor cinza para a descrição */
     margin-bottom: 25px;
+    line-height: 1.6; /* Melhora a leitura */
 }
+
+.btn-highlight {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.btn-highlight:hover {
+    background-color: #0056b3; /* Cor mais escura ao passar o mouse */
+    transform: scale(1.05); /* Efeito de leve aumento */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Sombra mais proeminente */
+}
+
+.stat-item:hover {
+    transform: translateY(-5px); /* Movimento para cima */
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2); /* Sombra para efeito 3D */
+}
+
 
 .join-message {
     margin-bottom: 30px;
@@ -702,7 +726,13 @@ a:focus, button:focus {
 
 .link:hover {
     color: #0056b3; /* Efeito hover no link */
+    text-decoration: underline; /* Sublinhado para destacar */
 }
+
+.btn-highlight, .stat-item, .link {
+    transition: all 0.3s ease;
+}
+
 
 
 .description, .join-message {
@@ -851,5 +881,130 @@ h2 {
 
     .card-img-top {
         max-height: 150px; /* Ajuste a altura da imagem em telas menores, se necessário */
+    }
+}
+
+/* Estilos para a seção 'Show, música e festa' */
+.shows-musica-festa-section {
+    background-color: #f8f9fa;
+    padding: 80px 0;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif; /* Fonte moderna */
+    border-radius: 25px; /* Bordas mais arredondadas para a seção */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra suave para adicionar profundidade */
+    margin: 20px; /* Espaço extra em torno da seção */
+    transition: box-shadow 0.3s ease;
+}
+
+.shows-musica-festa-section:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra maior para efeito elevado */
+}
+
+.shows-musica-festa-section .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 15px;
+}
+
+.shows-musica-festa-section .section-title {
+    font-size: 2.8em; /* Tamanho de fonte maior */
+    color: #343a40; /* Cor escura para destaque */
+    margin-bottom: 30px; /* Espaço extra */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra de texto para profundidade */
+}
+
+.shows-musica-festa-section .description {
+    font-size: 1.4em; /* Tamanho de fonte ligeiramente maior */
+    color: #495057;
+    margin-bottom: 40px; /* Espaço extra */
+    line-height: 1.6; /* Espaçamento entre linhas para melhor legibilidade */
+}
+
+.stats-container .stat-item {
+    /* ...seus estilos existentes... */
+    border-radius: 20px; /* Bordas arredondadas */
+    background-color: #ffffff; /* Fundo branco para destacar */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra para profundidade */
+    transition: all 0.3s ease; /* Transição suave para efeitos */
+    padding: 20px; /* Espaçamento interno */
+}
+
+.stats-container .stat-item:hover {
+    transform: translateY(-5px); /* Eleva o item */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2); /* Sombra maior para efeito elevado */
+}
+
+.shows-musica-festa-section .btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 25px; /* Borda mais arredondada */
+    padding: 15px 30px; /* Padding maior */
+    font-size: 1.2em; /* Tamanho de fonte maior */
+    margin-bottom: 50px; /* Espaço extra */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra para botão */
+    transition: all 0.3s ease; /* Transição suave */
+}
+
+.shows-musica-festa-section .btn-primary:hover {
+    background-color: #0056b3; /* Cor mais escura no hover */
+    transform: translateY(-2px); /* Elevação sutil no hover */
+}
+
+
+.shows-musica-festa-section .stats-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    font-family: 'Arial', sans-serif;
+}
+
+.shows-musica-festa-section .stat-item {
+    margin: 15px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.shows-musica-festa-section .stat-item h3 {
+    color: #007bff;
+    font-size: 2em;
+}
+
+.shows-musica-festa-section .stat-item p {
+    color: #343a40;
+    font-size: 1.2em;
+    font-family: 'Arial', sans-serif;
+}
+
+@media (max-width: 768px) {
+    .shows-musica-festa-section .stats-container {
+        flex-direction: column;
+        border-radius: 15px;
+    }
+
+    .shows-musica-festa-section .stat-item {
+        width: 100%;
+    }
+    .section-title {
+        font-size: 2.5em;
+    }
+
+    .description {
+        font-size: 1.3em;
+    }
+
+    .btn-highlight {
+        padding: 10px 25px;
+        font-size: 1em;
+    }
+
+    .stats-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-item {
+        width: 80%;
+        margin: 10px 0;
     }
 }
