@@ -3,7 +3,7 @@
 @section('title', 'Produtos')
 @section('content')
 
-<main class="container mt-4 product-details">
+<main class="container mt-5 mb-5 product-details">
     <div class="product-container mx-auto">
         <div class="row">
             <div class="col-md-6">
@@ -33,7 +33,7 @@
                             <label for="quantity" class="form-label">Quantidade:</label>
                             <input type="number" id="quantity" name="quantidade" min="1" max="100" value="{{ $quantidadeAtual }}" class="form-control" />
                         </div>
-                        <button class="btn btn-primary">Adicionar ao Carrinho</button>
+                        <button class="btn btn-success">Adicionar ao Carrinho</button>
                     </form>
                 </div>
             </div>

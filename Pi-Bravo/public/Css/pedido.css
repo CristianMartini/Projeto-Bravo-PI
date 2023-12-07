@@ -611,8 +611,8 @@ aside > button:hover {
         max-width: 50px;
     }
 }
-.pedido-header {
-    background-color: #e9ecef;
+.pedido-header td {
+    background-color: #4adedd;
     color: #495057;
     font-size: 1.1em;
     padding: 10px;

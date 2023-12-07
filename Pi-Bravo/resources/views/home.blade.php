@@ -10,14 +10,14 @@
         <div id="carrosselDestaques" class="carousel slide mt-4" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://visitesaopaulo.com/wp-content/uploads/2023/03/Ativo.Com-Divulgacao.png"
+                    <img src="{{ asset('imagens/newyear.png') }}"
                         class="d-block w-100" alt="Destaque 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://images.sympla.com.br/6544fedb924c1-xs.png" class="d-block w-100" alt="Destaque 2">
+                    <img src="{{ asset('imagens/thetown2.png') }}" class="d-block w-100" alt="Destaque 2">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F409819719%2F897434501903%2F1%2Foriginal.20221214-013410?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C33%2C1920%2C960&s=90a057ce281f7f7bdea7d46d6a6b4d0d"
+                    <img src="{{ asset('imagens/congress.png') }}"
                         class="d-block w-100" alt="Destaque 3">
                 </div>
                 <!-- Adicione mais itens de carrossel conforme necessário -->
